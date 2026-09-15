@@ -16,7 +16,7 @@
         .tile-chip:hover { background: #f1f5f9; border-color: #94a3b8; }
         .tile-chip.active { background: #fef3c7; border-color: #f59e0b; color: #92400e; font-weight: 700; }
         @media print {
-            header, footer, .no-print, #adsense-top, #adsense-bottom, #affiliate-box { display: none !important; }
+            header, footer, .no-print, #adsense-top, #adsense-bottom, #affiliate-box, #privacyModal { display: none !important; }
             body { background: white; color: black; }
             .print-card { border: 1px solid #ccc !important; box-shadow: none !important; color: black !important; background: white !important; }
             .print-card span, .print-card div, .print-card h3 { color: black !important; }
@@ -129,7 +129,7 @@
             <!-- LEWA KOLUMNA: FORMULARZE -->
             <div class="md:col-span-7 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                 
-                <!-- ==================== ZAKŁADKA 1: PŁYTKI ==================== -->
+                <!-- 1. PŁYTKI -->
                 <div id="paneTiles" class="space-y-6" style="display: block;">
                     
                     <!-- Powierzchnia (m² vs Wymiary) -->
@@ -161,7 +161,7 @@
                         </div>
                     </div>
 
-                    <!-- Format Płytek z KAFELKAMI DO KLIKANIA -->
+                    <!-- KAFELKI FORMATÓW PŁYTEK -->
                     <div>
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">2. Format płytki (cm) - kliknij lub wpisz</label>
                         
@@ -212,7 +212,7 @@
                     </div>
                 </div>
 
-                <!-- ==================== ZAKŁADKA 2: PANELE ==================== -->
+                <!-- 2. PANELE -->
                 <div id="panePanels" class="space-y-6" style="display: none;">
                     <div>
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">1. Powierzchnia podłogi (m²)</label>
@@ -244,7 +244,7 @@
                     </div>
                 </div>
 
-                <!-- ==================== ZAKŁADKA 3: FARBY ==================== -->
+                <!-- 3. FARBY -->
                 <div id="panePaint" class="space-y-6" style="display: none;">
                     <div>
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">1. Powierzchnia ścian i sufitu (m²)</label>
@@ -339,7 +339,7 @@
                             <span>Gdzie kupić najtaniej?</span>
                         </div>
                         <p id="affTitle" class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Kupujesz płytki i chemię?</p>
-                        <p id="affDesc" class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj ceny klejów do gresu i zapraw fugowych w marketach.</p>
+                        <p id="affDesc" class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj aktualne promocje na kleje i zaprawy fugowe w marketach.</p>
                     </div>
                     <a id="affBtn" href="https://www.ceneo.pl/;szukaj-klej+do+plytek" target="_blank" rel="nofollow noopener" class="px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
                         Klej i fugi &rarr;
@@ -400,9 +400,6 @@
             </p>
 
             <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">2. Panele podłogowe, podkład i listwy przypodłogowe</h3>
-            <p class="text-sm mb-3">
-                Panele montowane w systemie pływającym wymagają doliczenia zapasu na docinki w każdym rzędzie:
-            </p>
             <ul class="text-xs sm:text-sm space-y-1.5 list-disc pl-5 mb-4 text-slate-600">
                 <li><strong>Pełne paczki:</strong> Wynik powierzchni z zapasem zawsze zaokrąglamy w górę do pełnej paczki paneli (zazwyczaj 1.8 – 2.4 m² w paczce).</li>
                 <li><strong>Podkład i folia:</strong> Metraż podkładu powinien odpowiadać powierzchni podłogi z 5% naddatkiem na zakładki.</li>
@@ -446,13 +443,37 @@
 
     </main>
 
-    <!-- Stopka -->
+    <!-- Stopka z linkami prawnymi pod AdSense -->
     <footer class="bg-white border-t border-slate-200 mt-16 py-8">
         <div class="max-w-5xl mx-auto px-4 text-center text-xs text-slate-400 space-y-2">
             <p>&copy; 2026 KalkulatorWykonczenia.pl • Darmowe narzędzia remontowo-budowlane.</p>
-            <p class="text-[11px] text-slate-400">Wyliczenia mają charakter orientacyjny. Sprawdź zalecenia na opakowaniach chemii budowlanej.</p>
+            <div class="flex justify-center items-center space-x-3 text-[11px] text-slate-500 pt-1">
+                <button type="button" onclick="togglePrivacy(true)" class="hover:text-amber-600 underline transition cursor-pointer">Polityka Prywatności i Cookies</button>
+                <span>•</span>
+                <a href="mailto:kontakt@kalkulatorwykonczenia.pl" class="hover:text-amber-600 underline transition">Kontakt: kontakt@kalkulatorwykonczenia.pl</a>
+            </div>
         </div>
     </footer>
+
+    <!-- MODAL POLITYKI PRYWATNOŚCI (Wymóg formalny Google AdSense i RODO) -->
+    <div id="privacyModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" style="display: none;">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200">
+            <div class="p-4 sm:p-5 border-b border-slate-200 flex justify-between items-center">
+                <h3 class="font-bold text-slate-900 text-sm sm:text-base">Polityka Prywatności i Plików Cookies</h3>
+                <button type="button" onclick="togglePrivacy(false)" class="text-slate-400 hover:text-slate-700 text-2xl font-bold px-2 cursor-pointer">&times;</button>
+            </div>
+            <div class="p-5 sm:p-6 overflow-y-auto space-y-3 text-xs text-slate-600 leading-relaxed">
+                <p><strong>1. Informacje ogólne:</strong> Serwis KalkulatorWykonczenia.pl szanuje prywatność swoich użytkowników. Niniejszy dokument określa zasady przetwarzania danych oraz wykorzystywania plików cookies.</p>
+                <p><strong>2. Pliki Cookies (Ciasteczka):</strong> Serwis wykorzystuje pliki cookies w celach statystycznych, analitycznych oraz do prawidłowego działania narzędzi kalkulatora. Użytkownik może w każdej chwili zmienić ustawienia dotyczące cookies w swojej przeglądarce internetowej.</p>
+                <p><strong>3. Reklamy Google AdSense:</strong> W serwisie mogą być wyświetlane reklamy dostarczane przez firmę Google oraz jej partnerów. Dostawcy zewnętrzni, w tym Google, używają plików cookie do wyświetlania reklam na podstawie poprzednich odwiedzin użytkownika w tej lub innych witrynach. Użytkownicy mogą zrezygnować ze spersonalizowanych reklam w <a href="https://adssettings.google.com" target="_blank" rel="nofollow noopener" class="text-amber-600 underline">Ustawieniach reklam Google</a>.</p>
+                <p><strong>4. Linki partnerskie:</strong> Serwis zawiera linki partnerskie (m.in. do serwisu Ceneo.pl). Kliknięcie w link i ewentualny zakup może skutkować naliczeniem prowizji partnerskiej dla serwisu, bez żadnych dodatkowych kosztów dla użytkownika.</p>
+                <p><strong>5. Kontakt:</strong> W sprawach dotyczących serwisu oraz ochrony prywatności prosimy o kontakt pod adresem: <em>kontakt@kalkulatorwykonczenia.pl</em>.</p>
+            </div>
+            <div class="p-4 border-t border-slate-100 flex justify-end">
+                <button type="button" onclick="togglePrivacy(false)" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition cursor-pointer">Rozumiem i zamykam</button>
+            </div>
+        </div>
+    </div>
 
     <!-- SKRYPT LOGICZNY -->
     <script>
@@ -466,7 +487,12 @@
         let tileMode = 'area';
         let listText = '';
 
-        // 1. PRZEŁĄCZANIE ZAKŁADEK GŁÓWNYCH + DYNAMICZNY BOKS CENEO
+        // 1. OBSŁUGA POLITYKI PRYWATNOŚCI
+        window.togglePrivacy = function(show) {
+            document.getElementById('privacyModal').style.display = show ? 'flex' : 'none';
+        };
+
+        // 2. PRZEŁĄCZANIE ZAKŁADEK GŁÓWNYCH + DYNAMICZNY BOKS CENEO
         window.switchTab = function(tab) {
             document.getElementById('paneTiles').style.display = (tab === 'tiles') ? 'block' : 'none';
             document.getElementById('panePanels').style.display = (tab === 'panels') ? 'block' : 'none';
@@ -494,11 +520,11 @@
                 affBtn.href = 'https://www.ceneo.pl/;szukaj-klej+do+plytek';
                 affBtn.innerHTML = 'Klej i fugi &rarr;';
                 affTitle.innerText = 'Kupujesz płytki i chemię?';
-                affDesc.innerText = 'Porównaj aktualne promocje na kleje i zaprawy fugowe.';
+                affDesc.innerText = 'Porównaj aktualne promocje na kleje i zaprawy fugowe w marketach.';
                 runTiles();
             } else if (tab === 'panels') {
                 affBtn.href = 'https://www.ceneo.pl/;szukaj-podklad+pod+panele';
-                affBtn.innerHTML = 'Podkłady i panele &rarr;';
+                affBtn.innerHTML = 'Panele i podkład &rarr;';
                 affTitle.innerText = 'Szukasz paneli i listew?';
                 affDesc.innerText = 'Sprawdź promocje na podkłady wygłuszające i panele.';
                 runPanels();
@@ -511,7 +537,7 @@
             }
         };
 
-        // 2. PRZEŁĄCZANIE TRYBU PŁYTEK (m² vs Wymiary)
+        // 3. PRZEŁĄCZANIE TRYBU PŁYTEK (m² vs Wymiary)
         window.setTileMode = function(m) {
             tileMode = m;
             document.getElementById('tileBoxArea').style.display = (m === 'area') ? 'block' : 'none';
@@ -522,7 +548,7 @@
             runTiles();
         };
 
-        // 3. KAFELKI FORMATÓW PŁYTEK
+        // 4. KAFELKI FORMATÓW PŁYTEK
         window.setTileSize = function(w, l, btn) {
             document.getElementById('inTileW').value = w;
             document.getElementById('inTileL').value = l;
@@ -536,7 +562,7 @@
             runTiles();
         };
 
-        // 4. OBLICZENIA DLA PŁYTEK
+        // 5. OBLICZENIA DLA PŁYTEK
         window.runTiles = function() {
             let area = (tileMode === 'area') ? val('inTileArea') : (val('inTileLen') * val('inTileWid'));
             if (area <= 0) area = 20;
@@ -573,7 +599,7 @@
             listText = `Płytki (${w_cm}×${l_cm} cm): ${totalArea.toFixed(1)} m² (${tiles} szt.) | Klej: ${glue} kg (${bags} worków 25kg) | Fuga: ok. 4.5 kg`;
         };
 
-        // 5. OBLICZENIA DLA PANELI
+        // 6. OBLICZENIA DLA PANELI
         window.runPanels = function() {
             const area = val('inPanArea') || 20;
             const waste = val('selPanWaste');
@@ -605,7 +631,7 @@
             listText = `Panele: ${totalArea.toFixed(1)} m² (${boxes} paczek po ${box} m²) | Podkład: ${Math.ceil(area * 1.05)} m² | Listwy: ${sktPcs} szt.`;
         };
 
-        // 6. OBLICZENIA DLA FARBY
+        // 7. OBLICZENIA DLA FARBY
         window.runPaint = function() {
             const area = val('inPntArea') || 60;
             const coats = val('selPntCoats') || 2;
@@ -636,7 +662,7 @@
             listText = `Farba: ${liters.toFixed(1)} L (${cans} puszek po ${can}L) | Grunt: ${Math.ceil(area / 8)} L`;
         };
 
-        // 7. KOPIOWANIE DO SCHOWKA
+        // 8. KOPIOWANIE DO SCHOWKA
         window.copyList = function() {
             navigator.clipboard.writeText("Lista zakupów z KalkulatorWykonczenia.pl:\n" + listText).then(() => {
                 const t = document.getElementById('toast');
