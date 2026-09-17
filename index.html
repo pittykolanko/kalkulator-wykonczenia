@@ -76,19 +76,19 @@
         ✅ Skopiowano listę zakupów do schowka!
     </div>
 
-    <!-- Pasek Górny z Nawigacją -->
+    <!-- Pasek Górny z Nawigacją - W PEŁNI RESPONSYWNY NA SMARTFONY -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
-        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="#" class="flex items-center space-x-2">
-                <span class="text-2xl">📐</span>
-                <span class="font-bold text-lg text-slate-800 tracking-tight">KalkulatorWykonczenia<span class="text-amber-600">.pl</span></span>
+        <div class="max-w-5xl mx-auto px-2 sm:px-4 h-16 flex items-center justify-between gap-1">
+            <a href="#" class="flex items-center space-x-1.5 shrink-0">
+                <span class="text-xl sm:text-2xl">📐</span>
+                <span class="font-extrabold text-sm sm:text-lg tracking-tight text-slate-800">Kalkulator<span class="hidden sm:inline">Wykonczenia</span><span class="text-amber-600">.pl</span></span>
             </a>
             
-            <nav class="flex items-center space-x-1 text-xs sm:text-sm font-medium">
-                <button type="button" onclick="switchTab('tiles')" id="navBtnTiles" class="px-3 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200 transition">Płytki</button>
-                <button type="button" onclick="switchTab('panels')" id="navBtnPanels" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Panele</button>
-                <button type="button" onclick="switchTab('paint')" id="navBtnPaint" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Farby</button>
-                <a href="#poradnik" class="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hidden sm:inline-block ml-2 transition">Instrukcja i Poradnik</a>
+            <nav class="flex items-center space-x-1 text-[11px] sm:text-xs font-semibold shrink-0">
+                <button type="button" onclick="switchTab('tiles')" id="navBtnTiles" class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200 transition">Płytki</button>
+                <button type="button" onclick="switchTab('panels')" id="navBtnPanels" class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Panele</button>
+                <button type="button" onclick="switchTab('paint')" id="navBtnPaint" class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Farby</button>
+                <a href="#poradnik" class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition">Poradnik</a>
             </nav>
         </div>
     </header>
@@ -104,26 +104,26 @@
     <main class="max-w-4xl mx-auto px-4 py-6 sm:py-8 flex-grow">
         
         <div class="text-center mb-6">
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Materiałów Remontowych</h1>
-            <p class="mt-2 text-sm sm:text-base text-slate-600 max-w-xl mx-auto">
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Materiałów Remontowych</h1>
+            <p class="mt-2 text-xs sm:text-base text-slate-600 max-w-xl mx-auto">
                 Wybierz kalkulator poniżej, wprowadź wymiary i wygeneruj dokładną listę zakupową z uwzględnieniem zapasu na docinki.
             </p>
         </div>
 
-        <!-- GŁÓWNE PRZYCISKI ZAKŁADEK -->
-        <div class="flex justify-center mb-8 no-print">
-            <div class="bg-slate-200/80 p-1.5 rounded-2xl inline-flex space-x-1 sm:space-x-2 border border-slate-300 shadow-inner">
-                <button type="button" onclick="switchTab('tiles')" id="mainBtnTiles" class="px-4 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition bg-white text-slate-900 shadow-sm flex items-center space-x-2">
+        <!-- GŁÓWNE PRZYCISKI ZAKŁADEK - IDEALNIE WYŚRODKOWANE I ELASTYCZNE -->
+        <div class="w-full max-w-md mx-auto mb-8 no-print">
+            <div class="bg-slate-200/80 p-1 sm:p-1.5 rounded-2xl border border-slate-300 shadow-inner grid grid-cols-3 gap-1">
+                <button type="button" onclick="switchTab('tiles')" id="mainBtnTiles" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs bg-white text-slate-900 shadow-sm flex items-center justify-center space-x-1 transition">
                     <span>🔲</span>
-                    <span>Płytki i Fugi</span>
+                    <span>Płytki<span class="hidden sm:inline"> i Fugi</span></span>
                 </button>
-                <button type="button" onclick="switchTab('panels')" id="mainBtnPanels" class="px-4 sm:px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 transition flex items-center space-x-2">
+                <button type="button" onclick="switchTab('panels')" id="mainBtnPanels" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
                     <span>🪵</span>
-                    <span>Panele i Listwy</span>
+                    <span>Panele<span class="hidden sm:inline"> i Listwy</span></span>
                 </button>
-                <button type="button" onclick="switchTab('paint')" id="mainBtnPaint" class="px-4 sm:px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 transition flex items-center space-x-2">
+                <button type="button" onclick="switchTab('paint')" id="mainBtnPaint" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
                     <span>🎨</span>
-                    <span>Farby i Grunt</span>
+                    <span>Farby<span class="hidden sm:inline"> i Grunt</span></span>
                 </button>
             </div>
         </div>
@@ -131,7 +131,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             
             <!-- LEWA KOLUMNA: FORMULARZE -->
-            <div class="md:col-span-7 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="md:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
                 
                 <!-- 1. PŁYTKI -->
                 <div id="paneTiles" class="space-y-6" style="display: block;">
@@ -141,8 +141,8 @@
                         <div class="flex justify-between items-center mb-2">
                             <label class="text-xs font-bold uppercase tracking-wider text-slate-500">1. Powierzchnia kafelkowania</label>
                             <div class="inline-flex p-0.5 bg-slate-100 rounded-lg text-xs font-semibold">
-                                <button type="button" onclick="setTileMode('area')" id="btnTileArea" class="px-3 py-1 rounded-md bg-white text-slate-800 shadow-sm transition">W metrach (m²)</button>
-                                <button type="button" onclick="setTileMode('dim')" id="btnTileDim" class="px-3 py-1 rounded-md text-slate-500 hover:text-slate-800 transition">Dł. × Szer.</button>
+                                <button type="button" onclick="setTileMode('area')" id="btnTileArea" class="px-2.5 sm:px-3 py-1 rounded-md bg-white text-slate-800 shadow-sm transition">W metrach (m²)</button>
+                                <button type="button" onclick="setTileMode('dim')" id="btnTileDim" class="px-2.5 sm:px-3 py-1 rounded-md text-slate-500 hover:text-slate-800 transition">Dł. × Szer.</button>
                             </div>
                         </div>
 
@@ -216,7 +216,7 @@
                     </div>
                 </div>
 
-                <!-- ==================== ZAKŁADKA 2: PANELE ==================== -->
+                <!-- 2. PANELE -->
                 <div id="panePanels" class="space-y-6" style="display: none;">
                     <div>
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">1. Powierzchnia podłogi (m²)</label>
@@ -248,7 +248,7 @@
                     </div>
                 </div>
 
-                <!-- ==================== ZAKŁADKA 3: FARBY ==================== -->
+                <!-- 3. FARBY -->
                 <div id="panePaint" class="space-y-6" style="display: none;">
                     <div>
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">1. Powierzchnia ścian i sufitu (m²)</label>
@@ -284,7 +284,7 @@
             <!-- PRAWA KOLUMNA: WYNIKI -->
             <div class="md:col-span-5 space-y-4">
                 
-                <div class="print-card bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 rounded-2xl text-white shadow-xl space-y-5 border border-slate-700">
+                <div class="print-card bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-5 sm:p-6 rounded-2xl text-white shadow-xl space-y-5 border border-slate-700">
                     <div class="flex justify-between items-center border-b border-slate-700/80 pb-3">
                         <h3 id="outTitle" class="text-xs font-bold uppercase tracking-wider text-amber-400">Podsumowanie zakupów</h3>
                         <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300 font-mono">Na żywo</span>
@@ -336,7 +336,7 @@
                 </div>
 
                 <!-- POWIĘKSZONY BOKS AFILIACYJNY CENEO Z TWOIM PID=31231 -->
-                <div id="affiliate-box" class="bg-amber-50/90 border-2 border-amber-300 p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 no-print transition-all">
+                <div id="affiliate-box" class="bg-amber-50/90 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 no-print transition-all">
                     <div class="space-y-1">
                         <div class="flex items-center space-x-1.5 text-amber-700 text-xs font-bold uppercase tracking-wider">
                             <span>🛒</span>
@@ -345,7 +345,7 @@
                         <p id="affTitle" class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Kupujesz płytki i chemię?</p>
                         <p id="affDesc" class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj aktualne promocje na kleje i zaprawy fugowe w marketach.</p>
                     </div>
-                    <a id="affBtn" href="https://www.ceneo.pl/;szukaj-klej+do+plytek#pid=31231" target="_blank" rel="nofollow noopener" class="px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
+                    <a id="affBtn" href="https://www.ceneo.pl/;szukaj-klej+do+plytek#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
                         Klej i fugi &rarr;
                     </a>
                 </div>
@@ -360,8 +360,8 @@
         </div>
 
         <!-- MERYTORYCZNY PORADNIK DLA GOOGLE (E-E-A-T I AKCEPTACJA ADSENSE) -->
-        <article id="poradnik" class="mt-16 bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 text-slate-700 shadow-sm leading-relaxed">
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy przewodnik: Jak obliczyć materiały na remont?</h2>
+        <article id="poradnik" class="mt-16 bg-white p-5 sm:p-10 rounded-2xl border border-slate-200 text-slate-700 shadow-sm leading-relaxed">
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy przewodnik: Jak obliczyć materiały na remont?</h2>
             
             <p class="text-sm mb-4">
                 Samodzielne planowanie remontu mieszkania lub domu wymaga precyzyjnych szacunków ilościowych. Niedoszacowanie materiału wiąże się z przestojem prac i ryzykiem zakupu kolejnej partii z innej serii produkcyjnej (różnice w odcieniach kafli czy zamkach paneli). Z kolei zbyt duże nadwyżki to niepotrzebnie zamrożony budżet.
@@ -498,22 +498,23 @@
 
         // 2. PRZEŁĄCZANIE ZAKŁADEK GŁÓWNYCH Z PŁYNNYM AUTOSCROLLEM NA GÓRĘ
         window.switchTab = function(tab) {
-            // Płynne przewinięcie na samą górę do kalkulatora
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             document.getElementById('paneTiles').style.display = (tab === 'tiles') ? 'block' : 'none';
             document.getElementById('panePanels').style.display = (tab === 'panels') ? 'block' : 'none';
             document.getElementById('panePaint').style.display = (tab === 'paint') ? 'block' : 'none';
 
-            const actMain = 'px-4 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition bg-white text-slate-900 shadow-sm flex items-center space-x-2';
-            const inactMain = 'px-4 sm:px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 transition flex items-center space-x-2';
+            // Zaktualizowane responsywne klasy przycisków głównych
+            const actMain = 'px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs bg-white text-slate-900 shadow-sm flex items-center justify-center space-x-1 transition';
+            const inactMain = 'px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition';
 
             document.getElementById('mainBtnTiles').className = (tab === 'tiles') ? actMain : inactMain;
             document.getElementById('mainBtnPanels').className = (tab === 'panels') ? actMain : inactMain;
             document.getElementById('mainBtnPaint').className = (tab === 'paint') ? actMain : inactMain;
 
-            const actNav = 'px-3 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200';
-            const inactNav = 'px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100';
+            // Zaktualizowane responsywne klasy przycisków w menu
+            const actNav = 'px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200 transition';
+            const inactNav = 'px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition';
 
             document.getElementById('navBtnTiles').className = (tab === 'tiles') ? actNav : inactNav;
             document.getElementById('navBtnPanels').className = (tab === 'panels') ? actNav : inactNav;
@@ -550,8 +551,8 @@
             document.getElementById('tileBoxArea').style.display = (m === 'area') ? 'block' : 'none';
             document.getElementById('tileBoxDim').style.display = (m === 'dim') ? 'grid' : 'none';
 
-            document.getElementById('btnTileArea').className = (m === 'area') ? 'px-3 py-1 rounded-md bg-white text-slate-800 shadow-sm transition' : 'px-3 py-1 rounded-md text-slate-500 hover:text-slate-800 transition';
-            document.getElementById('btnTileDim').className = (m === 'dim') ? 'px-3 py-1 rounded-md bg-white text-slate-800 shadow-sm transition' : 'px-3 py-1 rounded-md text-slate-500 hover:text-slate-800 transition';
+            document.getElementById('btnTileArea').className = (m === 'area') ? 'px-2.5 sm:px-3 py-1 rounded-md bg-white text-slate-800 shadow-sm transition' : 'px-2.5 sm:px-3 py-1 rounded-md text-slate-500 hover:text-slate-800 transition';
+            document.getElementById('btnTileDim').className = (m === 'dim') ? 'px-2.5 sm:px-3 py-1 rounded-md bg-white text-slate-800 shadow-sm transition' : 'px-2.5 sm:px-3 py-1 rounded-md text-slate-500 hover:text-slate-800 transition';
             runTiles();
         };
 
