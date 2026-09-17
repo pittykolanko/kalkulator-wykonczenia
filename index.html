@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -155,12 +155,12 @@
 
                         <div id="tileBoxDim" class="grid grid-cols-2 gap-3" style="display: none;">
                             <div class="relative">
-                                <input type="text" inputmode="decimal" id="inTileLen" placeholder="Długość" value="5" oninput="runTiles()" class="w-full px-3 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 text-slate-800 font-semibold">
-                                <span class="absolute right-3 top-3.5 text-slate-400 text-xs">m</span>
+                                <input type="text" inputmode="decimal" id="inTileLen" placeholder="Długość" value="5" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 text-slate-800 font-semibold">
+                                <span class="absolute right-3 top-3 text-slate-400 text-xs">m</span>
                             </div>
                             <div class="relative">
-                                <input type="text" inputmode="decimal" id="inTileWid" placeholder="Szerokość" value="4" oninput="runTiles()" class="w-full px-3 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 text-slate-800 font-semibold">
-                                <span class="absolute right-3 top-3.5 text-slate-400 text-xs">m</span>
+                                <input type="text" inputmode="decimal" id="inTileWid" placeholder="Szerokość" value="4" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 text-slate-800 font-semibold">
+                                <span class="absolute right-3 top-3 text-slate-400 text-xs">m</span>
                             </div>
                         </div>
                     </div>
@@ -216,7 +216,7 @@
                     </div>
                 </div>
 
-                <!-- 2. PANELE -->
+                <!-- ==================== ZAKŁADKA 2: PANELE ==================== -->
                 <div id="panePanels" class="space-y-6" style="display: none;">
                     <div>
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">1. Powierzchnia podłogi (m²)</label>
@@ -248,7 +248,7 @@
                     </div>
                 </div>
 
-                <!-- 3. FARBY -->
+                <!-- ==================== ZAKŁADKA 3: FARBY ==================== -->
                 <div id="panePaint" class="space-y-6" style="display: none;">
                     <div>
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">1. Powierzchnia ścian i sufitu (m²)</label>
@@ -496,8 +496,11 @@
             document.getElementById('privacyModal').style.display = show ? 'flex' : 'none';
         };
 
-        // 2. PRZEŁĄCZANIE ZAKŁADEK GŁÓWNYCH + DYNAMICZNY BOKS CENEO (PID=31231)
+        // 2. PRZEŁĄCZANIE ZAKŁADEK GŁÓWNYCH Z PŁYNNYM AUTOSCROLLEM NA GÓRĘ
         window.switchTab = function(tab) {
+            // Płynne przewinięcie na samą górę do kalkulatora
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
             document.getElementById('paneTiles').style.display = (tab === 'tiles') ? 'block' : 'none';
             document.getElementById('panePanels').style.display = (tab === 'panels') ? 'block' : 'none';
             document.getElementById('panePaint').style.display = (tab === 'paint') ? 'block' : 'none';
