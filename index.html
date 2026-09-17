@@ -64,10 +64,10 @@
       ]
     }
     </script>
+
     <!-- KOD WERYFIKACYJNY GOOGLE ADSENSE -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3391616326744840"
          crossorigin="anonymous"></script>
-
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
 
@@ -335,7 +335,7 @@
 
                 </div>
 
-                <!-- POWIĘKSZONY, WYRAŹNY BOKS AFILIACYJNY CENEO -->
+                <!-- POWIĘKSZONY BOKS AFILIACYJNY CENEO Z TWOIM PID=31231 -->
                 <div id="affiliate-box" class="bg-amber-50/90 border-2 border-amber-300 p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 no-print transition-all">
                     <div class="space-y-1">
                         <div class="flex items-center space-x-1.5 text-amber-700 text-xs font-bold uppercase tracking-wider">
@@ -345,7 +345,7 @@
                         <p id="affTitle" class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Kupujesz płytki i chemię?</p>
                         <p id="affDesc" class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj aktualne promocje na kleje i zaprawy fugowe w marketach.</p>
                     </div>
-                    <a id="affBtn" href="https://www.ceneo.pl/;szukaj-klej+do+plytek" target="_blank" rel="nofollow noopener" class="px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
+                    <a id="affBtn" href="https://www.ceneo.pl/;szukaj-klej+do+plytek#pid=31231" target="_blank" rel="nofollow noopener" class="px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
                         Klej i fugi &rarr;
                     </a>
                 </div>
@@ -496,7 +496,7 @@
             document.getElementById('privacyModal').style.display = show ? 'flex' : 'none';
         };
 
-        // 2. PRZEŁĄCZANIE ZAKŁADEK GŁÓWNYCH + DYNAMICZNY BOKS CENEO
+        // 2. PRZEŁĄCZANIE ZAKŁADEK GŁÓWNYCH + DYNAMICZNY BOKS CENEO (PID=31231)
         window.switchTab = function(tab) {
             document.getElementById('paneTiles').style.display = (tab === 'tiles') ? 'block' : 'none';
             document.getElementById('panePanels').style.display = (tab === 'panels') ? 'block' : 'none';
@@ -521,19 +521,19 @@
             const affDesc = document.getElementById('affDesc');
 
             if (tab === 'tiles') {
-                affBtn.href = 'https://www.ceneo.pl/;szukaj-klej+do+plytek';
+                affBtn.href = 'https://www.ceneo.pl/;szukaj-klej+do+plytek#pid=31231';
                 affBtn.innerHTML = 'Klej i fugi &rarr;';
                 affTitle.innerText = 'Kupujesz płytki i chemię?';
                 affDesc.innerText = 'Porównaj aktualne promocje na kleje i zaprawy fugowe w marketach.';
                 runTiles();
             } else if (tab === 'panels') {
-                affBtn.href = 'https://www.ceneo.pl/;szukaj-podklad+pod+panele';
-                affBtn.innerHTML = 'Panele i podkład &rarr;';
+                affBtn.href = 'https://www.ceneo.pl/;szukaj-podklad+pod+panele#pid=31231';
+                affBtn.innerHTML = 'Podkłady i panele &rarr;';
                 affTitle.innerText = 'Szukasz paneli i listew?';
                 affDesc.innerText = 'Sprawdź promocje na podkłady wygłuszające i panele.';
                 runPanels();
             } else if (tab === 'paint') {
-                affBtn.href = 'https://www.ceneo.pl/;szukaj-farba+do+scian';
+                affBtn.href = 'https://www.ceneo.pl/;szukaj-farba+do+scian#pid=31231';
                 affBtn.innerHTML = 'Farby i grunt &rarr;';
                 affTitle.innerText = 'Planujesz malowanie ścian?';
                 affDesc.innerText = 'Zobacz najniższe ceny farb zmywalnych i gruntów.';
