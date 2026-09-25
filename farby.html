@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Farb do Ścian i Gruntu | Ile litrów farby kupić?</title>
+    <meta name="description" content="Oblicz ile litrów farby i puszek potrzebujesz do pomalowania pokoju. Oblicz powierzchnię ścian i sufitu, odlicz okna i drzwi oraz sprawdź zużycie gruntu.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .inp { width: 100%; padding: 10px 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; font-weight: 600; color: #0f172a; outline: none; }
+        .inp:focus { border-color: #f59e0b; background: #fff; }
+    </style>
+    <!-- KOD WERYFIKACYJNY GOOGLE ADSENSE -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3391616326744840" crossorigin="anonymous"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
+
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-semibold transform translate-y-20 opacity-0 transition-all z-50 pointer-events-none">
+        ✅ Skopiowano listę zakupów do schowka!
+    </div>
+
+    <!-- Pasek Górny -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+        <div class="max-w-5xl mx-auto px-2 sm:px-4 h-16 flex items-center justify-between gap-1">
+            <a href="/" class="flex items-center space-x-1.5 shrink-0">
+                <span class="text-xl sm:text-2xl">📐</span>
+                <span class="font-extrabold text-sm sm:text-lg tracking-tight text-slate-800">Kalkulator<span class="hidden sm:inline">Wykonczenia</span><span class="text-amber-600">.pl</span></span>
+            </a>
+            <nav class="flex items-center space-x-1 text-[11px] sm:text-xs font-semibold shrink-0">
+                <a href="/" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Płytki</a>
+                <a href="/panele.html" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Panele</a>
+                <a href="/farby.html" class="px-2.5 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200">Farby</a>
+                <a href="#poradnik" class="px-2 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hidden sm:inline-block transition">Poradnik</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-6 sm:py-8 flex-grow">
+        <div class="text-center mb-6">
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Farb do Ścian, Sufitów i Gruntu</h1>
+            <p class="mt-2 text-xs sm:text-base text-slate-600 max-w-xl mx-auto">
+                Oblicz ile litrów farby kupić, ile puszek potrzebujesz oraz jakie jest zużycie preparatu gruntującego.
+            </p>
+        </div>
+
+        <!-- Przełącznik podstron -->
+        <div class="w-full max-w-md mx-auto mb-8">
+            <div class="bg-slate-200/80 p-1 sm:p-1.5 rounded-2xl border border-slate-300 shadow-inner grid grid-cols-3 gap-1">
+                <a href="/" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
+                    <span>🔲</span><span>Płytki</span>
+                </a>
+                <a href="/panele.html" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
+                    <span>🪵</span><span>Panele</span>
+                </a>
+                <a href="/farby.html" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs bg-white text-slate-900 shadow-sm flex items-center justify-center space-x-1">
+                    <span>🎨</span><span>Farby</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            
+            <!-- Formularz Farb -->
+            <div class="md:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">1. Wymiary pokoju (metry)</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div>
+                            <span class="text-[10px] text-slate-500 block mb-1">Długość (m)</span>
+                            <input type="text" inputmode="decimal" id="inPntL" value="5" oninput="runPaint()" class="inp text-xs font-semibold">
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-slate-500 block mb-1">Szerokość (m)</span>
+                            <input type="text" inputmode="decimal" id="inPntW" value="4" oninput="runPaint()" class="inp text-xs font-semibold">
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-slate-500 block mb-1">Wysokość (m)</span>
+                            <input type="text" inputmode="decimal" id="inPntH" value="2.6" oninput="runPaint()" class="inp text-xs font-semibold">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <label class="flex items-center space-x-2 cursor-pointer bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <input type="checkbox" id="chkCeiling" checked onchange="runPaint()" class="w-4 h-4 rounded text-amber-600 accent-amber-600 cursor-pointer">
+                        <span class="text-xs font-bold text-slate-800">Maluj również sufit (dodaj do obliczeń)</span>
+                    </label>
+
+                    <div class="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <div>
+                            <span class="text-[10px] text-slate-500 block mb-1">Odejmij drzwi (szt.)</span>
+                            <input type="number" id="inPntDoors" value="1" min="0" oninput="runPaint()" class="inp text-xs">
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-slate-500 block mb-1">Odejmij okna (szt.)</span>
+                            <input type="number" id="inPntWin" value="1" min="0" oninput="runPaint()" class="inp text-xs">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Liczba warstw</label>
+                        <select id="selPntCoats" onchange="runPaint()" class="inp text-xs font-semibold">
+                            <option value="1">1 warstwa (odświeżenie)</option>
+                            <option value="2" selected>2 warstwy (zalecane)</option>
+                            <option value="3">3 warstwy (ciemny kolor)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Rozmiar puszki farby</label>
+                        <select id="selPntCan" onchange="runPaint()" class="inp text-xs font-semibold">
+                            <option value="2.5">2.5 Litra</option>
+                            <option value="5" selected>5.0 Litrów</option>
+                            <option value="10">10.0 Litrów</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Podsumowanie -->
+            <div class="md:col-span-5 space-y-4">
+                <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-5 sm:p-6 rounded-2xl text-white shadow-xl space-y-5 border border-slate-700">
+                    <div class="flex justify-between items-center border-b border-slate-700/80 pb-3">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400">Podsumowanie zakupów</h3>
+                        <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300 font-mono">Na żywo</span>
+                    </div>
+
+                    <div>
+                        <span class="text-xs text-slate-400 block font-medium">Łączna powierzchnia malowania:</span>
+                        <div class="flex items-baseline space-x-2 mt-0.5">
+                            <span id="outMainVal" class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">63</span>
+                            <span class="text-xl font-semibold text-slate-400">m²</span>
+                        </div>
+                        <span id="outSubInfo" class="text-xs text-amber-300/90 mt-1 block font-medium">2 warstwy = 126 m² łącznie</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 py-3 border-y border-slate-700/80">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Farba do kupienia:</span>
+                            <span id="outRow1Val" class="text-2xl font-bold text-white tracking-tight">10.5 L</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block">Puszki farby:</span>
+                            <span id="outRow2Val" class="text-2xl font-bold text-white tracking-tight">3 puszki</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Pojemność puszki:</span>
+                            <span id="outChem1Val" class="text-xl font-bold text-amber-400 block mt-0.5">5.0 Litrów</span>
+                            <span class="text-xs text-slate-300 font-medium block mt-0.5">wydajność 12 m²/L</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block">Grunt malarski:</span>
+                            <span id="outChem2Val" class="text-xl font-bold text-amber-400 block mt-0.5">~8 Litrów</span>
+                            <span class="text-xs text-slate-300 font-medium block mt-0.5">1 warstwa pod farbę</span>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="copyList()" class="w-full py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
+                        <span>📋</span><span>Kopiuj listę na zakupy</span>
+                    </button>
+                </div>
+
+                <!-- Boks Ceneo PID=31231 -->
+                <div class="bg-amber-50/90 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                    <div class="space-y-1">
+                        <div class="flex items-center space-x-1.5 text-amber-700 text-xs font-bold uppercase tracking-wider">
+                            <span>🛒</span><span>Gdzie kupić najtaniej?</span>
+                        </div>
+                        <p class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Planujesz malowanie ścian?</p>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj aktualne promocje na farby zmywalne i preparaty gruntujące.</p>
+                    </div>
+                    <a href="https://www.ceneo.pl/;szukaj-farba+do+scian#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
+                        Farby i grunt &rarr;
+                    </a>
+                </div>
+
+                <!-- Linki do pozostałych -->
+                <div class="grid grid-cols-2 gap-3">
+                    <a href="/" class="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-amber-400 transition group shadow-sm block">
+                        <span class="text-lg block mb-1">🔲</span>
+                        <span class="text-xs font-bold text-slate-900 group-hover:text-amber-600 block">Kalkulator Płytek &rarr;</span>
+                        <span class="text-[10px] text-slate-400 block">Klej, fuga, kafle</span>
+                    </a>
+                    <a href="/panele.html" class="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-amber-400 transition group shadow-sm block">
+                        <span class="text-lg block mb-1">🪵</span>
+                        <span class="text-xs font-bold text-slate-900 group-hover:text-amber-600 block">Kalkulator Paneli &rarr;</span>
+                        <span class="text-[10px] text-slate-400 block">Paczki, podkład, listwy</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Artykuł o Malowaniu -->
+        <article id="poradnik" class="mt-16 bg-white p-5 sm:p-10 rounded-2xl border border-slate-200 text-slate-700 shadow-sm leading-relaxed">
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy poradnik: Jak obliczyć ile farby kupić do pokoju?</h2>
+            
+            <p class="text-sm mb-4">
+                Prawidłowe zaplanowanie ilości farby pozwala uniknąć przestojów w trakcie prac oraz niepotrzebnego wydawania pieniędzy na nadmiarowe puszki. Nowoczesne farby lateksowe i ceramiczne charakteryzują się wysoką siłą krycia, jednak zużycie zależy wprost od chłonności podłoża.
+            </p>
+
+            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Jak obliczyć powierzchnię ścian i sufitu?</h3>
+            <p class="text-sm mb-3">
+                Wzór na pole powierzchni ścian: <strong>obwód pokoju × wysokość</strong>. Od wyniku odejmujemy otwory okienne i drzwiowe (średnio 1.8 m² na drzwi i 2 m² na standardowe okno). Jeśli malujemy sufit, dodajemy pole powierzchni podłogi (<strong>długość × szerokość</strong>).
+            </p>
+
+            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">2. Wydajność farby a liczba warstw</h3>
+            <p class="text-sm mb-3">
+                Większość dobrej jakości farb emulsyjnych kryje <strong>10–14 m² z 1 litra</strong> przy jednej warstwie:
+            </p>
+            <ul class="text-xs sm:text-sm space-y-1.5 list-disc pl-5 mb-4 text-slate-600">
+                <li><strong>1 warstwa:</strong> tylko w przypadku okresowego odświeżania czystej ściany dokładnie tym samym kolorem.</li>
+                <li><strong>2 warstwy (standard rynkowy):</strong> obowiązkowe przy zmianie odcienia oraz na świeżych tynkach i gładziach.</li>
+                <li><strong>3 warstwy:</strong> przy przemalowywaniu bardzo ciemnej ściany (np. granatowej, grafitowej) na kolor jasny lub biały.</li>
+            </ul>
+
+            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">3. Dlaczego gruntowanie zmniejsza zużycie farby?</h3>
+            <p class="text-sm mb-3">
+                Niezagruntowana ściana (zwłaszcza po szpachlowaniu gładzią gipsową) działa jak gąbka – „wypija” wodę z pierwszej warstwy farby, powodując smugi, łuszczenie się powłoki i nawet dwukrotnie wyższe zużycie drogiej farby nawierzchniowej. Zastosowanie taniego preparatu gruntującego (ok. 1 litr na 8 m²) wyrównuje chłonność i zapewnia idealne krycie.
+            </p>
+
+            <h3 class="text-lg font-bold text-slate-900 mt-8 mb-4 pt-6 border-t border-slate-200">Najczęściej zadawane pytania (FAQ)</h3>
+            <div class="space-y-4 text-xs sm:text-sm">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-1">Czy sufit zawsze malujemy przed ścianami?</h4>
+                    <p class="text-slate-600">Zawsze zaczynamy od sufitu. Ewentualne krople farby spadające z wałka nie zniszczą wtedy pomalowanych wcześniej ścian.</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-1">Jak dobrać odpowiedni wałek malarski?</h4>
+                    <p class="text-slate-600">Do gładkich ścian z gładzi gipsowej używamy wałków z krótkim runem (8–10 mm, np. mikrofibra). Do chropowatych tynków tradycyjnych wybieramy wałki ze średnim runem (12–15 mm).</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-16 py-8 text-center text-xs text-slate-400 space-y-2">
+        <p>&copy; 2026 KalkulatorWykonczenia.pl • Darmowe narzędzia remontowo-budowlane.</p>
+        <div class="flex justify-center items-center space-x-3 text-[11px] text-slate-500 pt-1">
+            <a href="/" class="hover:text-amber-600 underline">Kalkulator Płytek</a>
+            <span>•</span>
+            <a href="/panele.html" class="hover:text-amber-600 underline">Kalkulator Paneli</a>
+            <span>•</span>
+            <a href="/farby.html" class="hover:text-amber-600 underline font-bold">Kalkulator Farb</a>
+        </div>
+    </footer>
+
+    <script>
+        function val(id) {
+            const el = document.getElementById(id);
+            if (!el) return 0;
+            const n = parseFloat(String(el.value).replace(',', '.').trim());
+            return isNaN(n) ? 0 : n;
+        }
+
+        let listText = '';
+
+        function runPaint() {
+            const l = val('inPntL') || 5;
+            const w = val('inPntW') || 4;
+            const h = val('inPntH') || 2.6;
+            const ceiling = document.getElementById('chkCeiling').checked;
+            const doors = val('inPntDoors');
+            const win = val('inPntWin');
+            const coats = val('selPntCoats') || 2;
+            const canSize = val('selPntCan') || 5;
+
+            let walls = Math.max(0, (2 * l + 2 * w) * h - (doors * 1.8) - (win * 2.0));
+            let ceil = ceiling ? (l * w) : 0;
+            let singleArea = Math.round(walls + ceil);
+            let totalPaintingArea = singleArea * coats;
+
+            let liters = Math.round((totalPaintingArea / 12) * 10) / 10;
+            let cans = Math.ceil(liters / canSize);
+            let primer = Math.ceil(singleArea / 8);
+
+            document.getElementById('outMainVal').innerText = singleArea;
+            document.getElementById('outSubInfo').innerText = `${coats} warstwy = ${totalPaintingArea} m² łącznie`;
+            document.getElementById('outRow1Val').innerText = liters + " L";
+            document.getElementById('outRow2Val').innerText = cans + " " + (cans === 1 ? 'puszka' : (cans < 5 ? 'puszki' : 'puszek'));
+            document.getElementById('outChem1Val').innerText = canSize + " Litrów";
+            document.getElementById('outChem2Val').innerText = "~" + primer + " Litrów";
+
+            listText = `Farba: ${liters} L (${cans} puszek po ${canSize}L) | Powierzchnia: ${singleArea} m² | Grunt: ${primer} L`;
+        }
+
+        function copyList() {
+            navigator.clipboard.writeText("Lista zakupów z KalkulatorWykonczenia.pl:\n" + listText).then(() => {
+                const t = document.getElementById('toast');
+                t.classList.remove('translate-y-20', 'opacity-0');
+                setTimeout(() => t.classList.add('translate-y-20', 'opacity-0'), 2500);
+            });
+        }
+
+        runPaint();
+    </script>
+</body>
+</html>
