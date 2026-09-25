@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Remontu | Płytki, Panele, Farby i Chemia Budowlana</title>
-    <meta name="description" content="Precyzyjny kalkulator remontowy. Oblicz zapotrzebowanie na płytki, fugi, kleje, panele podłogowe, listwy, farby i grunt z uwzględnieniem zapasu na docinki.">
+    <title>Kalkulator Płytek, Kleju i Fug | Policz materiały na kafelkowanie</title>
+    <meta name="description" content="Precyzyjny kalkulator glazurniczy. Oblicz liczbę płytek, paczek, zużycie kleju w workach 25kg oraz fugi z uwzględnieniem zapasu na docinki.">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
         .tile-chip:hover { background: #f1f5f9; border-color: #94a3b8; }
         .tile-chip.active { background: #fef3c7; border-color: #f59e0b; color: #92400e; font-weight: 700; }
         @media print {
-            header, footer, .no-print, #adsense-top, #adsense-bottom, #affiliate-box, #privacyModal { display: none !important; }
+            header, footer, .no-print, #affiliate-box, #privacyModal { display: none !important; }
             body { background: white; color: black; }
             .print-card { border: 1px solid #ccc !important; box-shadow: none !important; color: black !important; background: white !important; }
             .print-card span, .print-card div, .print-card h3 { color: black !important; }
@@ -30,15 +30,11 @@
       "@graph": [
         {
           "@type": "WebApplication",
-          "name": "Kalkulator Materiałów Remontowych",
+          "name": "Kalkulator Płytek i Fug",
           "url": "https://kalkulatorwykonczenia.pl",
           "applicationCategory": "UtilityApplication",
           "operatingSystem": "All",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "PLN"
-          }
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "PLN" }
         },
         {
           "@type": "FAQPage",
@@ -53,10 +49,10 @@
             },
             {
               "@type": "Question",
-              "name": "Jaki zapas na docinki przyjąć przy panelach podłogowych?",
+              "name": "Jaki zapas na docinki przyjąć przy płytkach?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Przy montażu wzdłużnym zaleca się 5-10% zapasu. W przypadku montażu w jodełkę lub pomieszczeń o nieregularnym kształcie bezpieczny zapas wynosi 15-20%."
+                "text": "Przy montażu tradycyjnym wzdłużnym zaleca się 5-10% zapasu. W przypadku montażu w jodełkę lub karo bezpieczny zapas wynosi 15-20%."
               }
             }
           ]
@@ -76,248 +72,172 @@
         ✅ Skopiowano listę zakupów do schowka!
     </div>
 
-    <!-- Pasek Górny z Nawigacją - W PEŁNI RESPONSYWNY NA SMARTFONY -->
+    <!-- Pasek Górny z Nawigacją -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
         <div class="max-w-5xl mx-auto px-2 sm:px-4 h-16 flex items-center justify-between gap-1">
-            <a href="#" class="flex items-center space-x-1.5 shrink-0">
+            <a href="/" class="flex items-center space-x-1.5 shrink-0">
                 <span class="text-xl sm:text-2xl">📐</span>
                 <span class="font-extrabold text-sm sm:text-lg tracking-tight text-slate-800">Kalkulator<span class="hidden sm:inline">Wykonczenia</span><span class="text-amber-600">.pl</span></span>
             </a>
             
             <nav class="flex items-center space-x-1 text-[11px] sm:text-xs font-semibold shrink-0">
-                <button type="button" onclick="switchTab('tiles')" id="navBtnTiles" class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200 transition">Płytki</button>
-                <button type="button" onclick="switchTab('panels')" id="navBtnPanels" class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Panele</button>
-                <button type="button" onclick="switchTab('paint')" id="navBtnPaint" class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Farby</button>
-                <a href="#poradnik" class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition">Poradnik</a>
+                <a href="/" class="px-2.5 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200">Płytki</a>
+                <a href="/panele.html" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Panele</a>
+                <a href="/farby.html" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Farby</a>
+                <a href="#poradnik" class="px-2 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hidden sm:inline-block transition">Poradnik</a>
             </nav>
         </div>
     </header>
 
-    <!-- BANNER REKLAMOWY GÓRNY (ADSENSE) -->
-    <div id="adsense-top" class="max-w-4xl mx-auto px-4 mt-4 w-full no-print">
-        <div class="w-full h-24 bg-slate-200/50 border border-dashed border-slate-300 rounded-xl flex items-center justify-center text-xs text-slate-400 font-mono">
-            [MIEJSCE NA BANNER REKLAMOWY ADSENSE - GÓRA]
-        </div>
-    </div>
-
-    <!-- Główny Kontener -->
     <main class="max-w-4xl mx-auto px-4 py-6 sm:py-8 flex-grow">
         
         <div class="text-center mb-6">
-            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Materiałów Remontowych</h1>
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Płytek, Kleju i Fug</h1>
             <p class="mt-2 text-xs sm:text-base text-slate-600 max-w-xl mx-auto">
-                Wybierz kalkulator poniżej, wprowadź wymiary i wygeneruj dokładną listę zakupową z uwzględnieniem zapasu na docinki.
+                Oblicz precyzyjną liczbę płytek, paczek oraz zapotrzebowanie na klej i zaprawę fugową z zapasem na docinki.
             </p>
         </div>
 
-        <!-- GŁÓWNE PRZYCISKI ZAKŁADEK - IDEALNIE WYŚRODKOWANE I ELASTYCZNE -->
+        <!-- PRZEŁĄCZNIK LINKÓW DO INNYCH KALKULATORÓW -->
         <div class="w-full max-w-md mx-auto mb-8 no-print">
             <div class="bg-slate-200/80 p-1 sm:p-1.5 rounded-2xl border border-slate-300 shadow-inner grid grid-cols-3 gap-1">
-                <button type="button" onclick="switchTab('tiles')" id="mainBtnTiles" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs bg-white text-slate-900 shadow-sm flex items-center justify-center space-x-1 transition">
+                <a href="/" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs bg-white text-slate-900 shadow-sm flex items-center justify-center space-x-1">
                     <span>🔲</span>
-                    <span>Płytki<span class="hidden sm:inline"> i Fugi</span></span>
-                </button>
-                <button type="button" onclick="switchTab('panels')" id="mainBtnPanels" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
+                    <span>Płytki</span>
+                </a>
+                <a href="/panele.html" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
                     <span>🪵</span>
-                    <span>Panele<span class="hidden sm:inline"> i Listwy</span></span>
-                </button>
-                <button type="button" onclick="switchTab('paint')" id="mainBtnPaint" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
+                    <span>Panele</span>
+                </a>
+                <a href="/farby.html" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
                     <span>🎨</span>
-                    <span>Farby<span class="hidden sm:inline"> i Grunt</span></span>
-                </button>
+                    <span>Farby</span>
+                </a>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             
-            <!-- LEWA KOLUMNA: FORMULARZE -->
-            <div class="md:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <!-- LEWA STRONA: FORMULARZ PŁYTEK -->
+            <div class="md:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
                 
-                <!-- 1. PŁYTKI -->
-                <div id="paneTiles" class="space-y-6" style="display: block;">
+                <!-- Powierzchnia -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500">1. Powierzchnia kafelkowania</label>
+                        <div class="inline-flex p-0.5 bg-slate-100 rounded-lg text-xs font-semibold">
+                            <button type="button" onclick="setTileMode('area')" id="btnTileArea" class="px-2.5 sm:px-3 py-1 rounded-md bg-white text-slate-800 shadow-sm transition">W metrach (m²)</button>
+                            <button type="button" onclick="setTileMode('dim')" id="btnTileDim" class="px-2.5 sm:px-3 py-1 rounded-md text-slate-500 hover:text-slate-800 transition">Dł. × Szer.</button>
+                        </div>
+                    </div>
+
+                    <div id="tileBoxArea">
+                        <div class="relative">
+                            <input type="text" inputmode="decimal" id="inTileArea" value="20" oninput="runTiles()" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 text-xl focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
+                            <span class="absolute right-4 top-3.5 text-slate-400 text-sm font-semibold">m²</span>
+                        </div>
+                    </div>
+
+                    <div id="tileBoxDim" class="grid grid-cols-2 gap-3" style="display: none;">
+                        <div class="relative">
+                            <input type="text" inputmode="decimal" id="inTileLen" placeholder="Długość" value="5" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 text-slate-800 font-semibold">
+                            <span class="absolute right-3 top-3 text-slate-400 text-xs">m</span>
+                        </div>
+                        <div class="relative">
+                            <input type="text" inputmode="decimal" id="inTileWid" placeholder="Szerokość" value="4" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 text-slate-800 font-semibold">
+                            <span class="absolute right-3 top-3 text-slate-400 text-xs">m</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Format Płytek z kafelkami -->
+                <div>
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">2. Format płytki (cm) - kliknij kafel lub wpisz</label>
                     
-                    <!-- Powierzchnia (m² vs Wymiary) -->
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500">1. Powierzchnia kafelkowania</label>
-                            <div class="inline-flex p-0.5 bg-slate-100 rounded-lg text-xs font-semibold">
-                                <button type="button" onclick="setTileMode('area')" id="btnTileArea" class="px-2.5 sm:px-3 py-1 rounded-md bg-white text-slate-800 shadow-sm transition">W metrach (m²)</button>
-                                <button type="button" onclick="setTileMode('dim')" id="btnTileDim" class="px-2.5 sm:px-3 py-1 rounded-md text-slate-500 hover:text-slate-800 transition">Dł. × Szer.</button>
-                            </div>
-                        </div>
-
-                        <div id="tileBoxArea">
-                            <div class="relative">
-                                <input type="text" inputmode="decimal" id="inTileArea" value="20" oninput="runTiles()" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 text-xl focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
-                                <span class="absolute right-4 top-3.5 text-slate-400 text-sm font-semibold">m²</span>
-                            </div>
-                        </div>
-
-                        <div id="tileBoxDim" class="grid grid-cols-2 gap-3" style="display: none;">
-                            <div class="relative">
-                                <input type="text" inputmode="decimal" id="inTileLen" placeholder="Długość" value="5" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 text-slate-800 font-semibold">
-                                <span class="absolute right-3 top-3 text-slate-400 text-xs">m</span>
-                            </div>
-                            <div class="relative">
-                                <input type="text" inputmode="decimal" id="inTileWid" placeholder="Szerokość" value="4" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 text-slate-800 font-semibold">
-                                <span class="absolute right-3 top-3 text-slate-400 text-xs">m</span>
-                            </div>
-                        </div>
+                    <div class="grid grid-cols-3 sm:grid-cols-5 gap-1.5 mb-3 text-xs font-medium">
+                        <button type="button" onclick="setTileSize(60, 60, this)" class="tile-chip active">60×60</button>
+                        <button type="button" onclick="setTileSize(30, 60, this)" class="tile-chip">30×60</button>
+                        <button type="button" onclick="setTileSize(60, 120, this)" class="tile-chip">120×60</button>
+                        <button type="button" onclick="setTileSize(20, 20, this)" class="tile-chip">20×20</button>
+                        <button type="button" onclick="setTileSize(10, 20, this)" class="tile-chip">10×20</button>
                     </div>
 
-                    <!-- KAFELKI FORMATÓW PŁYTEK -->
-                    <div>
-                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">2. Format płytki (cm) - kliknij lub wpisz</label>
-                        
-                        <div class="grid grid-cols-3 sm:grid-cols-5 gap-1.5 mb-3 text-xs font-medium">
-                            <button type="button" onclick="setTileSize(60, 60, this)" class="tile-chip active">60×60</button>
-                            <button type="button" onclick="setTileSize(30, 60, this)" class="tile-chip">30×60</button>
-                            <button type="button" onclick="setTileSize(60, 120, this)" class="tile-chip">120×60</button>
-                            <button type="button" onclick="setTileSize(20, 20, this)" class="tile-chip">20×20</button>
-                            <button type="button" onclick="setTileSize(10, 20, this)" class="tile-chip">10×20</button>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-3">
-                            <div>
-                                <span class="text-xs text-slate-500 block mb-1">Szerokość (cm)</span>
-                                <input type="text" inputmode="decimal" id="inTileW" value="60" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-800">
-                            </div>
-                            <div>
-                                <span class="text-xs text-slate-500 block mb-1">Długość (cm)</span>
-                                <input type="text" inputmode="decimal" id="inTileL" value="60" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-800">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Zapas i Paczka -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Zapas na docinki</label>
-                            <select id="selTileWaste" onchange="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800">
-                                <option value="5">5% - Prosty układ / Duże sale</option>
-                                <option value="10" selected>10% - Standardowy (Zalecany)</option>
-                                <option value="15">15% - Wnęki / Dużo narożników</option>
-                                <option value="20">20% - Jodełka / Układ w karo</option>
-                            </select>
+                            <span class="text-xs text-slate-500 block mb-1">Szerokość (cm)</span>
+                            <input type="text" inputmode="decimal" id="inTileW" value="60" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-800">
                         </div>
                         <div>
-                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">M² w 1 paczce (opcja)</label>
-                            <input type="text" inputmode="decimal" id="inTileBox" placeholder="np. 1.44" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800">
-                        </div>
-                    </div>
-
-                    <!-- Fuga -->
-                    <div>
-                        <div class="flex justify-between items-center mb-1">
-                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Szerokość spoiny (fugi)</label>
-                            <span id="lblTileGrout" class="text-xs font-extrabold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">3 mm</span>
-                        </div>
-                        <input type="range" id="inTileGrout" min="1" max="10" value="3" oninput="document.getElementById('lblTileGrout').innerText=this.value+' mm'; runTiles();" class="w-full accent-amber-600 cursor-pointer">
-                    </div>
-                </div>
-
-                <!-- 2. PANELE -->
-                <div id="panePanels" class="space-y-6" style="display: none;">
-                    <div>
-                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">1. Powierzchnia podłogi (m²)</label>
-                        <div class="relative">
-                            <input type="text" inputmode="decimal" id="inPanArea" value="20" oninput="runPanels()" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 text-xl focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
-                            <span class="absolute right-4 top-3.5 text-slate-400 text-sm font-semibold">m²</span>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Układ paneli (zapas)</label>
-                            <select id="selPanWaste" onchange="runPanels()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800">
-                                <option value="5">5% - Prosty montaż wzdłużny</option>
-                                <option value="10" selected>10% - Standardowy (Zalecany)</option>
-                                <option value="15">15% - Wzór jodełki / Skosy</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">M² w 1 paczce paneli</label>
-                            <input type="text" inputmode="decimal" id="inPanBox" value="2.22" oninput="runPanels()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Długość listew przypodłogowych (mb)</label>
-                        <input type="text" inputmode="decimal" id="inPanSkt" value="18" oninput="runPanels()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800">
-                        <span class="text-[11px] text-slate-400 mt-1 block">Zsumuj długości ścian i odejmij szerokość drzwi (np. 0.9m).</span>
-                    </div>
-                </div>
-
-                <!-- 3. FARBY -->
-                <div id="panePaint" class="space-y-6" style="display: none;">
-                    <div>
-                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">1. Powierzchnia ścian i sufitu (m²)</label>
-                        <div class="relative">
-                            <input type="text" inputmode="decimal" id="inPntArea" value="60" oninput="runPaint()" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 text-xl focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
-                            <span class="absolute right-4 top-3.5 text-slate-400 text-sm font-semibold">m²</span>
-                        </div>
-                        <span class="text-[11px] text-slate-400 mt-1 block">Pokój 4×5m o wys. 2.6m to ok. 46 m² ścian + 20 m² sufit (po odliczeniu okien i drzwi ok. 60 m²).</span>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Liczba warstw</label>
-                            <select id="selPntCoats" onchange="runPaint()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800">
-                                <option value="1">1 warstwa (odświeżenie)</option>
-                                <option value="2" selected>2 warstwy (zalecane)</option>
-                                <option value="3">3 warstwy (ciemne kolory)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Rozmiar puszki</label>
-                            <select id="selPntCan" onchange="runPaint()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800">
-                                <option value="2.5">2.5 Litra</option>
-                                <option value="5" selected>5.0 Litrów</option>
-                                <option value="10">10.0 Litrów</option>
-                            </select>
+                            <span class="text-xs text-slate-500 block mb-1">Długość (cm)</span>
+                            <input type="text" inputmode="decimal" id="inTileL" value="60" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-800">
                         </div>
                     </div>
                 </div>
 
+                <!-- Zapas i Paczka -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Zapas na docinki</label>
+                        <select id="selTileWaste" onchange="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800">
+                            <option value="5">5% - Prosty układ / Duże sale</option>
+                            <option value="10" selected>10% - Standardowy (Zalecany)</option>
+                            <option value="15">15% - Wnęki / Dużo narożników</option>
+                            <option value="20">20% - Jodełka / Układ w karo</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">M² w 1 paczce (opcja)</label>
+                        <input type="text" inputmode="decimal" id="inTileBox" placeholder="np. 1.44" oninput="runTiles()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800">
+                    </div>
+                </div>
+
+                <!-- Fuga -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Szerokość spoiny (fugi)</label>
+                        <span id="lblTileGrout" class="text-xs font-extrabold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">3 mm</span>
+                    </div>
+                    <input type="range" id="inTileGrout" min="1" max="10" value="3" oninput="document.getElementById('lblTileGrout').innerText=this.value+' mm'; runTiles();" class="w-full accent-amber-600 cursor-pointer">
+                </div>
             </div>
 
-            <!-- PRAWA KOLUMNA: WYNIKI -->
+            <!-- PRAWA STRONA: WYNIKI -->
             <div class="md:col-span-5 space-y-4">
                 
                 <div class="print-card bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-5 sm:p-6 rounded-2xl text-white shadow-xl space-y-5 border border-slate-700">
                     <div class="flex justify-between items-center border-b border-slate-700/80 pb-3">
-                        <h3 id="outTitle" class="text-xs font-bold uppercase tracking-wider text-amber-400">Podsumowanie zakupów</h3>
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400">Podsumowanie zakupów</h3>
                         <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300 font-mono">Na żywo</span>
                     </div>
 
                     <div>
-                        <span id="outMainLabel" class="text-xs text-slate-400 block font-medium">Łączna powierzchnia:</span>
+                        <span class="text-xs text-slate-400 block font-medium">Łączna powierzchnia płytek:</span>
                         <div class="flex items-baseline space-x-2 mt-0.5">
                             <span id="outMainVal" class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">22.0</span>
                             <span class="text-xl font-semibold text-slate-400">m²</span>
                         </div>
-                        <span id="outSubInfo" class="text-xs text-amber-300/90 mt-1 block font-medium">W tym zapas na docinki</span>
+                        <span id="outSubInfo" class="text-xs text-amber-300/90 mt-1 block font-medium">W tym zapas na docinki (10%)</span>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4 py-3 border-y border-slate-700/80">
                         <div>
-                            <span id="outRow1Label" class="text-xs text-slate-400 block">Liczba płytek:</span>
+                            <span class="text-xs text-slate-400 block">Liczba płytek:</span>
                             <span id="outRow1Val" class="text-2xl font-bold text-white tracking-tight">62 szt.</span>
                         </div>
                         <div>
-                            <span id="outRow2Label" class="text-xs text-slate-400 block">Paczki materiału:</span>
+                            <span class="text-xs text-slate-400 block">Paczki materiału:</span>
                             <span id="outRow2Val" class="text-2xl font-bold text-white tracking-tight">—</span>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <span id="outChem1Label" class="text-xs text-slate-400 block">Klej do płytek:</span>
+                            <span class="text-xs text-slate-400 block">Klej do płytek:</span>
                             <span id="outChem1Val" class="text-xl font-bold text-amber-400 block mt-0.5">~99 kg</span>
                             <span id="outChem1Sub" class="text-xs text-slate-300 font-medium block mt-0.5">ok. 4 worki 25kg</span>
                         </div>
                         <div>
-                            <span id="outChem2Label" class="text-xs text-slate-400 block">Fuga (spoina):</span>
+                            <span class="text-xs text-slate-400 block">Fuga (spoina):</span>
                             <span id="outChem2Val" class="text-xl font-bold text-amber-400 block mt-0.5">~4.5 kg</span>
                             <span id="outChem2Sub" class="text-xs text-slate-300 font-medium block mt-0.5">ok. 2-3 opakowania</span>
                         </div>
@@ -335,56 +255,65 @@
 
                 </div>
 
-                <!-- POWIĘKSZONY BOKS AFILIACYJNY CENEO Z TWOIM PID=31231 -->
+                <!-- BOKS AFILIACYJNY CENEO Z PID=31231 -->
                 <div id="affiliate-box" class="bg-amber-50/90 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 no-print transition-all">
                     <div class="space-y-1">
                         <div class="flex items-center space-x-1.5 text-amber-700 text-xs font-bold uppercase tracking-wider">
                             <span>🛒</span>
                             <span>Gdzie kupić najtaniej?</span>
                         </div>
-                        <p id="affTitle" class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Kupujesz płytki i chemię?</p>
-                        <p id="affDesc" class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj aktualne promocje na kleje i zaprawy fugowe w marketach.</p>
+                        <p class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Kupujesz płytki i chemię?</p>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj aktualne promocje na kleje i zaprawy fugowe w marketach.</p>
                     </div>
-                    <a id="affBtn" href="https://www.ceneo.pl/;szukaj-klej+do+plytek#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
+                    <a href="https://www.ceneo.pl/;szukaj-klej+do+plytek#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
                         Klej i fugi &rarr;
                     </a>
                 </div>
 
-                <!-- BANNER REKLAMOWY WYNIKOWY (ADSENSE) -->
-                <div id="adsense-bottom" class="w-full h-32 bg-slate-200/50 border border-dashed border-slate-300 rounded-xl flex items-center justify-center text-xs text-slate-400 font-mono no-print">
-                    [MIEJSCE NA BANNER ADSENSE - WYNIK]
+                <!-- BANERY ODSYŁAJĄCE DO POZOSTAŁYCH NARZĘDZI (BUDOWA STRUKTURY PORTALU) -->
+                <div class="grid grid-cols-2 gap-3 no-print">
+                    <a href="/panele.html" class="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-amber-400 transition group shadow-sm block">
+                        <span class="text-lg block mb-1">🪵</span>
+                        <span class="text-xs font-bold text-slate-900 group-hover:text-amber-600 block">Kalkulator Paneli &rarr;</span>
+                        <span class="text-[10px] text-slate-400 block">Paczki, podkład, listwy</span>
+                    </a>
+                    <a href="/farby.html" class="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-amber-400 transition group shadow-sm block">
+                        <span class="text-lg block mb-1">🎨</span>
+                        <span class="text-xs font-bold text-slate-900 group-hover:text-amber-600 block">Kalkulator Farb &rarr;</span>
+                        <span class="text-[10px] text-slate-400 block">Litry, puszki, grunt</span>
+                    </a>
                 </div>
 
             </div>
 
         </div>
 
-        <!-- MERYTORYCZNY PORADNIK DLA GOOGLE (E-E-A-T I AKCEPTACJA ADSENSE) -->
+        <!-- MERYTORYCZNY PORADNIK DLA GOOGLE (E-E-A-T I ADSENSE) -->
         <article id="poradnik" class="mt-16 bg-white p-5 sm:p-10 rounded-2xl border border-slate-200 text-slate-700 shadow-sm leading-relaxed">
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy przewodnik: Jak obliczyć materiały na remont?</h2>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy poradnik: Jak obliczyć ilość płytek, kleju i fugi?</h2>
             
             <p class="text-sm mb-4">
-                Samodzielne planowanie remontu mieszkania lub domu wymaga precyzyjnych szacunków ilościowych. Niedoszacowanie materiału wiąże się z przestojem prac i ryzykiem zakupu kolejnej partii z innej serii produkcyjnej (różnice w odcieniach kafli czy zamkach paneli). Z kolei zbyt duże nadwyżki to niepotrzebnie zamrożony budżet.
+                Planowanie zakupu materiałów glazurniczych wymaga precyzji matematycznej. W kafelkowaniu niedoszacowanie ilości kafli skutkuje koniecznością domawiania towaru, co wiąże się z ryzykiem otrzymania płytek z innej partii produkcyjnej (różnice w odcieniu lub kalibrze). Z kolei nadmiar chemii budowlanej to zamrożony budżet remontowy.
             </p>
 
-            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Jak obliczyć zapas na płytki i kafelkowanie?</h3>
+            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Jak prawidłowo obliczyć zapas na docinki?</h3>
             <p class="text-sm mb-3">
-                W żadnym pomieszczeniu kąty między ścianami nie mają idealnie 90 stopni. Konieczność docinania kafli przy progach, rurach instalacyjnych, odpływach czy wnękach generuje straty materiałowe:
+                W żadnym pomieszczeniu ściany i narożniki nie trzymają idealnego kąta 90 stopni. Konieczność docinania kafli przy progach, rurach instalacyjnych, odpływach liniowych czy wnękach prysznicowych generuje naturalne straty materiałowe:
             </p>
             <div class="overflow-x-auto my-4">
                 <table class="w-full text-xs text-left border border-slate-200 rounded-lg">
                     <thead class="bg-slate-100 text-slate-700 font-bold">
                         <tr>
-                            <th class="p-2.5 border-b">Układ płytek</th>
+                            <th class="p-2.5 border-b">Układ kafelkowania</th>
                             <th class="p-2.5 border-b">Rekomendowany zapas</th>
-                            <th class="p-2.5 border-b">Zastosowanie</th>
+                            <th class="p-2.5 border-b">Zastosowanie i specyfika</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-200 text-slate-600">
                         <tr>
-                            <td class="p-2.5 font-medium">Układ tradycyjny (prosty)</td>
+                            <td class="p-2.5 font-medium">Układ klasyczny (prosty)</td>
                             <td class="p-2.5 font-bold text-amber-700">5 – 10%</td>
-                            <td class="p-2.5">Duże powierzchnie, proste korytarze, posadzki garażowe</td>
+                            <td class="p-2.5">Duże, równe powierzchnie, proste posadzki i korytarze</td>
                         </tr>
                         <tr>
                             <td class="p-2.5 font-medium">Układ z przesunięciem (1/2 lub 1/3)</td>
@@ -394,28 +323,22 @@
                         <tr>
                             <td class="p-2.5 font-medium">Układ w karo lub jodełkę (chevron)</td>
                             <td class="p-2.5 font-bold text-amber-700">15 – 20%</td>
-                            <td class="p-2.5">Wzory skośne, małe łazienki ze skosami poddasza</td>
+                            <td class="p-2.5">Wzory skośne, skosy na poddaszach, małe łazienki</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p class="text-xs text-slate-500 mb-6">
-                <strong>Wskazówka:</strong> Średnie zużycie kleju cementowego przyjmuje się na poziomie <strong>4.5 kg na 1 m²</strong> (paca zębata 8-10 mm). W przypadku gresu wielkoformatowego (np. 120×60 cm) zaleca się podwójne smarowanie, co podnosi zużycie do ok. 5.5 kg/m².
-            </p>
 
-            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">2. Panele podłogowe, podkład i listwy przypodłogowe</h3>
-            <ul class="text-xs sm:text-sm space-y-1.5 list-disc pl-5 mb-4 text-slate-600">
-                <li><strong>Pełne paczki:</strong> Wynik powierzchni z zapasem zawsze zaokrąglamy w górę do pełnej paczki paneli (zazwyczaj 1.8 – 2.4 m² w paczce).</li>
-                <li><strong>Podkład i folia:</strong> Metraż podkładu powinien odpowiadać powierzchni podłogi z 5% naddatkiem na zakładki.</li>
-                <li><strong>Listwy przypodłogowe:</strong> Zmierz obwód pokoju, odejmij drzwi (standardowo 0.9 m na skrzydło), dodaj 7-10% zapasu na cięcia narożników i podziel przez długość listwy (standard to 2.4 m).</li>
-            </ul>
-
-            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">3. Malowanie ścian i sufitów: Ile farby kupić?</h3>
+            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">2. Średnie zużycie kleju cementowego i dobór pacy</h3>
             <p class="text-sm mb-3">
-                Do obliczenia powierzchni ścian stosujemy wzór: <em>obwód pokoju × wysokość</em> minus okna i drzwi. Jeśli malujesz sufit, dodaj powierzchnię podłogi (<em>długość × szerokość</em>).
+                Zużycie zaprawy klejowej zależy od formatu płytki oraz nierówności podłoża. Standardowo przyjmuje się zużycie na poziomie <strong>4.5 kg na 1 m²</strong> przy zastosowaniu uniwersalnej pacy z zębami 8–10 mm. W przypadku gresu wielkoformatowego (np. 120×60 cm) zalecana jest metoda podwójnego smarowania (klej nakładany na podłogę i na spód płytki), co zwiększa zużycie do ok. 5.5–6 kg/m².
             </p>
-            <p class="text-sm text-slate-600 mb-6">
-                Dobrej jakości farby lateksowe kryją <strong>10–14 m² z 1 litra</strong> przy jednej warstwie. Surowe tynki i gładzie bezwzględnie wymagają wcześniejszego zagruntowania preparatem głęboko penetrującym (ok. 1 litr gruntu na 8 m² ściany).
+
+            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">3. Matematyczny wzór na zużycie fugi</h3>
+            <p class="text-sm mb-3">
+                Zapotrzebowanie na zaprawę fugową oblicza się ze wzoru uwzględniającego obwód płytki, jej grubość oraz szerokość spoiny:
+                <br><code class="text-xs bg-slate-100 p-1 rounded font-mono text-slate-800 block my-2">Zużycie fugi (kg/m²) = [(A + B) / (A × B)] × C × D × 1.6</code>
+                Gdzie: A i B to wymiary płytki w mm, C to grubość płytki w mm, D to szerokość spoiny w mm, a 1.6 to średnia gęstość zaprawy cementowej.
             </p>
 
             <!-- FAQ -->
@@ -429,16 +352,9 @@
                 </div>
 
                 <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <h4 class="font-bold text-slate-900 mb-1">Jaki zapas na docinki przyjąć przy panelach podłogowych?</h4>
+                    <h4 class="font-bold text-slate-900 mb-1">Jaki zapas na docinki przyjąć przy płytkach?</h4>
                     <p class="text-slate-600">
-                        Przy tradycyjnym montażu wzdłużnym wystarczy 5–10% zapasu. Jeśli panele kładzione są w jodełkę lub pokój ma liczne załamania, bezpieczny zapas wynosi 15–20%.
-                    </p>
-                </div>
-
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <h4 class="font-bold text-slate-900 mb-1">Czy sufit zawsze należy malować dwukrotnie?</h4>
-                    <p class="text-slate-600">
-                        W nowym budownictwie oraz na świeżych gładziach podwójna warstwa jest konieczna do uzyskania jednolitej, głęboko matowej bieli. Przy okresowym odświeżaniu często wystarcza jedna grubsza warstwa farby antyrefleksyjnej.
+                        Przy tradycyjnym montażu wzdłużnym wystarczy 5–10% zapasu. Jeśli płytki kładzione są w jodełkę lub karo, bezpieczny zapas wynosi 15–20%.
                     </p>
                 </div>
             </div>
@@ -459,7 +375,7 @@
         </div>
     </footer>
 
-    <!-- MODAL POLITYKI PRYWATNOŚCI (Wymóg formalny Google AdSense i RODO) -->
+    <!-- MODAL POLITYKI PRYWATNOŚCI -->
     <div id="privacyModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" style="display: none;">
         <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200">
             <div class="p-4 sm:p-5 border-b border-slate-200 flex justify-between items-center">
@@ -479,7 +395,7 @@
         </div>
     </div>
 
-    <!-- SKRYPT LOGICZNY -->
+    <!-- SKRYPT LOGICZNY PŁYTEK -->
     <script>
         function val(id) {
             const el = document.getElementById(id);
@@ -491,61 +407,10 @@
         let tileMode = 'area';
         let listText = '';
 
-        // 1. OBSŁUGA POLITYKI PRYWATNOŚCI
         window.togglePrivacy = function(show) {
             document.getElementById('privacyModal').style.display = show ? 'flex' : 'none';
         };
 
-        // 2. PRZEŁĄCZANIE ZAKŁADEK GŁÓWNYCH Z PŁYNNYM AUTOSCROLLEM NA GÓRĘ
-        window.switchTab = function(tab) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            document.getElementById('paneTiles').style.display = (tab === 'tiles') ? 'block' : 'none';
-            document.getElementById('panePanels').style.display = (tab === 'panels') ? 'block' : 'none';
-            document.getElementById('panePaint').style.display = (tab === 'paint') ? 'block' : 'none';
-
-            // Zaktualizowane responsywne klasy przycisków głównych
-            const actMain = 'px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs bg-white text-slate-900 shadow-sm flex items-center justify-center space-x-1 transition';
-            const inactMain = 'px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition';
-
-            document.getElementById('mainBtnTiles').className = (tab === 'tiles') ? actMain : inactMain;
-            document.getElementById('mainBtnPanels').className = (tab === 'panels') ? actMain : inactMain;
-            document.getElementById('mainBtnPaint').className = (tab === 'paint') ? actMain : inactMain;
-
-            // Zaktualizowane responsywne klasy przycisków w menu
-            const actNav = 'px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200 transition';
-            const inactNav = 'px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition';
-
-            document.getElementById('navBtnTiles').className = (tab === 'tiles') ? actNav : inactNav;
-            document.getElementById('navBtnPanels').className = (tab === 'panels') ? actNav : inactNav;
-            document.getElementById('navBtnPaint').className = (tab === 'paint') ? actNav : inactNav;
-
-            const affBtn = document.getElementById('affBtn');
-            const affTitle = document.getElementById('affTitle');
-            const affDesc = document.getElementById('affDesc');
-
-            if (tab === 'tiles') {
-                affBtn.href = 'https://www.ceneo.pl/;szukaj-klej+do+plytek#pid=31231';
-                affBtn.innerHTML = 'Klej i fugi &rarr;';
-                affTitle.innerText = 'Kupujesz płytki i chemię?';
-                affDesc.innerText = 'Porównaj aktualne promocje na kleje i zaprawy fugowe w marketach.';
-                runTiles();
-            } else if (tab === 'panels') {
-                affBtn.href = 'https://www.ceneo.pl/;szukaj-podklad+pod+panele#pid=31231';
-                affBtn.innerHTML = 'Podkłady i panele &rarr;';
-                affTitle.innerText = 'Szukasz paneli i listew?';
-                affDesc.innerText = 'Sprawdź promocje na podkłady wygłuszające i panele.';
-                runPanels();
-            } else if (tab === 'paint') {
-                affBtn.href = 'https://www.ceneo.pl/;szukaj-farba+do+scian#pid=31231';
-                affBtn.innerHTML = 'Farby i grunt &rarr;';
-                affTitle.innerText = 'Planujesz malowanie ścian?';
-                affDesc.innerText = 'Zobacz najniższe ceny farb zmywalnych i gruntów.';
-                runPaint();
-            }
-        };
-
-        // 3. PRZEŁĄCZANIE TRYBU PŁYTEK (m² vs Wymiary)
         window.setTileMode = function(m) {
             tileMode = m;
             document.getElementById('tileBoxArea').style.display = (m === 'area') ? 'block' : 'none';
@@ -556,7 +421,6 @@
             runTiles();
         };
 
-        // 4. KAFELKI FORMATÓW PŁYTEK
         window.setTileSize = function(w, l, btn) {
             document.getElementById('inTileW').value = w;
             document.getElementById('inTileL').value = l;
@@ -564,13 +428,10 @@
             document.querySelectorAll('.tile-chip').forEach(b => {
                 b.className = 'tile-chip';
             });
-            if (btn) {
-                btn.className = 'tile-chip active';
-            }
+            if (btn) btn.className = 'tile-chip active';
             runTiles();
         };
 
-        // 5. OBLICZENIA DLA PŁYTEK
         window.runTiles = function() {
             let area = (tileMode === 'area') ? val('inTileArea') : (val('inTileLen') * val('inTileWid'));
             if (area <= 0) area = 20;
@@ -586,91 +447,18 @@
             const glue = Math.ceil(totalArea * 4.5);
             const bags = Math.ceil(glue / 25);
 
-            document.getElementById('outTitle').innerText = "Podsumowanie: Płytki i chemia";
-            document.getElementById('outMainLabel').innerText = "Łączna powierzchnia płytek:";
             document.getElementById('outMainVal').innerText = totalArea.toFixed(1);
-            document.getElementById('outSubInfo').innerText = `W tym ${(totalArea - area).toFixed(1)} m² zapasu na docinki (${waste}%)`;
-
-            document.getElementById('outRow1Label').innerText = "Liczba płytek:";
+            document.getElementById('outSubInfo').innerText = `W tym ${(totalArea - area).toFixed(1)} m² zapasu (${waste}%)`;
             document.getElementById('outRow1Val').innerText = tiles + " szt.";
-            document.getElementById('outRow2Label').innerText = "Paczki materiału:";
             document.getElementById('outRow2Val').innerText = box > 0 ? Math.ceil(totalArea / box) + " paczek" : "—";
-
-            document.getElementById('outChem1Label').innerText = "Klej do płytek:";
             document.getElementById('outChem1Val').innerText = "~" + glue + " kg";
             document.getElementById('outChem1Sub').innerText = "ok. " + bags + " worków 25kg";
-
-            document.getElementById('outChem2Label').innerText = "Fuga (spoina):";
             document.getElementById('outChem2Val').innerText = "~4.5 kg";
             document.getElementById('outChem2Sub').innerText = "ok. 2-3 opakowania";
 
             listText = `Płytki (${w_cm}×${l_cm} cm): ${totalArea.toFixed(1)} m² (${tiles} szt.) | Klej: ${glue} kg (${bags} worków 25kg) | Fuga: ok. 4.5 kg`;
         };
 
-        // 6. OBLICZENIA DLA PANELI
-        window.runPanels = function() {
-            const area = val('inPanArea') || 20;
-            const waste = val('selPanWaste');
-            const box = val('inPanBox') || 2.22;
-            const skt = val('inPanSkt') || 18;
-
-            const totalArea = area * (1 + waste / 100);
-            const boxes = Math.ceil(totalArea / box);
-            const sktPcs = Math.ceil((skt * 1.07) / 2.4);
-
-            document.getElementById('outTitle').innerText = "Podsumowanie: Panele podłogowe";
-            document.getElementById('outMainLabel').innerText = "Łączna powierzchnia paneli:";
-            document.getElementById('outMainVal').innerText = totalArea.toFixed(1);
-            document.getElementById('outSubInfo').innerText = `W tym ${(totalArea - area).toFixed(1)} m² zapasu (${waste}%)`;
-
-            document.getElementById('outRow1Label').innerText = "Paczki paneli:";
-            document.getElementById('outRow1Val').innerText = boxes + " paczek";
-            document.getElementById('outRow2Label').innerText = "Metraż w paczce:";
-            document.getElementById('outRow2Val').innerText = box + " m²";
-
-            document.getElementById('outChem1Label').innerText = "Podkład i folia:";
-            document.getElementById('outChem1Val').innerText = Math.ceil(area * 1.05) + " m²";
-            document.getElementById('outChem1Sub').innerText = "zapas na zakładki";
-
-            document.getElementById('outChem2Label').innerText = "Listwy przypodłogowe:";
-            document.getElementById('outChem2Val').innerText = sktPcs + " szt.";
-            document.getElementById('outChem2Sub').innerText = "długość 2.4m";
-
-            listText = `Panele: ${totalArea.toFixed(1)} m² (${boxes} paczek po ${box} m²) | Podkład: ${Math.ceil(area * 1.05)} m² | Listwy: ${sktPcs} szt.`;
-        };
-
-        // 7. OBLICZENIA DLA FARBY
-        window.runPaint = function() {
-            const area = val('inPntArea') || 60;
-            const coats = val('selPntCoats') || 2;
-            const can = val('selPntCan') || 5;
-
-            const totalPaintArea = area * coats;
-            const liters = totalPaintArea / 12;
-            const cans = Math.ceil(liters / can);
-
-            document.getElementById('outTitle').innerText = "Podsumowanie: Farby i grunt";
-            document.getElementById('outMainLabel').innerText = "Powierzchnia malowania:";
-            document.getElementById('outMainVal').innerText = area;
-            document.getElementById('outSubInfo').innerText = `${coats} warstwy = ${totalPaintArea} m² łącznie`;
-
-            document.getElementById('outRow1Label').innerText = "Ilość farby:";
-            document.getElementById('outRow1Val').innerText = liters.toFixed(1) + " L";
-            document.getElementById('outRow2Label').innerText = "Puszki do zakupu:";
-            document.getElementById('outRow2Val').innerText = cans + " puszek";
-
-            document.getElementById('outChem1Label').innerText = "Rozmiar puszki:";
-            document.getElementById('outChem1Val').innerText = can + " Litrów";
-            document.getElementById('outChem1Sub').innerText = "wydajność 12 m²/L";
-
-            document.getElementById('outChem2Label').innerText = "Grunt malarski:";
-            document.getElementById('outChem2Val').innerText = Math.ceil(area / 8) + " Litrów";
-            document.getElementById('outChem2Sub').innerText = "1 warstwa pod farbę";
-
-            listText = `Farba: ${liters.toFixed(1)} L (${cans} puszek po ${can}L) | Grunt: ${Math.ceil(area / 8)} L`;
-        };
-
-        // 8. KOPIOWANIE DO SCHOWKA
         window.copyList = function() {
             navigator.clipboard.writeText("Lista zakupów z KalkulatorWykonczenia.pl:\n" + listText).then(() => {
                 const t = document.getElementById('toast');
