@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Płytek, Kleju i Fug | Policz materiały na kafelkowanie</title>
-    <meta name="description" content="Precyzyjny kalkulator glazurniczy. Oblicz liczbę płytek, paczek, zużycie kleju w workach 25kg oraz fugi z uwzględnieniem zapasu na docinki.">
+    <title>Kalkulator Płytek, Kleju i Fug | Baza Wiedzy Wykończeniowej</title>
+    <meta name="description" content="Precyzyjny kalkulator glazurniczy oraz baza wiedzy budowlanej. Oblicz liczbę płytek, zużycie kleju C2TE i fugi z uwzględnieniem zapasu na docinki.">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -16,7 +16,7 @@
         .tile-chip:hover { background: #f1f5f9; border-color: #94a3b8; }
         .tile-chip.active { background: #fef3c7; border-color: #f59e0b; color: #92400e; font-weight: 700; }
         @media print {
-            header, footer, .no-print, #affiliate-box, #privacyModal { display: none !important; }
+            header, footer, .no-print, #adsense-top, #adsense-bottom, #affiliate-box, #privacyModal { display: none !important; }
             body { background: white; color: black; }
             .print-card { border: 1px solid #ccc !important; box-shadow: none !important; color: black !important; background: white !important; }
             .print-card span, .print-card div, .print-card h3 { color: black !important; }
@@ -30,7 +30,7 @@
       "@graph": [
         {
           "@type": "WebApplication",
-          "name": "Kalkulator Płytek i Fug",
+          "name": "Kalkulator Płytek i Materiałów Glazurniczych",
           "url": "https://kalkulatorwykonczenia.pl",
           "applicationCategory": "UtilityApplication",
           "operatingSystem": "All",
@@ -46,14 +46,6 @@
                 "@type": "Answer",
                 "text": "Średnie zużycie zaprawy klejowej wynosi ok. 4.5 kg na metr kwadratowy przy pacy 8-10 mm. Dla małych płytek zużycie wynosi ok. 3.5 kg, a przy gresie wielkoformatowym może sięgać 5.5-6 kg/m2."
               }
-            },
-            {
-              "@type": "Question",
-              "name": "Jaki zapas na docinki przyjąć przy płytkach?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Przy montażu tradycyjnym wzdłużnym zaleca się 5-10% zapasu. W przypadku montażu w jodełkę lub karo bezpieczny zapas wynosi 15-20%."
-              }
             }
           ]
         }
@@ -62,8 +54,7 @@
     </script>
 
     <!-- KOD WERYFIKACYJNY GOOGLE ADSENSE -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3391616326744840"
-         crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3391616326744840" crossorigin="anonymous"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
 
@@ -81,14 +72,16 @@
             </a>
             
             <nav class="flex items-center space-x-1 text-[11px] sm:text-xs font-semibold shrink-0">
-                <a href="/" class="px-2.5 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200">Płytki</a>
-                <a href="/panele.html" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Panele</a>
-                <a href="/farby.html" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Farby</a>
-                <a href="#poradnik" class="px-2 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hidden sm:inline-block transition">Poradnik</a>
+                <a href="/" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200">Płytki</a>
+                <a href="/panele.html" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Panele</a>
+                <a href="/farby.html" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Farby</a>
+                <a href="/o-nas.html" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">O nas</a>
+                <a href="#poradnik" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hidden sm:inline-block transition">Poradnik</a>
             </nav>
         </div>
     </header>
 
+    <!-- Główny Kontener -->
     <main class="max-w-4xl mx-auto px-4 py-6 sm:py-8 flex-grow">
         
         <div class="text-center mb-6">
@@ -102,16 +95,13 @@
         <div class="w-full max-w-md mx-auto mb-8 no-print">
             <div class="bg-slate-200/80 p-1 sm:p-1.5 rounded-2xl border border-slate-300 shadow-inner grid grid-cols-3 gap-1">
                 <a href="/" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs bg-white text-slate-900 shadow-sm flex items-center justify-center space-x-1">
-                    <span>🔲</span>
-                    <span>Płytki</span>
+                    <span>🔲</span><span>Płytki</span>
                 </a>
                 <a href="/panele.html" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
-                    <span>🪵</span>
-                    <span>Panele</span>
+                    <span>🪵</span><span>Panele</span>
                 </a>
                 <a href="/farby.html" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
-                    <span>🎨</span>
-                    <span>Farby</span>
+                    <span>🎨</span><span>Farby</span>
                 </a>
             </div>
         </div>
@@ -270,7 +260,7 @@
                     </a>
                 </div>
 
-                <!-- BANERY ODSYŁAJĄCE DO POZOSTAŁYCH NARZĘDZI (BUDOWA STRUKTURY PORTALU) -->
+                <!-- BANERY ODSYŁAJĄCE DO POZOSTAŁYCH NARZĘDZI -->
                 <div class="grid grid-cols-2 gap-3 no-print">
                     <a href="/panele.html" class="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-amber-400 transition group shadow-sm block">
                         <span class="text-lg block mb-1">🪵</span>
@@ -287,6 +277,43 @@
             </div>
 
         </div>
+
+        <!-- BAZA WIEDZY - NOWA SEKCJA Z ARTYKUŁAMI EKSPERCKIMI -->
+        <section class="mt-16 no-print">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-600 block">Baza Wiedzy</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Poradniki i standardy wykonawcze</h2>
+                </div>
+                <a href="/o-nas.html" class="text-xs font-bold text-amber-700 hover:text-amber-800 transition hidden sm:inline-block">O redakcji &rarr;</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a href="/klej-na-ogrzewanie-podlogowe.html" class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-amber-400 hover:shadow-md transition group block">
+                    <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md inline-block mb-2">Glazurnictwo</span>
+                    <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-600 transition leading-snug">Jaki klej do płytek na ogrzewanie podłogowe? C1, C2 czy S1?</h3>
+                    <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Poznaj normę PN-EN 12004 i uniknij pękania gresu na ogrzewanym jastrychu.</p>
+                </a>
+
+                <a href="/panele-winylowe-czy-laminowane.html" class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-amber-400 hover:shadow-md transition group block">
+                    <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md inline-block mb-2">Podłogi</span>
+                    <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-600 transition leading-snug">Panele winylowe SPC czy laminowane? Wady, zalety i koszty</h3>
+                    <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Sprawdź opór cieplny na podłogówce, wodoodporność i dobór twardego podkładu.</p>
+                </a>
+
+                <a href="/gruntowanie-scian-przed-malowaniem.html" class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-amber-400 hover:shadow-md transition group block">
+                    <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md inline-block mb-2">Malarstwo</span>
+                    <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-600 transition leading-snug">Gruntowanie ścian przed malowaniem: Grunt czy farba podkładowa?</h3>
+                    <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Dlaczego farba odchodzi z taśmą? Poznaj zjawisko przeszklenia gładzi gipsowej.</p>
+                </a>
+
+                <a href="/dylatacja-paneli-i-plytek.html" class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-amber-400 hover:shadow-md transition group block">
+                    <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md inline-block mb-2">Montaż</span>
+                    <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-600 transition leading-snug">Dylatacja paneli i płytek: Dlaczego podłoga wstaje na środku?</h3>
+                    <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Ile milimetrów szczeliny zostawić przy ścianach i kiedy dylatacja w progu jest konieczna.</p>
+                </a>
+            </div>
+        </section>
 
         <!-- MERYTORYCZNY PORADNIK DLA GOOGLE (E-E-A-T I ADSENSE) -->
         <article id="poradnik" class="mt-16 bg-white p-5 sm:p-10 rounded-2xl border border-slate-200 text-slate-700 shadow-sm leading-relaxed">
@@ -331,31 +358,14 @@
 
             <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">2. Średnie zużycie kleju cementowego i dobór pacy</h3>
             <p class="text-sm mb-3">
-                Zużycie zaprawy klejowej zależy od formatu płytki oraz nierówności podłoża. Standardowo przyjmuje się zużycie na poziomie <strong>4.5 kg na 1 m²</strong> przy zastosowaniu uniwersalnej pacy z zębami 8–10 mm. W przypadku gresu wielkoformatowego (np. 120×60 cm) zalecana jest metoda podwójnego smarowania (klej nakładany na podłogę i na spód płytki), co zwiększa zużycie do ok. 5.5–6 kg/m².
+                Zużycie zaprawy klejowej zależy od formatu płytki oraz nierówności podłoża. Standardowo przyjmuje się zużycie na poziomie <strong>4.5 kg na 1 m²</strong> przy zastosowaniu uniwersalnej pacy z zębami 8–10 mm. W przypadku gresu wielkoformatowego (np. 120×60 cm) zalecana jest metoda podwójnego smarowania, co zwiększa zużycie do ok. 5.5–6 kg/m².
             </p>
 
-            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">3. Matematyczny wzór na zużycie fugi</h3>
-            <p class="text-sm mb-3">
-                Zapotrzebowanie na zaprawę fugową oblicza się ze wzoru uwzględniającego obwód płytki, jej grubość oraz szerokość spoiny:
-                <br><code class="text-xs bg-slate-100 p-1 rounded font-mono text-slate-800 block my-2">Zużycie fugi (kg/m²) = [(A + B) / (A × B)] × C × D × 1.6</code>
-                Gdzie: A i B to wymiary płytki w mm, C to grubość płytki w mm, D to szerokość spoiny w mm, a 1.6 to średnia gęstość zaprawy cementowej.
-            </p>
-
-            <!-- FAQ -->
             <h3 id="faq" class="text-lg font-bold text-slate-900 mt-10 mb-4 pt-6 border-t border-slate-200">Najczęściej zadawane pytania (FAQ)</h3>
             <div class="space-y-4 text-xs sm:text-sm">
                 <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
                     <h4 class="font-bold text-slate-900 mb-1">Ile kleju do płytek potrzeba na 1 m²?</h4>
-                    <p class="text-slate-600">
-                        Średnie zużycie wynosi 4.5 kg na metr kwadratowy przy pacy 8–10 mm. Dla małych płytek wystarcza ok. 3.5 kg, a dla płytek wielkoformatowych zużycie może wynosić 5.5–6 kg/m².
-                    </p>
-                </div>
-
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <h4 class="font-bold text-slate-900 mb-1">Jaki zapas na docinki przyjąć przy płytkach?</h4>
-                    <p class="text-slate-600">
-                        Przy tradycyjnym montażu wzdłużnym wystarczy 5–10% zapasu. Jeśli płytki kładzione są w jodełkę lub karo, bezpieczny zapas wynosi 15–20%.
-                    </p>
+                    <p class="text-slate-600">Średnie zużycie wynosi 4.5 kg na metr kwadratowy przy pacy 8–10 mm. Dla formatów 120×60 cm zużycie może wynosić 5.5–6 kg/m².</p>
                 </div>
             </div>
 
@@ -370,7 +380,9 @@
             <div class="flex justify-center items-center space-x-3 text-[11px] text-slate-500 pt-1">
                 <button type="button" onclick="togglePrivacy(true)" class="hover:text-amber-600 underline transition cursor-pointer">Polityka Prywatności i Cookies</button>
                 <span>•</span>
-                <a href="mailto:kontakt@kalkulatorwykonczenia.pl" class="hover:text-amber-600 underline transition">Kontakt: kontakt@kalkulatorwykonczenia.pl</a>
+                <a href="/o-nas.html" class="hover:text-amber-600 underline transition">O projekcie</a>
+                <span>•</span>
+                <a href="mailto:kontakt@kalkulatorwykonczenia.pl" class="hover:text-amber-600 underline transition">Kontakt</a>
             </div>
         </div>
     </footer>
@@ -384,10 +396,10 @@
             </div>
             <div class="p-5 sm:p-6 overflow-y-auto space-y-3 text-xs text-slate-600 leading-relaxed">
                 <p><strong>1. Informacje ogólne:</strong> Serwis KalkulatorWykonczenia.pl szanuje prywatność swoich użytkowników. Niniejszy dokument określa zasady przetwarzania danych oraz wykorzystywania plików cookies.</p>
-                <p><strong>2. Pliki Cookies (Ciasteczka):</strong> Serwis wykorzystuje pliki cookies w celach statystycznych, analitycznych oraz do prawidłowego działania narzędzi kalkulatora. Użytkownik może w każdej chwili zmienić ustawienia dotyczące cookies w swojej przeglądarce internetowej.</p>
-                <p><strong>3. Reklamy Google AdSense:</strong> W serwisie mogą być wyświetlane reklamy dostarczane przez firmę Google oraz jej partnerów. Dostawcy zewnętrzni, w tym Google, używają plików cookie do wyświetlania reklam na podstawie poprzednich odwiedzin użytkownika w tej lub innych witrynach. Użytkownicy mogą zrezygnować ze spersonalizowanych reklam w <a href="https://adssettings.google.com" target="_blank" rel="nofollow noopener" class="text-amber-600 underline">Ustawieniach reklam Google</a>.</p>
-                <p><strong>4. Linki partnerskie:</strong> Serwis zawiera linki partnerskie (m.in. do serwisu Ceneo.pl). Kliknięcie w link i ewentualny zakup może skutkować naliczeniem prowizji partnerskiej dla serwisu, bez żadnych dodatkowych kosztów dla użytkownika.</p>
-                <p><strong>5. Kontakt:</strong> W sprawach dotyczących serwisu oraz ochrony prywatności prosimy o kontakt pod adresem: <em>kontakt@kalkulatorwykonczenia.pl</em>.</p>
+                <p><strong>2. Pliki Cookies (Ciasteczka):</strong> Serwis wykorzystuje pliki cookies w celach statystycznych, analitycznych oraz do prawidłowego działania narzędzi kalkulatora.</p>
+                <p><strong>3. Reklamy Google AdSense:</strong> W serwisie mogą być wyświetlane reklamy dostarczane przez firmę Google oraz jej partnerów. Użytkownicy mogą zrezygnować ze spersonalizowanych reklam w <a href="https://adssettings.google.com" target="_blank" rel="nofollow noopener" class="text-amber-600 underline">Ustawieniach reklam Google</a>.</p>
+                <p><strong>4. Linki partnerskie:</strong> Serwis zawiera linki partnerskie (m.in. Ceneo.pl). Kliknięcie może skutkować naliczeniem prowizji partnerskiej bez dodatkowych kosztów dla użytkownika.</p>
+                <p><strong>5. Kontakt:</strong> <em>kontakt@kalkulatorwykonczenia.pl</em>.</p>
             </div>
             <div class="p-4 border-t border-slate-100 flex justify-end">
                 <button type="button" onclick="togglePrivacy(false)" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition cursor-pointer">Rozumiem i zamykam</button>
@@ -395,7 +407,7 @@
         </div>
     </div>
 
-    <!-- SKRYPT LOGICZNY PŁYTEK -->
+    <!-- SKRYPT LOGICZNY -->
     <script>
         function val(id) {
             const el = document.getElementById(id);
