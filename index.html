@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Płytek, Kleju i Fug | Baza Wiedzy Wykończeniowej</title>
     <meta name="description" content="Precyzyjny kalkulator glazurniczy oraz baza wiedzy budowlanej. Oblicz liczbę płytek, zużycie kleju C2TE i fugi z uwzględnieniem zapasu na docinki.">
+    
+    <!-- TAG KANONICZNY (Ochrona przed duplikatami w Google Search Console) -->
+    <link rel="canonical" href="https://kalkulatorwykonczenia.pl/">
+
+    <!-- PROTOKÓŁ OPEN GRAPH (Podgląd przy udostępnianiu na FB, Messengerze, WhatsAppie) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kalkulatorwykonczenia.pl/">
+    <meta property="og:title" content="Kalkulator Płytek, Kleju i Fug | KalkulatorWykonczenia.pl">
+    <meta property="og:description" content="Oblicz precyzyjnie liczbę płytek, paczek, zużycie kleju C2TE i fugi z zapasem na docinki. Zaoszczędź czas i pieniądze na remoncie.">
+    <meta property="og:locale" content="pl_PL">
+
+    <!-- KARTY TWITTER / X -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Kalkulator Płytek, Kleju i Fug | KalkulatorWykonczenia.pl">
+    <meta name="twitter:description" content="Oblicz precyzyjnie zużycie materiałów glazurniczych z uwzględnieniem zapasu na docinki.">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +60,7 @@
               "name": "Ile kleju do płytek potrzeba na 1 m2?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Średnie zużycie zaprawy klejowej wynosi ok. 4.5 kg na metr kwadratowy przy pacy 8-10 mm. Dla małych płytek zużycie wynosi ok. 3.5 kg, a przy gresie wielkoformatowym może sięgać 5.5-6 kg/m2."
+                "text": "Średnie zużycie zaprawy klejowej wynosi ok. 4.5 kg na metr kwadratowy przy pacy 8-10 mm. Dla formatów wielkich może wynosić 5.5-6 kg/m2."
               }
             }
           ]
@@ -278,7 +294,7 @@
 
         </div>
 
-        <!-- BAZA WIEDZY - NOWA SEKCJA Z ARTYKUŁAMI EKSPERCKIMI -->
+        <!-- BAZA WIEDZY - ARTYKUŁY EKSPERCKIE -->
         <section class="mt-16 no-print">
             <div class="flex items-center justify-between mb-6">
                 <div>
@@ -302,7 +318,7 @@
                 </a>
 
                 <a href="/gruntowanie-scian-przed-malowaniem.html" class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-amber-400 hover:shadow-md transition group block">
-                    <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md inline-block mb-2">Malarstwo</span>
+                    <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md inline-block mb-2">Malowanie</span>
                     <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-600 transition leading-snug">Gruntowanie ścian przed malowaniem: Grunt czy farba podkładowa?</h3>
                     <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Dlaczego farba odchodzi z taśmą? Poznaj zjawisko przeszklenia gładzi gipsowej.</p>
                 </a>
@@ -434,53 +450,3 @@
         };
 
         window.setTileSize = function(w, l, btn) {
-            document.getElementById('inTileW').value = w;
-            document.getElementById('inTileL').value = l;
-
-            document.querySelectorAll('.tile-chip').forEach(b => {
-                b.className = 'tile-chip';
-            });
-            if (btn) btn.className = 'tile-chip active';
-            runTiles();
-        };
-
-        window.runTiles = function() {
-            let area = (tileMode === 'area') ? val('inTileArea') : (val('inTileLen') * val('inTileWid'));
-            if (area <= 0) area = 20;
-
-            const w_cm = val('inTileW') || 60;
-            const l_cm = val('inTileL') || 60;
-            const waste = val('selTileWaste');
-            const box = val('inTileBox');
-
-            const totalArea = area * (1 + waste / 100);
-            const tileArea = (w_cm / 100) * (l_cm / 100);
-            const tiles = Math.ceil(totalArea / tileArea);
-            const glue = Math.ceil(totalArea * 4.5);
-            const bags = Math.ceil(glue / 25);
-
-            document.getElementById('outMainVal').innerText = totalArea.toFixed(1);
-            document.getElementById('outSubInfo').innerText = `W tym ${(totalArea - area).toFixed(1)} m² zapasu (${waste}%)`;
-            document.getElementById('outRow1Val').innerText = tiles + " szt.";
-            document.getElementById('outRow2Val').innerText = box > 0 ? Math.ceil(totalArea / box) + " paczek" : "—";
-            document.getElementById('outChem1Val').innerText = "~" + glue + " kg";
-            document.getElementById('outChem1Sub').innerText = "ok. " + bags + " worków 25kg";
-            document.getElementById('outChem2Val').innerText = "~4.5 kg";
-            document.getElementById('outChem2Sub').innerText = "ok. 2-3 opakowania";
-
-            listText = `Płytki (${w_cm}×${l_cm} cm): ${totalArea.toFixed(1)} m² (${tiles} szt.) | Klej: ${glue} kg (${bags} worków 25kg) | Fuga: ok. 4.5 kg`;
-        };
-
-        window.copyList = function() {
-            navigator.clipboard.writeText("Lista zakupów z KalkulatorWykonczenia.pl:\n" + listText).then(() => {
-                const t = document.getElementById('toast');
-                t.classList.remove('translate-y-20', 'opacity-0');
-                setTimeout(() => t.classList.add('translate-y-20', 'opacity-0'), 2500);
-            });
-        };
-
-        // Start
-        runTiles();
-    </script>
-</body>
-</html>
