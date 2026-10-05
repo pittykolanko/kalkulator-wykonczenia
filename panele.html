@@ -5,20 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Paneli Podłogowych i Podkładu | Policz paczki i listwy</title>
     <meta name="description" content="Oblicz ile paczek paneli podłogowych, m² podkładu i metrów bieżących listew przypodłogowych potrzebujesz do swojego pokoju. Uwzględnij zapas na docinki.">
+    
+    <!-- TAG KANONICZNY -->
+    <link rel="canonical" href="https://kalkulatorwykonczenia.pl/panele.html">
+
+    <!-- PROTOKÓŁ OPEN GRAPH -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kalkulatorwykonczenia.pl/panele.html">
+    <meta property="og:title" content="Kalkulator Paneli Podłogowych i Podkładu | KalkulatorWykonczenia.pl">
+    <meta property="og:description" content="Oblicz ile paczek paneli podłogowych, m² podkładu i metrów listew potrzebujesz. Uwzględnij zapas na docinki.">
+    <meta property="og:locale" content="pl_PL">
+
+    <!-- KARTY TWITTER / X -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Kalkulator Paneli Podłogowych | KalkulatorWykonczenia.pl">
+    <meta name="twitter:description" content="Precyzyjnie policz paczki paneli, podkład i listwy z zapasem na odpady.">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
         .inp { width: 100%; padding: 10px 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; font-weight: 600; color: #0f172a; outline: none; }
         .inp:focus { border-color: #f59e0b; background: #fff; }
+        @media print {
+            header, footer, .no-print, #affiliate-box, #privacyModal { display: none !important; }
+            body { background: white; color: black; }
+            .print-card { border: 1px solid #ccc !important; box-shadow: none !important; color: black !important; background: white !important; }
+            .print-card span, .print-card div, .print-card h3 { color: black !important; }
+        }
     </style>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Kalkulator Paneli Podłogowych",
+          "url": "https://kalkulatorwykonczenia.pl/panele.html",
+          "applicationCategory": "UtilityApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "PLN" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Jaki zapas na docinki przyjąć przy panelach podłogowych?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Przy montażu wzdłużnym zaleca się 5-10% zapasu. W przypadku montażu w jodełkę bezpieczny zapas wynosi 15-20%."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <!-- KOD WERYFIKACYJNY GOOGLE ADSENSE -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3391616326744840" crossorigin="anonymous"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
 
+    <!-- Toast powiadomień -->
     <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-semibold transform translate-y-20 opacity-0 transition-all z-50 pointer-events-none">
         ✅ Skopiowano listę zakupów do schowka!
     </div>
@@ -31,10 +86,11 @@
                 <span class="font-extrabold text-sm sm:text-lg tracking-tight text-slate-800">Kalkulator<span class="hidden sm:inline">Wykonczenia</span><span class="text-amber-600">.pl</span></span>
             </a>
             <nav class="flex items-center space-x-1 text-[11px] sm:text-xs font-semibold shrink-0">
-                <a href="/" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Płytki</a>
-                <a href="/panele.html" class="px-2.5 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200">Panele</a>
-                <a href="/farby.html" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Farby</a>
-                <a href="#poradnik" class="px-2 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hidden sm:inline-block transition">Poradnik</a>
+                <a href="/" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Płytki</a>
+                <a href="/panele.html" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200">Panele</a>
+                <a href="/farby.html" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Farby</a>
+                <a href="/o-nas.html" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">O nas</a>
+                <a href="#poradnik" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hidden sm:inline-block transition">Poradnik</a>
             </nav>
         </div>
     </header>
@@ -48,7 +104,7 @@
         </div>
 
         <!-- Przełącznik podstron -->
-        <div class="w-full max-w-md mx-auto mb-8">
+        <div class="w-full max-w-md mx-auto mb-8 no-print">
             <div class="bg-slate-200/80 p-1 sm:p-1.5 rounded-2xl border border-slate-300 shadow-inner grid grid-cols-3 gap-1">
                 <a href="/" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1 transition">
                     <span>🔲</span><span>Płytki</span>
@@ -98,7 +154,7 @@
 
             <!-- Podsumowanie -->
             <div class="md:col-span-5 space-y-4">
-                <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-5 sm:p-6 rounded-2xl text-white shadow-xl space-y-5 border border-slate-700">
+                <div class="print-card bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-5 sm:p-6 rounded-2xl text-white shadow-xl space-y-5 border border-slate-700">
                     <div class="flex justify-between items-center border-b border-slate-700/80 pb-3">
                         <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400">Podsumowanie zakupów</h3>
                         <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300 font-mono">Na żywo</span>
@@ -137,13 +193,18 @@
                         </div>
                     </div>
 
-                    <button type="button" onclick="copyList()" class="w-full py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
-                        <span>📋</span><span>Kopiuj listę na zakupy</span>
-                    </button>
+                    <div class="pt-2 flex gap-2 no-print">
+                        <button type="button" onclick="copyList()" class="flex-1 py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
+                            <span>📋</span><span>Kopiuj listę na zakupy</span>
+                        </button>
+                        <button type="button" onclick="window.print()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 active:scale-[0.98] text-slate-300 font-semibold text-xs rounded-xl border border-slate-600 transition" title="Drukuj lub zapisz PDF">
+                            🖨️
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Boks Ceneo PID=31231 -->
-                <div class="bg-amber-50/90 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                <div id="affiliate-box" class="bg-amber-50/90 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 no-print">
                     <div class="space-y-1">
                         <div class="flex items-center space-x-1.5 text-amber-700 text-xs font-bold uppercase tracking-wider">
                             <span>🛒</span><span>Gdzie kupić najtaniej?</span>
@@ -157,7 +218,7 @@
                 </div>
 
                 <!-- Linki do pozostałych -->
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid grid-cols-2 gap-3 no-print">
                     <a href="/" class="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-amber-400 transition group shadow-sm block">
                         <span class="text-lg block mb-1">🔲</span>
                         <span class="text-xs font-bold text-slate-900 group-hover:text-amber-600 block">Kalkulator Płytek &rarr;</span>
@@ -178,14 +239,14 @@
             <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy poradnik: Jak obliczyć ilość paneli, podkładu i listew?</h2>
             
             <p class="text-sm mb-4">
-                Montaż paneli podłogowych laminowanych lub winylowych (LVT) w systemie pływającym wymaga dokładnego zaplanowania materiałów. Płytki podłogowe i panele zawsze kupujemy w pełnych paczkach, a docinki na końcach rzędów generują nieunikniony odpad.
+                Montaż paneli podłogowych laminowanych lub winylowych (LVT/SPC) w systemie pływającym wymaga dokładnego zaplanowania materiałów. Płytki podłogowe i panele zawsze kupujemy w pełnych paczkach, a docinki na końcach rzędów generują nieunikniony odpad.
             </p>
 
             <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Ile procent zapasu na panele należy przyjąć?</h3>
             <ul class="text-xs sm:text-sm space-y-1.5 list-disc pl-5 mb-4 text-slate-600">
-                <li><strong>5% zapasu:</strong> tradycyjny układ wzdłużny (równolegle do kierunku padania światła) w prostych pokojach o regularnym kształcie.</li>
-                <li><strong>10% zapasu (rekomendowany standard):</strong> układ z przesunięciem o 1/2 lub 1/3 długości deski, pokoje z wnękami drzwiowymi i grzejnikowymi.</li>
-                <li><strong>15–20% zapasu:</strong> układ w jodełkę klasyczną (herringbone), jodełkę francuską lub układ skośny pod kątem 45 stopni.</li>
+                <li><strong>5% zapasu:</strong> tradycyjny układ wzdłużny w prostych pokojach o regularnym kształcie.</li>
+                <li><strong>10% zapasu (rekomendowany standard):</strong> układ z przesunięciem o 1/2 lub 1/3 długości deski, pokoje z wnękami drzwiowymi.</li>
+                <li><strong>15–20% zapasu:</strong> układ w jodełkę klasyczną (herringbone) lub układ skośny pod kątem 45 stopni.</li>
             </ul>
 
             <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">2. Jaki podkład pod panele wybrać i jak go liczyć?</h3>
@@ -194,21 +255,29 @@
             </p>
             <ul class="text-xs sm:text-sm space-y-1.5 list-disc pl-5 mb-4 text-slate-600">
                 <li><strong>Poliuretanowo-mineralne (PUM):</strong> idealne na ogrzewanie podłogowe ze względu na niski opór cieplny.</li>
-                <li><strong>Ekstrudowany polistyren (XPS):</strong> doskonały do niwelowania nierówności podłoża (do 4 mm) i izolacji termicznej od piwnicy.</li>
-                <li><strong>Zapas na podkład:</strong> zawsze doliczamy <strong>5% zapasu</strong> na łączenia i docięcia przy ścianach. Pod podkłady mineralne wymagana jest również folia paroizolacyjna (z 15–20 cm zakładkami).</li>
+                <li><strong>Ekstrudowany polistyren (XPS):</strong> doskonały do niwelowania nierówności podłoża i izolacji termicznej od piwnicy.</li>
+                <li><strong>Zapas na podkład:</strong> zawsze doliczamy <strong>5% zapasu</strong> na łączenia i docięcia przy ścianach.</li>
             </ul>
 
-            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">3. Wzór na obliczenie listew przypodłogowych</h3>
+            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">3. Wzór na obliczenie listew przypodłogowych</h3>
             <p class="text-sm mb-3">
-                Zsumuj obwód pomieszczenia (2 × długość + 2 × szerokość), odejmij szerokość otworów drzwiowych (ok. 0.9 m na skrzydło), dodaj 7% zapasu na docinki w narożnikach pod kątem 45° i podziel wynik przez długość pojedynczej listwy (standard rynkowy to 2.4 m).
+                Zsumuj obwód pomieszczenia (2 × długość + 2 × szerokość), odejmij szerokość otworów drzwiowych (ok. 0.9 m na skrzydło), dodaj 7% zapasu na docinki w narożnikach pod kątem 45° i podziel wynik przez długość pojedynczej listwy (standard to 2.4 m).
             </p>
 
-            <h3 class="text-lg font-bold text-slate-900 mt-8 mb-4 pt-6 border-t border-slate-200">Najczęściej zadawane pytania (FAQ)</h3>
-            <div class="space-y-4 text-xs sm:text-sm">
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <h4 class="font-bold text-slate-900 mb-1">Dlaczego panele zaokrągla się w górę do pełnych paczek?</h4>
-                    <p class="text-slate-600">Sklepy i markety budowlane nie sprzedają pojedynczych desek paneli. Dlatego obliczony metraż z zapasem zawsze dzielimy przez pojemność paczki i zaokrąglamy w górę.</p>
-                </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <h4 class="font-bold text-slate-900 mb-1">Czym jest szczelina dylatacyjna przy panelach?</h4>
-                    <p class="text-slate-600">Panele pracują pod wpływem temperatury i wilgoci. Między panelami a ścianą należy
+            <h3 class="text-lg font-bold text-slate-900 mt-8 mb-4 pt-6 border-t border-slate-200">Powiązane poradniki z Bazy Wiedzy:</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <a href="/panele-winylowe-czy-laminowane.html" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:border-amber-400 block transition">
+                    <span class="font-bold text-slate-900 block">Panele winylowe czy laminowane? &rarr;</span>
+                    <span class="text-slate-500">Porównanie oporu cieplnego, trwałości i podkładów.</span>
+                </a>
+                <a href="/dylatacja-paneli-i-plytek.html" class="p-3 bg-slate-50 border border-slate-200 rounded-xl hover:border-amber-400 block transition">
+                    <span class="font-bold text-slate-900 block">Dylatacja podłogi i progów &rarr;</span>
+                    <span class="text-slate-500">Dlaczego panele wstają i skrzypią bez szczeliny?</span>
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Stopka -->
+    <footer class="bg-white border-t border-slate-200 mt-16 py-8 text-center text-xs text-slate-400 space-y-2">
+        <p>&copy; 2026 KalkulatorWykonczenia.pl • Dar
