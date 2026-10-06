@@ -32,7 +32,7 @@
         .tile-chip:hover { background: #f1f5f9; border-color: #94a3b8; }
         .tile-chip.active { background: #fef3c7; border-color: #f59e0b; color: #92400e; font-weight: 700; }
         @media print {
-            header, footer, .no-print, #adsense-top, #adsense-bottom, #affiliate-box, #privacyModal { display: none !important; }
+            header, footer, .no-print, #adsense-top, #adsense-bottom, #affiliate-box { display: none !important; }
             body { background: white; color: black; }
             .print-card { border: 1px solid #ccc !important; box-shadow: none !important; color: black !important; background: white !important; }
             .print-card span, .print-card div, .print-card h3 { color: black !important; }
@@ -271,7 +271,7 @@
                         <p class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Kupujesz płytki i chemię?</p>
                         <p class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj aktualne promocje na kleje i zaprawy fugowe w marketach.</p>
                     </div>
-                    <a href="https://www.ceneo.pl/;szukaj-klej+do+plytek#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
+                    <a id="affBtn" href="https://www.ceneo.pl/;szukaj-klej+do+plytek#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
                         Klej i fugi &rarr;
                     </a>
                 </div>
@@ -374,7 +374,7 @@
 
             <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">2. Średnie zużycie kleju cementowego i dobór pacy</h3>
             <p class="text-sm mb-3">
-                Zużycie zaprawy klejowej zależy od formatu płytki oraz nierówności podłoża. Standardowo przyjmuje się zużycie na poziomie <strong>4.5 kg na 1 m²</strong> przy zastosowaniu uniwersalnej pacy z zębami 8–10 mm. W przypadku gresu wielkoformatowego (np. 120×60 cm) zalecana jest metoda podwójnego smarowania, co zwiększa zużycie do ok. 5.5–6 kg/m².
+                Zużycie zaprawy klejowej zależy od formatu płytki oraz nierówności podłoża. Standardowo przyjmuje się zużycie na poziomie <strong>4.5 kg na 1 m²</strong> przy zastosowaniu uniwersalnej pacy z zębami 8–10 mm. W przypadku gresu wielkoformatowego (np. 120×60 cm) zalecana jest metoda podwójnego smarowania, co podnosi zużycie do ok. 5.5–6 kg/m².
             </p>
 
             <h3 id="faq" class="text-lg font-bold text-slate-900 mt-10 mb-4 pt-6 border-t border-slate-200">Najczęściej zadawane pytania (FAQ)</h3>
@@ -389,12 +389,12 @@
 
     </main>
 
-    <!-- Stopka z linkami prawnymi pod AdSense -->
+    <!-- Stopka z pewnymi linkami pod AdSense (Zero JavaScriptu) -->
     <footer class="bg-white border-t border-slate-200 mt-16 py-8">
         <div class="max-w-5xl mx-auto px-4 text-center text-xs text-slate-400 space-y-2">
             <p>&copy; 2026 KalkulatorWykonczenia.pl • Darmowe narzędzia remontowo-budowlane.</p>
             <div class="flex justify-center items-center space-x-3 text-[11px] text-slate-500 pt-1">
-                <button type="button" onclick="togglePrivacy(true)" class="hover:text-amber-600 underline transition cursor-pointer">Polityka Prywatności i Cookies</button>
+                <a href="/polityka-prywatnosci.html" class="hover:text-amber-600 underline transition">Polityka Prywatności i Cookies</a>
                 <span>•</span>
                 <a href="/o-nas.html" class="hover:text-amber-600 underline transition">O projekcie</a>
                 <span>•</span>
@@ -402,26 +402,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- MODAL POLITYKI PRYWATNOŚCI -->
-    <div id="privacyModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" style="display: none;">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200">
-            <div class="p-4 sm:p-5 border-b border-slate-200 flex justify-between items-center">
-                <h3 class="font-bold text-slate-900 text-sm sm:text-base">Polityka Prywatności i Plików Cookies</h3>
-                <button type="button" onclick="togglePrivacy(false)" class="text-slate-400 hover:text-slate-700 text-2xl font-bold px-2 cursor-pointer">&times;</button>
-            </div>
-            <div class="p-5 sm:p-6 overflow-y-auto space-y-3 text-xs text-slate-600 leading-relaxed">
-                <p><strong>1. Informacje ogólne:</strong> Serwis KalkulatorWykonczenia.pl szanuje prywatność swoich użytkowników. Niniejszy dokument określa zasady przetwarzania danych oraz wykorzystywania plików cookies.</p>
-                <p><strong>2. Pliki Cookies (Ciasteczka):</strong> Serwis wykorzystuje pliki cookies w celach statystycznych, analitycznych oraz do prawidłowego działania narzędzi kalkulatora.</p>
-                <p><strong>3. Reklamy Google AdSense:</strong> W serwisie mogą być wyświetlane reklamy dostarczane przez firmę Google oraz jej partnerów. Użytkownicy mogą zrezygnować ze spersonalizowanych reklam w <a href="https://adssettings.google.com" target="_blank" rel="nofollow noopener" class="text-amber-600 underline">Ustawieniach reklam Google</a>.</p>
-                <p><strong>4. Linki partnerskie:</strong> Serwis zawiera linki partnerskie (m.in. Ceneo.pl). Kliknięcie może skutkować naliczeniem prowizji partnerskiej bez dodatkowych kosztów dla użytkownika.</p>
-                <p><strong>5. Kontakt:</strong> <em>kontakt@kalkulatorwykonczenia.pl</em>.</p>
-            </div>
-            <div class="p-4 border-t border-slate-100 flex justify-end">
-                <button type="button" onclick="togglePrivacy(false)" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition cursor-pointer">Rozumiem i zamykam</button>
-            </div>
-        </div>
-    </div>
 
     <!-- SKRYPT LOGICZNY -->
     <script>
@@ -435,10 +415,6 @@
         let tileMode = 'area';
         let listText = '';
 
-        window.togglePrivacy = function(show) {
-            document.getElementById('privacyModal').style.display = show ? 'flex' : 'none';
-        };
-
         window.setTileMode = function(m) {
             tileMode = m;
             document.getElementById('tileBoxArea').style.display = (m === 'area') ? 'block' : 'none';
@@ -450,3 +426,36 @@
         };
 
         window.setTileSize = function(w, l, btn) {
+            document.getElementById('inTileW').value = w;
+            document.getElementById('inTileL').value = l;
+
+            document.querySelectorAll('.tile-chip').forEach(b => {
+                b.className = 'tile-chip';
+            });
+            if (btn) btn.className = 'tile-chip active';
+            runTiles();
+        };
+
+        window.runTiles = function() {
+            let area = (tileMode === 'area') ? val('inTileArea') : (val('inTileLen') * val('inTileWid'));
+            if (area <= 0) area = 20;
+
+            const w_cm = val('inTileW') || 60;
+            const l_cm = val('inTileL') || 60;
+            const waste = val('selTileWaste');
+            const box = val('inTileBox');
+
+            const totalArea = area * (1 + waste / 100);
+            const tileArea = (w_cm / 100) * (l_cm / 100);
+            const tiles = Math.ceil(totalArea / tileArea);
+            const glue = Math.ceil(totalArea * 4.5);
+            const bags = Math.ceil(glue / 25);
+
+            document.getElementById('outMainVal').innerText = totalArea.toFixed(1);
+            document.getElementById('outSubInfo').innerText = `W tym ${(totalArea - area).toFixed(1)} m² zapasu (${waste}%)`;
+            document.getElementById('outRow1Val').innerText = tiles + " szt.";
+            document.getElementById('outRow2Val').innerText = box > 0 ? Math.ceil(totalArea / box) + " paczek" : "—";
+            document.getElementById('outChem1Val').innerText = "~" + glue + " kg";
+            document.getElementById('outChem1Sub').innerText = "ok. " + bags + " worków 25kg";
+            document.getElementById('outChem2Val').innerText = "~4.5 kg";
+            document.getEleme
