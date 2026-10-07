@@ -146,19 +146,27 @@
                         <span class="text-xs font-bold text-slate-800">Maluj również sufit (dodaj do obliczeń)</span>
                     </label>
 
-                    <div class="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
-                        <div>
-                            <span class="text-[10px] text-slate-500 block mb-1">Odejmij drzwi (szt.)</span>
-                            <input type="number" id="inPntDoors" value="1" min="0" oninput="runPaint()" class="inp text-xs">
+                    <!-- MODUŁOWE ODLICZANIE SKRZYDEŁ DRZWI I OKIEN -->
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-600 block mb-1">Drzwi / balkon (skrzydła)</span>
+                                <input type="number" id="inPntDoors" value="1" min="0" oninput="runPaint()" class="inp text-xs">
+                                <span class="text-[9px] text-slate-400 block mt-0.5">np. pokój: 1, balkon podwójny: 2</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-600 block mb-1">Okna (liczba skrzydeł)</span>
+                                <input type="number" id="inPntWin" value="2" min="0" oninput="runPaint()" class="inp text-xs">
+                                <span class="text-[9px] text-slate-400 block mt-0.5">np. małe okno: 1, typowe: 2, duże: 3</span>
+                            </div>
                         </div>
-                        <div>
-                            <span class="text-[10px] text-slate-500 block mb-1">Odejmij okna (szt.)</span>
-                            <input type="number" id="inPntWin" value="1" min="0" oninput="runPaint()" class="inp text-xs">
-                        </div>
+                        <p class="text-[10px] text-slate-500 leading-tight pt-1.5 border-t border-slate-200">
+                            💡 Standard: 1 skrzydło okna ≈ 1.0 m² • 1 skrzydło drzwi/balkonu ≈ 1.8 m².<br>Drobne różnice w centymetrach stolarki nie wpływają znacząco na liczbę puszek do kupienia.
+                        </p>
                     </div>
                 </div>
 
-                <!-- NOWOŚĆ: SUWAK WYDAJNOŚCI FARBY -->
+                <!-- SUWAK WYDAJNOŚCI FARBY -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500">2. Wydajność farby z 1 litra</label>
@@ -192,7 +200,7 @@
                 </div>
             </div>
 
-            <!-- Podsumowanie Z WYRAŹNĄ WYDAJNOŚCIĄ -->
+            <!-- Podsumowanie -->
             <div class="md:col-span-5 space-y-4">
                 <div class="print-card bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-5 sm:p-6 rounded-2xl text-white shadow-xl space-y-5 border border-slate-700">
                     <div class="flex justify-between items-center border-b border-slate-700/80 pb-3">
@@ -291,7 +299,7 @@
 
             <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">2. Jak obliczyć powierzchnię ścian i sufitu?</h3>
             <p class="text-sm mb-3">
-                Wzór na pole powierzchni ścian: <strong>obwód pokoju × wysokość</strong>. Od wyniku odejmujemy otwory okienne i drzwiowe (średnio 1.8 m² na drzwi i 2 m² na okno). Jeśli malujesz sufit, dodaj pole powierzchni podłogi (<strong>długość × szerokość</strong>).
+                Wzór na pole powierzchni ścian: <strong>obwód pokoju × wysokość</strong>. Od wyniku odejmujemy otwory drzwiowe i okienne. Jeśli malujesz sufit, dodaj pole powierzchni podłogi (<strong>długość × szerokość</strong>).
             </p>
 
             <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">3. Dlaczego gruntowanie zmniejsza zużycie farby?</h3>
@@ -340,8 +348,8 @@
             const w = val('inPntW') || 4;
             const h = val('inPntH') || 2.6;
             const ceiling = document.getElementById('chkCeiling').checked;
-            const doors = val('inPntDoors');
-            const win = val('inPntWin');
+            const doors = val('inPntDoors') || 0;
+            const windows = val('inPntWin') || 0;
             const coats = val('selPntCoats') || 2;
             const canSize = val('selPntCan') || 5;
             const eff = val('inPntEff') || 12;
@@ -352,7 +360,8 @@
             else if (eff >= 14) effHint = 'ceramika premium';
             document.getElementById('lblPntEff').innerText = `${eff} m²/L (${effHint})`;
 
-            let walls = Math.max(0, (2 * l + 2 * w) * h - (doors * 1.8) - (win * 2.0));
+            // Modułowe odejmowanie skrzydeł drzwi (1.8 m2) i okien (1.0 m2)
+            let walls = Math.max(0, (2 * l + 2 * w) * h - (doors * 1.8) - (windows * 1.0));
             let ceil = ceiling ? (l * w) : 0;
             let singleArea = Math.round(walls + ceil);
             let totalPaintingArea = singleArea * coats;
