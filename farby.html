@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Farb do Ścian i Gruntu | Ile litrów farby kupić?</title>
-    <meta name="description" content="Oblicz ile litrów farby i puszek potrzebujesz do pomalowania pokoju. Oblicz powierzchnię ścian i sufitu, odlicz okna i drzwi oraz sprawdź zużycie gruntu.">
+    <meta name="description" content="Oblicz ile litrów farby i puszek potrzebujesz do pomalowania pokoju z uwzględnieniem wydajności z litra (lateks, ceramika). Sprawdź zużycie gruntu.">
     
     <!-- TAG KANONICZNY -->
     <link rel="canonical" href="https://kalkulatorwykonczenia.pl/farby.html">
@@ -13,13 +13,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kalkulatorwykonczenia.pl/farby.html">
     <meta property="og:title" content="Kalkulator Farb do Ścian i Gruntu | KalkulatorWykonczenia.pl">
-    <meta property="og:description" content="Oblicz ile litrów farby i puszek potrzebujesz do malowania ścian i sufitu. Sprawdź zużycie gruntu.">
+    <meta property="og:description" content="Oblicz ile litrów farby i puszek potrzebujesz. Ustaw suwak wydajności i policz farbę z zapasem.">
     <meta property="og:locale" content="pl_PL">
 
     <!-- KARTY TWITTER / X -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Kalkulator Farb i Malowania | KalkulatorWykonczenia.pl">
-    <meta name="twitter:description" content="Precyzyjnie oblicz zapotrzebowanie na farbę do ścian i sufitu oraz grunt malarski.">
+    <meta name="twitter:description" content="Precyzyjnie oblicz zapotrzebowanie na farbę z uwzględnieniem wydajności z litra.">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,7 +31,7 @@
         .inp { width: 100%; padding: 10px 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; font-weight: 600; color: #0f172a; outline: none; }
         .inp:focus { border-color: #f59e0b; background: #fff; }
         @media print {
-            header, footer, .no-print, #affiliate-box, #privacyModal { display: none !important; }
+            header, footer, .no-print, #affiliate-box { display: none !important; }
             body { background: white; color: black; }
             .print-card { border: 1px solid #ccc !important; box-shadow: none !important; color: black !important; background: white !important; }
             .print-card span, .print-card div, .print-card h3 { color: black !important; }
@@ -59,7 +59,7 @@
               "name": "Ile litrów farby potrzeba do pomalowania pokoju?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Większość farb lateksowych i ceramicznych charakteryzuje się wydajnością 10-14 m2 z 1 litra przy jednej warstwie. Standardowo zaleca się nałożenie 2 warstw."
+                "text": "Wydajność farb zależy od ich rodzaju: akrylowe kryją 8-10 m2/l, lateksowe 11-13 m2/l, a ceramiczne premium nawet 14-16 m2/l przy jednej warstwie."
               }
             }
           ]
@@ -99,7 +99,7 @@
         <div class="text-center mb-6">
             <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Farb do Ścian, Sufitów i Gruntu</h1>
             <p class="mt-2 text-xs sm:text-base text-slate-600 max-w-xl mx-auto">
-                Oblicz ile litrów farby kupić, ile puszek potrzebujesz oraz jakie jest zużycie preparatu gruntującego.
+                Oblicz ile litrów farby kupić z uwzględnieniem wydajności z puszki oraz zapotrzebowanie na grunt malarski.
             </p>
         </div>
 
@@ -158,6 +158,20 @@
                     </div>
                 </div>
 
+                <!-- NOWOŚĆ: SUWAK WYDAJNOŚCI FARBY -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500">2. Wydajność farby z 1 litra</label>
+                        <span id="lblPntEff" class="text-xs font-extrabold text-amber-800 bg-amber-100 px-2 py-0.5 rounded border border-amber-200">12 m²/L (standard lateks)</span>
+                    </div>
+                    <input type="range" id="inPntEff" min="8" max="16" value="12" step="1" oninput="runPaint()" class="w-full accent-amber-600 cursor-pointer">
+                    <div class="flex justify-between text-[10px] text-slate-400 font-medium px-0.5 mt-0.5">
+                        <span>8 m² (akryl/sufit)</span>
+                        <span>12 m² (lateks)</span>
+                        <span>16 m² (ceramika premium)</span>
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Liczba warstw</label>
@@ -178,7 +192,7 @@
                 </div>
             </div>
 
-            <!-- Podsumowanie -->
+            <!-- Podsumowanie Z WYRAŹNĄ WYDAJNOŚCIĄ -->
             <div class="md:col-span-5 space-y-4">
                 <div class="print-card bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-5 sm:p-6 rounded-2xl text-white shadow-xl space-y-5 border border-slate-700">
                     <div class="flex justify-between items-center border-b border-slate-700/80 pb-3">
@@ -208,9 +222,9 @@
 
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <span class="text-xs text-slate-400 block">Pojemność puszki:</span>
-                            <span id="outChem1Val" class="text-xl font-bold text-amber-400 block mt-0.5">5.0 Litrów</span>
-                            <span class="text-xs text-slate-300 font-medium block mt-0.5">wydajność 12 m²/L</span>
+                            <span class="text-xs text-slate-400 block">Parametry farby:</span>
+                            <span id="outChem1Val" class="text-xl font-bold text-amber-400 block mt-0.5">5.0 L (puszka)</span>
+                            <span id="outChem1Sub" class="text-xs text-slate-300 font-medium block mt-0.5">Wydajność: 12 m²/L</span>
                         </div>
                         <div>
                             <span class="text-xs text-slate-400 block">Grunt malarski:</span>
@@ -238,7 +252,7 @@
                         <p class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Planujesz malowanie ścian?</p>
                         <p class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj aktualne promocje na farby zmywalne i preparaty gruntujące.</p>
                     </div>
-                    <a href="https://www.ceneo.pl/;szukaj-farba+do+scian#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
+                    <a id="affBtn" href="https://www.ceneo.pl/;szukaj-farba+do+scian#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
                         Farby i grunt &rarr;
                     </a>
                 </div>
@@ -265,22 +279,22 @@
             <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy poradnik: Jak obliczyć ile farby kupić do pokoju?</h2>
             
             <p class="text-sm mb-4">
-                Prawidłowe zaplanowanie ilości farby pozwala uniknąć przestojów w trakcie prac oraz niepotrzebnego wydawania pieniędzy na nadmiarowe puszki. Nowoczesne farby lateksowe i ceramiczne charakteryzują się wysoką siłą krycia, jednak zużycie zależy wprost od chłonności podłoża.
+                Prawidłowe zaplanowanie ilości farby pozwala uniknąć przestojów w trakcie prac oraz niepotrzebnego wydawania pieniędzy na nadmiarowe puszki. Rzeczywiste zużycie zależy od chłonności podłoża oraz technologii wykonania samej farby.
             </p>
 
-            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Jak obliczyć powierzchnię ścian i sufitu?</h3>
-            <p class="text-sm mb-3">
-                Wzór na pole powierzchni ścian: <strong>obwód pokoju × wysokość</strong>. Od wyniku odejmujemy otwory okienne i drzwiowe (średnio 1.8 m² na drzwi i 2 m² na standardowe okno). Jeśli malujemy sufit, dodajemy pole powierzchni podłogi (<strong>długość × szerokość</strong>).
-            </p>
-
-            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">2. Wydajność farby a liczba warstw</h3>
+            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Rzeczywista wydajność farby z litra – jak czytać etykietę?</h3>
             <ul class="text-xs sm:text-sm space-y-1.5 list-disc pl-5 mb-4 text-slate-600">
-                <li><strong>1 warstwa:</strong> tylko w przypadku okresowego odświeżania czystej ściany dokładnie tym samym kolorem.</li>
-                <li><strong>2 warstwy (standard rynkowy):</strong> obowiązkowe przy zmianie odcienia oraz na świeżych tynkach i gładziach.</li>
-                <li><strong>3 warstwy:</strong> przy przemalowywaniu bardzo ciemnej ściany na kolor jasny lub biały.</li>
+                <li><strong>8–10 m²/L:</strong> tańsze farby akrylowe i emulsje sufitowe. Wymagają grubszego krycia i częściej 2–3 warstw.</li>
+                <li><strong>11–13 m²/L:</strong> standardowe farby lateksowe zmywalne (najczęstszy wybór do salonów i sypialni).</li>
+                <li><strong>14–16 m²/L:</strong> nowoczesne farby ceramiczne i hydrofobowe (np. Magnat Ceramic, Beckers). Dzięki wysokiej zawartości żywic tworzą cienką, ale niezwykle odporną powłokę o bardzo wysokiej wydajności.</li>
             </ul>
 
-            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">3. Dlaczego gruntowanie zmniejsza zużycie farby?</h3>
+            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">2. Jak obliczyć powierzchnię ścian i sufitu?</h3>
+            <p class="text-sm mb-3">
+                Wzór na pole powierzchni ścian: <strong>obwód pokoju × wysokość</strong>. Od wyniku odejmujemy otwory okienne i drzwiowe (średnio 1.8 m² na drzwi i 2 m² na okno). Jeśli malujesz sufit, dodaj pole powierzchni podłogi (<strong>długość × szerokość</strong>).
+            </p>
+
+            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">3. Dlaczego gruntowanie zmniejsza zużycie farby?</h3>
             <p class="text-sm mb-3">
                 Niezagruntowana ściana działa jak gąbka – „wypija” wodę z pierwszej warstwy farby, powodując smugi, łuszczenie się powłoki i nawet dwukrotnie wyższe zużycie drogiej farby nawierzchniowej. Zastosowanie preparatu gruntującego (ok. 1 litr na 8 m²) wyrównuje chłonność podłoża.
             </p>
@@ -303,33 +317,13 @@
     <footer class="bg-white border-t border-slate-200 mt-16 py-8 text-center text-xs text-slate-400 space-y-2">
         <p>&copy; 2026 KalkulatorWykonczenia.pl • Darmowe narzędzia remontowo-budowlane.</p>
         <div class="flex justify-center items-center space-x-3 text-[11px] text-slate-500 pt-1">
-            <button type="button" onclick="togglePrivacy(true)" class="hover:text-amber-600 underline cursor-pointer">Polityka Prywatności i Cookies</button>
+            <a href="/polityka-prywatnosci.html" class="hover:text-amber-600 underline">Polityka Prywatności i Cookies</a>
             <span>•</span>
             <a href="/o-nas.html" class="hover:text-amber-600 underline">O projekcie</a>
             <span>•</span>
             <a href="mailto:kontakt@kalkulatorwykonczenia.pl" class="hover:text-amber-600 underline">Kontakt</a>
         </div>
     </footer>
-
-    <!-- MODAL POLITYKI PRYWATNOŚCI -->
-    <div id="privacyModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" style="display: none;">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200">
-            <div class="p-4 sm:p-5 border-b border-slate-200 flex justify-between items-center">
-                <h3 class="font-bold text-slate-900 text-sm sm:text-base">Polityka Prywatności i Plików Cookies</h3>
-                <button type="button" onclick="togglePrivacy(false)" class="text-slate-400 hover:text-slate-700 text-2xl font-bold px-2 cursor-pointer">&times;</button>
-            </div>
-            <div class="p-5 sm:p-6 overflow-y-auto space-y-3 text-xs text-slate-600 leading-relaxed">
-                <p><strong>1. Informacje ogólne:</strong> Serwis KalkulatorWykonczenia.pl szanuje prywatność swoich użytkowników. Niniejszy dokument określa zasady przetwarzania danych oraz wykorzystywania plików cookies.</p>
-                <p><strong>2. Pliki Cookies (Ciasteczka):</strong> Serwis wykorzystuje pliki cookies w celach statystycznych, analitycznych oraz do prawidłowego działania narzędzi kalkulatora.</p>
-                <p><strong>3. Reklamy Google AdSense:</strong> W serwisie mogą być wyświetlane reklamy dostarczane przez firmę Google oraz jej partnerów. Użytkownicy mogą zrezygnować ze spersonalizowanych reklam w <a href="https://adssettings.google.com" target="_blank" rel="nofollow noopener" class="text-amber-600 underline">Ustawieniach reklam Google</a>.</p>
-                <p><strong>4. Linki partnerskie:</strong> Serwis zawiera linki partnerskie (m.in. Ceneo.pl). Kliknięcie może skutkować naliczeniem prowizji partnerskiej bez dodatkowych kosztów dla użytkownika.</p>
-                <p><strong>5. Kontakt:</strong> <em>kontakt@kalkulatorwykonczenia.pl</em>.</p>
-            </div>
-            <div class="p-4 border-t border-slate-100 flex justify-end">
-                <button type="button" onclick="togglePrivacy(false)" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition cursor-pointer">Rozumiem i zamykam</button>
-            </div>
-        </div>
-    </div>
 
     <script>
         function val(id) {
@@ -341,10 +335,6 @@
 
         let listText = '';
 
-        window.togglePrivacy = function(show) {
-            document.getElementById('privacyModal').style.display = show ? 'flex' : 'none';
-        };
-
         function runPaint() {
             const l = val('inPntL') || 5;
             const w = val('inPntW') || 4;
@@ -354,24 +344,32 @@
             const win = val('inPntWin');
             const coats = val('selPntCoats') || 2;
             const canSize = val('selPntCan') || 5;
+            const eff = val('inPntEff') || 12;
+
+            // Etykieta suwaka
+            let effHint = 'standard lateks';
+            if (eff <= 10) effHint = 'akryl / sufit';
+            else if (eff >= 14) effHint = 'ceramika premium';
+            document.getElementById('lblPntEff').innerText = `${eff} m²/L (${effHint})`;
 
             let walls = Math.max(0, (2 * l + 2 * w) * h - (doors * 1.8) - (win * 2.0));
             let ceil = ceiling ? (l * w) : 0;
             let singleArea = Math.round(walls + ceil);
             let totalPaintingArea = singleArea * coats;
 
-            let liters = Math.round((totalPaintingArea / 12) * 10) / 10;
+            let liters = Math.round((totalPaintingArea / eff) * 10) / 10;
             let cans = Math.ceil(liters / canSize);
             let primer = Math.ceil(singleArea / 8);
 
             document.getElementById('outMainVal').innerText = singleArea;
-            document.getElementById('outSubInfo').innerText = `${coats} warstwy = ${totalPaintingArea} m² łącznie`;
+            document.getElementById('outSubInfo').innerText = `${coats} ${coats === 1 ? 'warstwa' : (coats < 5 ? 'warstwy' : 'warstw')} (${totalPaintingArea} m²) • Wydajność: ${eff} m²/L`;
             document.getElementById('outRow1Val').innerText = liters + " L";
             document.getElementById('outRow2Val').innerText = cans + " " + (cans === 1 ? 'puszka' : (cans < 5 ? 'puszki' : 'puszek'));
-            document.getElementById('outChem1Val').innerText = canSize + " Litrów";
+            document.getElementById('outChem1Val').innerText = canSize + " L (puszka)";
+            document.getElementById('outChem1Sub').innerText = `Wydajność: ${eff} m²/L (${effHint})`;
             document.getElementById('outChem2Val').innerText = "~" + primer + " Litrów";
 
-            listText = `Farba: ${liters} L (${cans} puszek po ${canSize}L) | Powierzchnia: ${singleArea} m² | Grunt: ${primer} L`;
+            listText = `Farba: ${liters} L (${cans} puszek po ${canSize}L, przyjęta wydajność: ${eff} m²/L) | Grunt: ${primer} L`;
         }
 
         function copyList() {
