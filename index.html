@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Płytek, Kleju i Fug | Baza Wiedzy Wykończeniowej</title>
-    <meta name="description" content="Precyzyjny kalkulator glazurniczy. Oblicz liczbę płytek, zużycie kleju z uwzględnieniem pacy zębatej i podłoża oraz zaprawę fugową.">
+    <title>Kalkulator Płytek, Kleju i Fug | Kosztorys Materiałów</title>
+    <meta name="description" content="Precyzyjny kalkulator glazurniczy i kosztorys materiałów. Oblicz liczbę płytek, zużycie kleju wg pacy zębatej, fugę oraz szacunkowy koszt remontu.">
     
     <!-- TAG KANONICZNY -->
     <link rel="canonical" href="https://kalkulatorwykonczenia.pl/">
@@ -12,14 +12,14 @@
     <!-- PROTOKÓŁ OPEN GRAPH -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kalkulatorwykonczenia.pl/">
-    <meta property="og:title" content="Kalkulator Płytek, Kleju i Fug | KalkulatorWykonczenia.pl">
-    <meta property="og:description" content="Oblicz precyzyjnie liczbę płytek, paczek, zużycie kleju wg pacy zębatej oraz fugi z zapasem na docinki.">
+    <meta property="og:title" content="Kalkulator Płytek, Kleju i Fug z Kosztorysem | KalkulatorWykonczenia.pl">
+    <meta property="og:description" content="Oblicz liczbę płytek, zużycie kleju, paczki oraz szacunkowy koszt materiałów z uwzględnieniem zapasu na docinki.">
     <meta property="og:locale" content="pl_PL">
 
     <!-- KARTY TWITTER / X -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Kalkulator Płytek, Kleju i Fug | KalkulatorWykonczenia.pl">
-    <meta name="twitter:description" content="Precyzyjnie oblicz zużycie materiałów glazurniczych z uwzględnieniem pacy zębatej i podłoża.">
+    <meta name="twitter:title" content="Kalkulator Płytek i Kosztorys Materiałów | KalkulatorWykonczenia.pl">
+    <meta name="twitter:description" content="Precyzyjnie policz materiały glazurnicze oraz szacunkowy budżet remontu.">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,6 +31,8 @@
         .tile-chip { padding: 8px 4px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; font-weight: 600; color: #334155; text-align: center; cursor: pointer; transition: all 0.15s; }
         .tile-chip:hover { background: #f1f5f9; border-color: #94a3b8; }
         .tile-chip.active { background: #fef3c7; border-color: #f59e0b; color: #92400e; font-weight: 700; }
+        .inp-budget { width: 100%; padding: 6px 8px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 700; color: #0f172a; text-align: center; outline: none; }
+        .inp-budget:focus { border-color: #f59e0b; }
         @media print {
             header, footer, .no-print, #adsense-top, #adsense-bottom, #affiliate-box { display: none !important; }
             body { background: white; color: black; }
@@ -39,14 +41,14 @@
         }
     </style>
 
-    <!-- Schema.org JSON-LD pod SEO i AdSense -->
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
           "@type": "WebApplication",
-          "name": "Kalkulator Płytek i Materiałów Glazurniczych",
+          "name": "Kalkulator Płytek i Kosztorys Glazurniczy",
           "url": "https://kalkulatorwykonczenia.pl",
           "applicationCategory": "UtilityApplication",
           "operatingSystem": "All",
@@ -60,7 +62,7 @@
               "name": "Ile kleju do płytek potrzeba na 1 m2?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Średnie zużycie zaprawy klejowej zależy od pacy zębatej: paca 6 mm to ok. 3.0 kg/m2, paca 8 mm to ok. 4.5 kg/m2, paca 10 mm to ok. 5.5 kg/m2, a paca 12 mm przy podwójnym smarowaniu gresu wielkoformatowego to 6.5-7.5 kg/m2."
+                "text": "Średnie zużycie zaprawy klejowej zależy od pacy zębatej: paca 6 mm to ok. 3.0 kg/m2, paca 8 mm to ok. 4.5 kg/m2, paca 10 mm to ok. 5.5 kg/m2, a paca 12 mm przy podwójnym smarowaniu to 6.5-7.5 kg/m2."
               }
             }
           ]
@@ -76,7 +78,7 @@
 
     <!-- Toast powiadomień -->
     <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-semibold transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none">
-        ✅ Skopiowano listę zakupów do schowka!
+        ✅ Skopiowano listę zakupów i kosztorys do schowka!
     </div>
 
     <!-- Pasek Górny z Nawigacją -->
@@ -101,9 +103,9 @@
     <main class="max-w-4xl mx-auto px-4 py-6 sm:py-8 flex-grow">
         
         <div class="text-center mb-6">
-            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Płytek, Kleju i Fug</h1>
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Płytek, Kleju i Fug z Kosztorysem</h1>
             <p class="mt-2 text-xs sm:text-base text-slate-600 max-w-xl mx-auto">
-                Oblicz liczbę płytek, paczek oraz zużycie kleju wg pacy zębatej i podłoża z zapasem na docinki.
+                Oblicz zapotrzebowanie materiałowe oraz szacunkowy budżet na kafelkowanie z uwzględnieniem cen rynkowych.
             </p>
         </div>
 
@@ -124,7 +126,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             
-            <!-- FORMULARZ PŁYTEK -->
+            <!-- LEWA STRONA: FORMULARZ -->
             <div class="md:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
                 
                 <!-- 1. Powierzchnia -->
@@ -180,7 +182,7 @@
                     </div>
                 </div>
 
-                <!-- 3. EDUKACYJNY SUWAK PACY I GRUBOŚCI KLEJU (KOMBO) -->
+                <!-- 3. Ząb pacy / Grzebień -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500">3. Grubość kleju i ząb pacy (grzebień)</label>
@@ -195,7 +197,6 @@
                         <span>12 mm+</span>
                     </div>
 
-                    <!-- Karta wyjaśniająca dla amatora i fachowca -->
                     <div class="mt-2 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1">
                         <div class="flex items-center space-x-1.5 font-bold text-slate-900">
                             <span id="lblTrowelThickness" class="text-amber-700 font-extrabold">Warstwa standardowa (~4.5 kg/m²)</span>
@@ -234,6 +235,38 @@
                     </div>
                     <input type="range" id="inTileGrout" min="1" max="10" value="3" oninput="document.getElementById('lblTileGrout').innerText=this.value+' mm'; runTiles();" class="w-full accent-amber-600 cursor-pointer">
                 </div>
+
+                <!-- 6. NOWOŚĆ: MODUŁ SZACUNKOWEGO KOSZTORYSU -->
+                <div class="border-t border-slate-200 pt-4">
+                    <button type="button" onclick="toggleBudget()" id="btnToggleBudget" class="flex items-center justify-between w-full text-left font-bold text-xs uppercase tracking-wider text-slate-700 hover:text-amber-600 transition">
+                        <span class="flex items-center space-x-1.5">
+                            <span>💰</span>
+                            <span>Oszacuj koszt materiałów (opcjonalnie)</span>
+                        </span>
+                        <span id="budgetArrow" class="text-xs text-slate-400">▼</span>
+                    </button>
+                    
+                    <div id="boxBudget" class="mt-3 p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-3" style="display: block;">
+                        <div class="grid grid-cols-3 gap-2">
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-500 block mb-1">Cena płytki (zł/m²)</label>
+                                <input type="text" inputmode="decimal" id="inPriceTile" value="85" oninput="runTiles()" class="inp-budget text-xs">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-500 block mb-1">Klej (zł/worek)</label>
+                                <input type="text" inputmode="decimal" id="inPriceGlue" value="38" oninput="runTiles()" class="inp-budget text-xs">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-500 block mb-1">Fuga (zł/op. 2kg)</label>
+                                <input type="text" inputmode="decimal" id="inPriceGrout" value="26" oninput="runTiles()" class="inp-budget text-xs">
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-500 leading-tight">
+                            💡 <em>Wpisane średnie ceny rynkowe 2026. Możesz wpisać własne stawki z marketu.</em>
+                        </p>
+                    </div>
+                </div>
+
             </div>
 
             <!-- PRAWA STRONA: WYNIKI -->
@@ -275,280 +308,3 @@
                             <span class="text-xs text-slate-400 block">Fuga (spoina):</span>
                             <span id="outChem2Val" class="text-xl font-bold text-amber-400 block mt-0.5">~4.5 kg</span>
                             <span id="outChem2Sub" class="text-xs text-slate-300 font-medium block mt-0.5">ok. 2-3 opakowania</span>
-                        </div>
-                    </div>
-
-                    <div class="pt-2 flex gap-2 no-print">
-                        <button type="button" onclick="copyList()" class="flex-1 py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
-                            <span>📋</span>
-                            <span>Kopiuj listę na zakupy</span>
-                        </button>
-                        <button type="button" onclick="window.print()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 active:scale-[0.98] text-slate-300 font-semibold text-xs rounded-xl border border-slate-600 transition" title="Drukuj lub zapisz PDF">
-                            🖨️
-                        </button>
-                    </div>
-
-                </div>
-
-                <!-- BOKS AFILIACYJNY CENEO Z PID=31231 -->
-                <div id="affiliate-box" class="bg-amber-50/90 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 no-print transition-all">
-                    <div class="space-y-1">
-                        <div class="flex items-center space-x-1.5 text-amber-700 text-xs font-bold uppercase tracking-wider">
-                            <span>🛒</span>
-                            <span>Gdzie kupić najtaniej?</span>
-                        </div>
-                        <p class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Kupujesz płytki i chemię?</p>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj aktualne promocje na kleje i zaprawy fugowe w marketach.</p>
-                    </div>
-                    <a id="affBtn" href="https://www.ceneo.pl/;szukaj-klej+do+plytek#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
-                        Klej i fugi &rarr;
-                    </a>
-                </div>
-
-                <!-- BANERY ODSYŁAJĄCE DO POZOSTAŁYCH NARZĘDZI -->
-                <div class="grid grid-cols-2 gap-3 no-print">
-                    <a href="/panele.html" class="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-amber-400 transition group shadow-sm block">
-                        <span class="text-lg block mb-1">🪵</span>
-                        <span class="text-xs font-bold text-slate-900 group-hover:text-amber-600 block">Kalkulator Paneli &rarr;</span>
-                        <span class="text-[10px] text-slate-400 block">Paczki, podkład, listwy</span>
-                    </a>
-                    <a href="/farby.html" class="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-amber-400 transition group shadow-sm block">
-                        <span class="text-lg block mb-1">🎨</span>
-                        <span class="text-xs font-bold text-slate-900 group-hover:text-amber-600 block">Kalkulator Farb &rarr;</span>
-                        <span class="text-[10px] text-slate-400 block">Litry, puszki, grunt</span>
-                    </a>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- BAZA WIEDZY - ARTYKUŁY EKSPERCKIE -->
-        <section class="mt-16 no-print">
-            <div class="flex items-center justify-between mb-6">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-amber-600 block">Baza Wiedzy</span>
-                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Poradniki i standardy wykonawcze</h2>
-                </div>
-                <a href="/o-nas.html" class="text-xs font-bold text-amber-700 hover:text-amber-800 transition hidden sm:inline-block">O redakcji &rarr;</a>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <a href="/klej-na-ogrzewanie-podlogowe.html" class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-amber-400 hover:shadow-md transition group block">
-                    <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md inline-block mb-2">Glazurnictwo</span>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-600 transition leading-snug">Jaki klej do płytek na ogrzewanie podłogowe? C1, C2 czy S1?</h3>
-                    <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Poznaj normę PN-EN 12004 i uniknij pękania gresu na ogrzewanym jastrychu.</p>
-                </a>
-
-                <a href="/panele-winylowe-czy-laminowane.html" class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-amber-400 hover:shadow-md transition group block">
-                    <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md inline-block mb-2">Podłogi</span>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-600 transition leading-snug">Panele winylowe SPC czy laminowane? Wady, zalety i koszty</h3>
-                    <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Sprawdź opór cieplny na podłogówce, wodoodporność i dobór twardego podkładu.</p>
-                </a>
-
-                <a href="/gruntowanie-scian-przed-malowaniem.html" class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-amber-400 hover:shadow-md transition group block">
-                    <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md inline-block mb-2">Malowanie</span>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-600 transition leading-snug">Gruntowanie ścian przed malowaniem: Grunt czy farba podkładowa?</h3>
-                    <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Dlaczego farba odchodzi z taśmą? Poznaj zjawisko przeszklenia gładzi gipsowej.</p>
-                </a>
-
-                <a href="/dylatacja-paneli-i-plytek.html" class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-amber-400 hover:shadow-md transition group block">
-                    <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md inline-block mb-2">Montaż</span>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-600 transition leading-snug">Dylatacja paneli i płytek: Dlaczego podłoga wstaje na środku?</h3>
-                    <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Ile milimetrów szczeliny zostawić przy ścianach i kiedy dylatacja w progu jest konieczna.</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- MERYTORYCZNY PORADNIK DLA GOOGLE (E-E-A-T I ADSENSE) -->
-        <article id="poradnik" class="mt-16 bg-white p-5 sm:p-10 rounded-2xl border border-slate-200 text-slate-700 shadow-sm leading-relaxed">
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy poradnik: Dobór pacy, zużycie kleju i podłoże</h2>
-            
-            <p class="text-sm mb-4">
-                Zużycie zaprawy klejowej nie jest wartością stałą. Wbrew powszechnemu przekonaniu nie zależy ono wyłącznie od formatu kafelka, ale w równej mierze od <strong>wielkości zęba pacy (grzebienia)</strong> oraz <strong>równości podłoża</strong>.
-            </p>
-
-            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Tabela doboru pacy zębatej do formatu płytki i podłoża</h3>
-            <div class="overflow-x-auto my-4">
-                <table class="w-full text-xs text-left border border-slate-200 rounded-lg">
-                    <thead class="bg-slate-100 text-slate-700 font-bold">
-                        <tr>
-                            <th class="p-2.5 border-b">Ząb pacy</th>
-                            <th class="p-2.5 border-b">Format płytki</th>
-                            <th class="p-2.5 border-b">Charakterystyka podłoża</th>
-                            <th class="p-2.5 border-b">Średnie zużycie</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-200 text-slate-600">
-                        <tr>
-                            <td class="p-2.5 font-bold">6 mm</td>
-                            <td class="p-2.5">Do 20×20 cm, mozaika, cegiełki</td>
-                            <td class="p-2.5">Idealnie równe tynki gipsowe, płyty gipsowo-kartonowe</td>
-                            <td class="p-2.5 font-bold text-amber-700">~2.8 – 3.2 kg/m²</td>
-                        </tr>
-                        <tr>
-                            <td class="p-2.5 font-bold">8 mm</td>
-                            <td class="p-2.5">Standard: 30×60 cm, 60×60 cm</td>
-                            <td class="p-2.5">Równe posadzki z mikrocementu, wylewki samopoziomujące</td>
-                            <td class="p-2.5 font-bold text-amber-700">~4.0 – 4.5 kg/m²</td>
-                        </tr>
-                        <tr>
-                            <td class="p-2.5 font-bold">10 mm</td>
-                            <td class="p-2.5">60×60 cm, 80×80 cm, 60×120 cm</td>
-                            <td class="p-2.5">Ogrzewanie podłogowe, drobne nierówności posadzki (do 3 mm)</td>
-                            <td class="p-2.5 font-bold text-amber-700">~5.2 – 5.8 kg/m²</td>
-                        </tr>
-                        <tr>
-                            <td class="p-2.5 font-bold">12 mm+</td>
-                            <td class="p-2.5">Wielki format 120×60 cm, 120×120 cm</td>
-                            <td class="p-2.5">Metoda kombinowana (podwójne smarowanie), tarasy, posadzki z odchyłkami</td>
-                            <td class="p-2.5 font-bold text-amber-700">~6.5 – 7.5 kg/m²</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">2. Dlaczego ogrzewanie podłogowe wymaga większej pacy?</h3>
-            <p class="text-sm mb-3">
-                W przypadku instalacji podłogówki kluczowe jest uzyskanie <strong>100% wypełnienia przestrzeni pod płytką</strong>. Wolne przestrzenie powietrzne działają jak izolator termiczny, hamując oddawanie ciepła, a naprężenia termiczne mogą powodować pękanie spoin. Z tego względu na podłogówce stosuje się większą pacę (10 mm) lub metodę kombinowaną (nakładanie kleju grzebieniem na posadzkę i gładko na spód płytki).
-            </p>
-
-            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">3. Matematyczny wzór na zużycie fugi</h3>
-            <p class="text-sm mb-3">
-                Zapotrzebowanie na zaprawę fugową obliczamy ze wzoru uwzględniającego obwód płytki, jej grubość oraz szerokość spoiny:
-                <br><code class="text-xs bg-slate-100 p-1 rounded font-mono text-slate-800 block my-2">Zużycie fugi (kg/m²) = [(A + B) / (A × B)] × C × D × 1.6</code>
-                Gdzie: A i B to wymiary płytki w mm, C to grubość (przyjęto 8.5 mm), D to szerokość spoiny w mm, a 1.6 to średnia gęstość zaprawy cementowej.
-            </p>
-
-            <h3 id="faq" class="text-lg font-bold text-slate-900 mt-10 mb-4 pt-6 border-t border-slate-200">Najczęściej zadawane pytania (FAQ)</h3>
-            <div class="space-y-4 text-xs sm:text-sm">
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <h4 class="font-bold text-slate-900 mb-1">Jaka paca do płytek 60×60 cm jest najlepsza?</h4>
-                    <p class="text-slate-600">Dla płytek 60×60 cm na równej posadzce standardem jest paca z zębem 8 mm. Przy ogrzewaniu podłogowym lub minimalnych odchyłkach wylewki zaleca się pacę 10 mm.</p>
-                </div>
-            </div>
-
-        </article>
-
-    </main>
-
-    <!-- Stopka -->
-    <footer class="bg-white border-t border-slate-200 mt-16 py-8">
-        <div class="max-w-5xl mx-auto px-4 text-center text-xs text-slate-400 space-y-2">
-            <p>&copy; 2026 KalkulatorWykonczenia.pl • Darmowe narzędzia remontowo-budowlane.</p>
-            <div class="flex justify-center items-center space-x-3 text-[11px] text-slate-500 pt-1">
-                <a href="/polityka-prywatnosci.html" class="hover:text-amber-600 underline transition">Polityka Prywatności i Cookies</a>
-                <span>•</span>
-                <a href="/o-nas.html" class="hover:text-amber-600 underline transition">O projekcie</a>
-                <span>•</span>
-                <a href="mailto:kontakt@kalkulatorwykonczenia.pl" class="hover:text-amber-600 underline transition">Kontakt</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- SKRYPT LOGICZNY -->
-    <script>
-        function val(id) {
-            const el = document.getElementById(id);
-            if (!el) return 0;
-            const n = parseFloat(String(el.value).replace(',', '.').trim());
-            return isNaN(n) ? 0 : n;
-        }
-
-        let tileMode = 'area';
-        let listText = '';
-
-        window.setTileMode = function(m) {
-            tileMode = m;
-            document.getElementById('tileBoxArea').style.display = (m === 'area') ? 'block' : 'none';
-            document.getElementById('tileBoxDim').style.display = (m === 'dim') ? 'grid' : 'none';
-
-            document.getElementById('btnTileArea').className = (m === 'area') ? 'px-2.5 sm:px-3 py-1 rounded-md bg-white text-slate-800 shadow-sm transition' : 'px-2.5 sm:px-3 py-1 rounded-md text-slate-500 hover:text-slate-800 transition';
-            document.getElementById('btnTileDim').className = (m === 'dim') ? 'px-2.5 sm:px-3 py-1 rounded-md bg-white text-slate-800 shadow-sm transition' : 'px-2.5 sm:px-3 py-1 rounded-md text-slate-500 hover:text-slate-800 transition';
-            runTiles();
-        };
-
-        window.setTileSize = function(w, l, btn) {
-            document.getElementById('inTileW').value = w;
-            document.getElementById('inTileL').value = l;
-
-            document.querySelectorAll('.tile-chip').forEach(b => {
-                b.className = 'tile-chip';
-            });
-            if (btn) btn.className = 'tile-chip active';
-            runTiles();
-        };
-
-        window.runTiles = function() {
-            let area = (tileMode === 'area') ? val('inTileArea') : (val('inTileLen') * val('inTileWid'));
-            if (area <= 0) area = 20;
-
-            const w_cm = val('inTileW') || 60;
-            const l_cm = val('inTileL') || 60;
-            const waste = val('selTileWaste');
-            const box = val('inTileBox');
-            const trowel = parseInt(document.getElementById('inTileTrowel').value) || 8;
-
-            // Wartości i opisy kombo
-            let glueRate = 4.5;
-            let trowelThickness = 'Warstwa standardowa (~4.5 kg/m²)';
-            let trowelText = 'Najczęstszy wybór (format 30×60, 60×60 cm), równe wylewki samopoziomujące i tynki. Bezpieczna norma dla 90% remontów.';
-            let badgeText = `Paca ${trowel} mm • Standard (Zalecany)`;
-
-            if (trowel === 6) {
-                glueRate = 3.0;
-                trowelThickness = 'Warstwa cienka (~3.0 kg/m²)';
-                trowelText = 'Małe płytki ścienne, mozaika, idealnie równe ściany (płyty gipsowo-kartonowe, gładź).';
-                badgeText = 'Paca 6 mm • Cienka warstwa';
-            } else if (trowel === 8) {
-                glueRate = 4.5;
-                trowelThickness = 'Warstwa standardowa (~4.5 kg/m²)';
-                trowelText = 'Najczęstszy wybór (format 30×60, 60×60 cm), równe wylewki samopoziomujące i tynki. Bezpieczna norma dla 90% remontów.';
-                badgeText = 'Paca 8 mm • Standard (Zalecany)';
-            } else if (trowel === 10) {
-                glueRate = 5.5;
-                trowelThickness = 'Warstwa gruba (~5.5 kg/m²)';
-                trowelText = 'Duży gres podłogowy, ogrzewanie podłogowe, drobne nierówności podłoża (do 3 mm).';
-                badgeText = 'Paca 10 mm • Gruba warstwa';
-            } else if (trowel >= 12) {
-                glueRate = 7.0;
-                trowelThickness = 'Maksymalna warstwa (~7.0 kg/m²)';
-                trowelText = 'Płytki wielkoformatowe (120×60+ cm), podwójne smarowanie (posadzka + płytka) lub krzywe podłoże.';
-                badgeText = 'Paca 12 mm+ • Podwójne smarowanie';
-            }
-
-            document.getElementById('lblTrowelBadge').innerText = badgeText;
-            document.getElementById('lblTrowelThickness').innerText = trowelThickness;
-            document.getElementById('lblTrowelDesc').innerText = trowelText;
-
-            const totalArea = area * (1 + waste / 100);
-            const tileArea = (w_cm / 100) * (l_cm / 100);
-            const tiles = Math.ceil(totalArea / tileArea);
-            const glue = Math.ceil(totalArea * glueRate);
-            const bags = Math.ceil(glue / 25);
-
-            document.getElementById('outMainVal').innerText = totalArea.toFixed(1);
-            document.getElementById('outSubInfo').innerText = `W tym ${(totalArea - area).toFixed(1)} m² zapasu (${waste}%)`;
-            document.getElementById('outRow1Val').innerText = tiles + " szt.";
-            document.getElementById('outRow2Val').innerText = box > 0 ? Math.ceil(totalArea / box) + " paczek" : "—";
-            document.getElementById('outChem1Val').innerText = "~" + glue + " kg";
-            document.getElementById('outChem1Sub').innerText = `ok. ${bags} worków 25kg (paca ${trowel}mm)`;
-            document.getElementById('outChem2Val').innerText = "~4.5 kg";
-            document.getElementById('outChem2Sub').innerText = "ok. 2-3 opakowania";
-
-            listText = `Płytki (${w_cm}×${l_cm} cm): ${totalArea.toFixed(1)} m² (${tiles} szt.) | Klej: ${glue} kg (${bags} worków 25kg, paca zębata: ${trowel} mm) | Fuga: ok. 4.5 kg`;
-        };
-
-        window.copyList = function() {
-            navigator.clipboard.writeText("Lista zakupów z KalkulatorWykonczenia.pl:\n" + listText).then(() => {
-                const t = document.getElementById('toast');
-                t.classList.remove('translate-y-20', 'opacity-0');
-                setTimeout(() => t.classList.add('translate-y-20', 'opacity-0'), 2500);
-            });
-        };
-
-        // Start
-        runTiles();
-    </script>
-</body>
-</html>
