@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Farb do Ścian i Gruntu | Ile litrów farby kupić?</title>
-    <meta name="description" content="Oblicz ile litrów farby i puszek potrzebujesz do pomalowania pokoju z uwzględnieniem wydajności z litra (lateks, ceramika). Sprawdź zużycie gruntu.">
+    <title>Kalkulator Farb do Ścian i Gruntu | Osobno Ściany i Sufit</title>
+    <meta name="description" content="Precyzyjny kalkulator malarski. Oblicz osobno farbę kolorową na ściany i białą na sufit (wiadra 10L i 15L), uwzględnij grunt i pobierz kosztorys do PDF.">
     
     <!-- TAG KANONICZNY -->
     <link rel="canonical" href="https://kalkulatorwykonczenia.pl/farby.html">
@@ -12,14 +12,14 @@
     <!-- PROTOKÓŁ OPEN GRAPH -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kalkulatorwykonczenia.pl/farby.html">
-    <meta property="og:title" content="Kalkulator Farb do Ścian i Gruntu | KalkulatorWykonczenia.pl">
-    <meta property="og:description" content="Oblicz ile litrów farby i puszek potrzebujesz. Ustaw suwak wydajności i policz farbę z zapasem.">
+    <meta property="og:title" content="Kalkulator Farb do Ścian i Sufitu z Kosztorysem | KalkulatorWykonczenia.pl">
+    <meta property="og:description" content="Policz osobno farbę kolorową na ściany oraz białą na sufit (duże wiadra 10L i 15L). Zobacz szacunkowy kosztorys.">
     <meta property="og:locale" content="pl_PL">
 
     <!-- KARTY TWITTER / X -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Kalkulator Farb i Malowania | KalkulatorWykonczenia.pl">
-    <meta name="twitter:description" content="Precyzyjnie oblicz zapotrzebowanie na farbę z uwzględnieniem wydajności z litra.">
+    <meta name="twitter:description" content="Precyzyjnie policz farbę na ściany, sufit oraz grunt z uwzględnieniem wydajności z litra.">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,6 +30,8 @@
         body { font-family: 'Inter', sans-serif; }
         .inp { width: 100%; padding: 10px 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; font-weight: 600; color: #0f172a; outline: none; }
         .inp:focus { border-color: #f59e0b; background: #fff; }
+        .inp-budget { width: 100%; padding: 6px 8px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 700; color: #0f172a; text-align: center; outline: none; }
+        .inp-budget:focus { border-color: #f59e0b; }
         @media print {
             header, footer, .no-print, #affiliate-box { display: none !important; }
             body { background: white; color: black; }
@@ -45,7 +47,7 @@
       "@graph": [
         {
           "@type": "WebApplication",
-          "name": "Kalkulator Farb i Malowania",
+          "name": "Kalkulator Farb do Ścian i Sufitów",
           "url": "https://kalkulatorwykonczenia.pl/farby.html",
           "applicationCategory": "UtilityApplication",
           "operatingSystem": "All",
@@ -56,10 +58,10 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Ile litrów farby potrzeba do pomalowania pokoju?",
+              "name": "Dlaczego sufit maluje się inną farbą niż ściany?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Wydajność farb zależy od ich rodzaju: akrylowe kryją 8-10 m2/l, lateksowe 11-13 m2/l, a ceramiczne premium nawet 14-16 m2/l przy jednej warstwie."
+                "text": "Sufity maluje się dedykowaną, głęboko matową i antyrefleksyjną białą farbą w dużych wiadrach (10-15L), aby zniwelować smugi pod światło. Ściany maluje się farbami zmywalnymi (lateks, ceramika) w puszkach 2.5-5L."
               }
             }
           ]
@@ -75,7 +77,7 @@
 
     <!-- Toast powiadomień -->
     <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-semibold transform translate-y-20 opacity-0 transition-all z-50 pointer-events-none">
-        ✅ Skopiowano listę zakupów do schowka!
+        ✅ Skopiowano listę zakupów i kosztorys do schowka!
     </div>
 
     <!-- Pasek Górny -->
@@ -99,7 +101,7 @@
         <div class="text-center mb-6">
             <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Farb do Ścian, Sufitów i Gruntu</h1>
             <p class="mt-2 text-xs sm:text-base text-slate-600 max-w-xl mx-auto">
-                Oblicz ile litrów farby kupić z uwzględnieniem wydajności z puszki oraz zapotrzebowanie na grunt malarski.
+                Oblicz osobno farbę kolorową na ściany oraz białą na sufit (opakowania do 15L), zapotrzebowanie na grunt i kosztorys.
             </p>
         </div>
 
@@ -143,7 +145,7 @@
                 <div class="space-y-3">
                     <label class="flex items-center space-x-2 cursor-pointer bg-slate-50 p-3 rounded-xl border border-slate-200">
                         <input type="checkbox" id="chkCeiling" checked onchange="runPaint()" class="w-4 h-4 rounded text-amber-600 accent-amber-600 cursor-pointer">
-                        <span class="text-xs font-bold text-slate-800">Maluj również sufit (dodaj do obliczeń)</span>
+                        <span class="text-xs font-bold text-slate-800">Maluj również sufit białą farbą (osobne wyliczenie)</span>
                     </label>
 
                     <!-- MODUŁOWE ODLICZANIE SKRZYDEŁ DRZWI I OKIEN -->
@@ -180,24 +182,67 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- WYBÓR OPAKOWAŃ NA ŚCIANY I SUFIT (DUŻE WIADRA) -->
+                <div class="space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Puszka na ściany (kolor)</label>
+                            <select id="selPntCanWalls" onchange="runPaint()" class="inp text-xs font-semibold">
+                                <option value="2.5">2.5 Litra (mała)</option>
+                                <option value="5.0" selected>5.0 Litrów (standard)</option>
+                                <option value="10.0">10.0 Litrów (duża)</option>
+                            </select>
+                        </div>
+                        <div id="boxCeilCan">
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Wiadro na sufit (biel)</label>
+                            <select id="selPntCanCeil" onchange="runPaint()" class="inp text-xs font-semibold">
+                                <option value="5.0">5.0 Litrów</option>
+                                <option value="10.0" selected>10.0 Litrów (standard)</option>
+                                <option value="14.0">14.0 / 15.0 Litrów (duże)</option>
+                            </select>
+                        </div>
+                    </div>
                     <div>
-                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Liczba warstw</label>
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Liczba warstw malowania</label>
                         <select id="selPntCoats" onchange="runPaint()" class="inp text-xs font-semibold">
                             <option value="1">1 warstwa (odświeżenie)</option>
                             <option value="2" selected>2 warstwy (zalecane)</option>
                             <option value="3">3 warstwy (ciemny kolor)</option>
                         </select>
                     </div>
-                    <div>
-                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Rozmiar puszki farby</label>
-                        <select id="selPntCan" onchange="runPaint()" class="inp text-xs font-semibold">
-                            <option value="2.5">2.5 Litra</option>
-                            <option value="5" selected>5.0 Litrów</option>
-                            <option value="10">10.0 Litrów</option>
-                        </select>
+                </div>
+
+                <!-- MODUŁ KOSZTORYSU Z PODZIAŁEM NA ŚCIANY I SUFIT -->
+                <div class="border-t border-slate-200 pt-4">
+                    <button type="button" onclick="toggleBudgetPnt()" id="btnToggleBudgetPnt" class="flex items-center justify-between w-full text-left font-bold text-xs uppercase tracking-wider text-slate-700 hover:text-amber-600 transition">
+                        <span class="flex items-center space-x-1.5">
+                            <span>💰</span>
+                            <span>Oszacuj koszt materiałów (opcjonalnie)</span>
+                        </span>
+                        <span id="budgetArrowPnt" class="text-xs text-slate-400">▼</span>
+                    </button>
+                    
+                    <div id="boxBudgetPnt" class="mt-3 p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-3" style="display: block;">
+                        <div class="grid grid-cols-3 gap-2">
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-500 block mb-1">Ściany (zł/puszka)</label>
+                                <input type="text" inputmode="decimal" id="inPriceWallPaint" value="110" oninput="runPaint()" class="inp-budget text-xs">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-500 block mb-1">Sufit (zł/wiadro)</label>
+                                <input type="text" inputmode="decimal" id="inPriceCeilPaint" value="80" oninput="runPaint()" class="inp-budget text-xs">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-500 block mb-1">Grunt (zł/op. 5L)</label>
+                                <input type="text" inputmode="decimal" id="inPricePrimer" value="35" oninput="runPaint()" class="inp-budget text-xs">
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-500 leading-tight">
+                            💡 <em>Wpisane średnie ceny rynkowe 2026 (farba ceramiczna na ściany, emulsja sufitowa i grunt). Możesz wpisać własne stawki.</em>
+                        </p>
                     </div>
                 </div>
+
             </div>
 
             <!-- Podsumowanie -->
@@ -209,60 +254,83 @@
                     </div>
 
                     <div>
-                        <span class="text-xs text-slate-400 block font-medium">Łączna powierzchnia malowania:</span>
+                        <span class="text-xs text-slate-400 block font-medium">Łączna powierzchnia prac:</span>
                         <div class="flex items-baseline space-x-2 mt-0.5">
                             <span id="outMainVal" class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">63</span>
                             <span class="text-xl font-semibold text-slate-400">m²</span>
                         </div>
-                        <span id="outSubInfo" class="text-xs text-amber-300/90 mt-1 block font-medium">2 warstwy = 126 m² łącznie</span>
+                        <span id="outSubInfo" class="text-xs text-amber-300/90 mt-1 block font-medium">Ściany: 43 m² • Sufit: 20 m²</span>
                     </div>
 
+                    <!-- WIERSZ 1: ŚCIANY VS SUFIT (ROZBITY ZAKUP) -->
                     <div class="grid grid-cols-2 gap-4 py-3 border-y border-slate-700/80">
                         <div>
-                            <span class="text-xs text-slate-400 block">Farba do kupienia:</span>
-                            <span id="outRow1Val" class="text-2xl font-bold text-white tracking-tight">10.5 L</span>
+                            <span class="text-xs text-slate-400 block">Ściany (kolor):</span>
+                            <span id="outRow1Val" class="text-xl font-bold text-white tracking-tight">7.2 L</span>
+                            <span id="outRow1Sub" class="text-[10px] text-slate-300 block">2 puszki (5.0L)</span>
                         </div>
                         <div>
-                            <span class="text-xs text-slate-400 block">Puszki farby:</span>
-                            <span id="outRow2Val" class="text-2xl font-bold text-white tracking-tight">3 puszki</span>
+                            <span class="text-xs text-slate-400 block">Sufit (biała):</span>
+                            <span id="outRow2Val" class="text-xl font-bold text-white tracking-tight">3.3 L</span>
+                            <span id="outRow2Sub" class="text-[10px] text-slate-300 block">1 wiadro (10.0L)</span>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <span class="text-xs text-slate-400 block">Parametry farby:</span>
-                            <span id="outChem1Val" class="text-xl font-bold text-amber-400 block mt-0.5">5.0 L (puszka)</span>
-                            <span id="outChem1Sub" class="text-xs text-slate-300 font-medium block mt-0.5">Wydajność: 12 m²/L</span>
+                            <span class="text-xs text-slate-400 block">Wydajność przyjęta:</span>
+                            <span id="outChem1Val" class="text-lg font-bold text-amber-400 block mt-0.5">12 m²/L</span>
+                            <span id="outChem1Sub" class="text-xs text-slate-300 font-medium block mt-0.5">standard lateks</span>
                         </div>
                         <div>
                             <span class="text-xs text-slate-400 block">Grunt malarski:</span>
-                            <span id="outChem2Val" class="text-xl font-bold text-amber-400 block mt-0.5">~8 Litrów</span>
-                            <span class="text-xs text-slate-300 font-medium block mt-0.5">1 warstwa pod farbę</span>
+                            <span id="outChem2Val" class="text-lg font-bold text-amber-400 block mt-0.5">~8 Litrów</span>
+                            <span id="outChem2Sub" class="text-xs text-slate-300 font-medium block mt-0.5">ok. 2 op. 5L</span>
                         </div>
                     </div>
 
-                    <div class="pt-2 flex gap-2 no-print">
-                        <button type="button" onclick="copyList()" class="flex-1 py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
-                            <span>📋</span><span>Kopiuj listę na zakupy</span>
+                    <!-- WIERSZ KOSZTORYSU -->
+                    <div id="costRowPnt" class="border-t border-slate-700/80 pt-3">
+                        <span class="text-xs text-slate-400 block font-medium">Szacowany koszt materiałów:</span>
+                        <div class="flex items-baseline space-x-1.5 mt-0.5">
+                            <span id="outTotalCostPnt" class="text-3xl font-black text-emerald-400">~370</span>
+                            <span class="text-sm font-semibold text-slate-400">zł</span>
+                        </div>
+                    </div>
+
+                    <!-- DWA DUŻE PRZYCISKI: SCHOWEK ORAZ ZAPIS PDF -->
+                    <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 no-print">
+                        <button type="button" onclick="copyList()" class="py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
+                            <span>📋</span><span>Kopiuj listę</span>
                         </button>
-                        <button type="button" onclick="window.print()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 active:scale-[0.98] text-slate-300 font-semibold text-xs rounded-xl border border-slate-600 transition" title="Drukuj lub zapisz PDF">
-                            🖨️
+                        <button type="button" onclick="window.print()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 active:scale-[0.98] text-white font-bold text-xs rounded-xl border border-slate-600 transition flex items-center justify-center space-x-1.5 shadow-md">
+                            <span>🖨️</span><span>Zapisz PDF / Drukuj</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Boks Ceneo PID=31231 -->
-                <div id="affiliate-box" class="bg-amber-50/90 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 no-print">
+                <!-- BOKS AFILIACYJNY CENEO Z 3 LINKAMI (PID=31231) -->
+                <div id="affiliate-box" class="bg-amber-50/95 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm space-y-3 no-print">
                     <div class="space-y-1">
-                        <div class="flex items-center space-x-1.5 text-amber-700 text-xs font-bold uppercase tracking-wider">
-                            <span>🛒</span><span>Gdzie kupić najtaniej?</span>
+                        <div class="flex items-center space-x-1.5 text-amber-800 text-xs font-bold uppercase tracking-wider">
+                            <span>🛒</span>
+                            <span>Porównaj ceny farb w marketach (Ceneo)</span>
                         </div>
-                        <p class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Planujesz malowanie ścian?</p>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-normal">Porównaj aktualne promocje na farby zmywalne i preparaty gruntujące.</p>
+                        <p class="text-sm font-extrabold text-slate-900 leading-snug">Gdzie kupić farby i grunt najtaniej?</p>
+                        <p class="text-xs text-slate-600 leading-tight">Sprawdź promocje na farby zmywalne i białe emulsje sufitowe:</p>
                     </div>
-                    <a id="affBtn" href="https://www.ceneo.pl/;szukaj-farba+do+scian#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
-                        Farby i grunt &rarr;
-                    </a>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 text-center">
+                        <a href="https://www.ceneo.pl/;szukaj-farba+do+scian#pid=31231" target="_blank" rel="nofollow noopener" class="py-2 px-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-[11px] rounded-lg transition shadow-sm block">
+                            Farby do ścian &rarr;
+                        </a>
+                        <a href="https://www.ceneo.pl/;szukaj-farba+do+sufitu+biala#pid=31231" target="_blank" rel="nofollow noopener" class="py-2 px-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-[11px] rounded-lg transition shadow-sm block">
+                            Farby sufitowe (biel) &rarr;
+                        </a>
+                        <a href="https://www.ceneo.pl/;szukaj-grunt+gleboko+penetrujacy#pid=31231" target="_blank" rel="nofollow noopener" class="py-2 px-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-[11px] rounded-lg transition shadow-sm block">
+                            Grunt 5L &rarr;
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Linki do pozostałych -->
@@ -287,24 +355,25 @@
             <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy poradnik: Jak obliczyć ile farby kupić do pokoju?</h2>
             
             <p class="text-sm mb-4">
-                Prawidłowe zaplanowanie ilości farby pozwala uniknąć przestojów w trakcie prac oraz niepotrzebnego wydawania pieniędzy na nadmiarowe puszki. Rzeczywiste zużycie zależy od chłonności podłoża oraz technologii wykonania samej farby.
+                Prawidłowe zaplanowanie ilości farby wymaga rozdzielenia zakupu na dwa odrębne produkty: farbę ścienną (najczęściej kolorową, zmywalną) oraz sufitową (głęboko matową biel niwelującą smugi).
             </p>
 
-            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Rzeczywista wydajność farby z litra – jak czytać etykietę?</h3>
+            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Dlaczego sufit i ściany maluje się różnymi farbami?</h3>
             <ul class="text-xs sm:text-sm space-y-1.5 list-disc pl-5 mb-4 text-slate-600">
-                <li><strong>8–10 m²/L:</strong> tańsze farby akrylowe i emulsje sufitowe. Wymagają grubszego krycia i częściej 2–3 warstw.</li>
-                <li><strong>11–13 m²/L:</strong> standardowe farby lateksowe zmywalne (najczęstszy wybór do salonów i sypialni).</li>
-                <li><strong>14–16 m²/L:</strong> nowoczesne farby ceramiczne i hydrofobowe (np. Magnat Ceramic, Beckers). Dzięki wysokiej zawartości żywic tworzą cienką, ale niezwykle odporną powłokę o bardzo wysokiej wydajności.</li>
+                <li><strong>Farba na sufit:</strong> musi być farbą antyrefleksyjną (np. klasa połysku 2-3, głęboki mat). Światło wpadające z okien uwypukla każdą nierówność gładzi – zwykła satynowa farba ścienna dałaby na suficie brzydkie smugi. Farby sufitowe kupuje się w dużych wiadrach 10L lub 15L.</li>
+                <li><strong>Farba na ściany:</strong> musi posiadać 1. klasę odporności na szorowanie na mokro (farba ceramiczna lub lateksowa), aby plamy z kawy czy błota można było zmyć gąbką. Sprzedawana jest w puszkach 2.5L i 5L.</li>
             </ul>
 
-            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">2. Jak obliczyć powierzchnię ścian i sufitu?</h3>
-            <p class="text-sm mb-3">
-                Wzór na pole powierzchni ścian: <strong>obwód pokoju × wysokość</strong>. Od wyniku odejmujemy otwory drzwiowe i okienne. Jeśli malujesz sufit, dodaj pole powierzchni podłogi (<strong>długość × szerokość</strong>).
-            </p>
+            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">2. Wydajność farby a liczba warstw</h3>
+            <ul class="text-xs sm:text-sm space-y-1.5 list-disc pl-5 mb-4 text-slate-600">
+                <li><strong>8–10 m²/L:</strong> emulsje sufitowe i tańsze farby akrylowe.</li>
+                <li><strong>11–13 m²/L:</strong> standardowe farby lateksowe zmywalne.</li>
+                <li><strong>14–16 m²/L:</strong> nowoczesne farby ceramiczne (np. Magnat Ceramic, Beckers).</li>
+            </ul>
 
             <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">3. Dlaczego gruntowanie zmniejsza zużycie farby?</h3>
             <p class="text-sm mb-3">
-                Niezagruntowana ściana działa jak gąbka – „wypija” wodę z pierwszej warstwy farby, powodując smugi, łuszczenie się powłoki i nawet dwukrotnie wyższe zużycie drogiej farby nawierzchniowej. Zastosowanie preparatu gruntującego (ok. 1 litr na 8 m²) wyrównuje chłonność podłoża.
+                Niezagruntowana ściana działa jak gąbka – „wypija” wodę z pierwszej warstwy farby, powodując smugi i nawet dwukrotnie wyższe zużycie drogiej farby nawierzchniowej. Tani preparat gruntujący (ok. 1 litr na 8 m²) wyrównuje chłonność podłoża.
             </p>
 
             <h3 class="text-lg font-bold text-slate-900 mt-8 mb-4 pt-6 border-t border-slate-200">Powiązane poradniki z Bazy Wiedzy:</h3>
@@ -342,6 +411,13 @@
         }
 
         let listText = '';
+        let budgetPntOpen = true;
+
+        window.toggleBudgetPnt = function() {
+            budgetPntOpen = !budgetPntOpen;
+            document.getElementById('boxBudgetPnt').style.display = budgetPntOpen ? 'block' : 'none';
+            document.getElementById('budgetArrowPnt').innerText = budgetPntOpen ? '▼' : '▶';
+        };
 
         function runPaint() {
             const l = val('inPntL') || 5;
@@ -351,8 +427,12 @@
             const doors = val('inPntDoors') || 0;
             const windows = val('inPntWin') || 0;
             const coats = val('selPntCoats') || 2;
-            const canSize = val('selPntCan') || 5;
+            const canWalls = val('selPntCanWalls') || 5.0;
+            const canCeil = val('selPntCanCeil') || 10.0;
             const eff = val('inPntEff') || 12;
+
+            // Ukrywanie wyboru puszki sufitu jeśli sufit odznaczony
+            document.getElementById('boxCeilCan').style.display = ceiling ? 'block' : 'none';
 
             // Etykieta suwaka
             let effHint = 'standard lateks';
@@ -360,25 +440,51 @@
             else if (eff >= 14) effHint = 'ceramika premium';
             document.getElementById('lblPntEff').innerText = `${eff} m²/L (${effHint})`;
 
-            // Modułowe odejmowanie skrzydeł drzwi (1.8 m2) i okien (1.0 m2)
-            let walls = Math.max(0, (2 * l + 2 * w) * h - (doors * 1.8) - (windows * 1.0));
-            let ceil = ceiling ? (l * w) : 0;
-            let singleArea = Math.round(walls + ceil);
-            let totalPaintingArea = singleArea * coats;
+            // Obliczenia ścian i sufitu
+            let wallsNet = Math.max(0, (2 * l + 2 * w) * h - (doors * 1.8) - (windows * 1.0));
+            let ceilNet = ceiling ? (l * w) : 0;
+            let totalSingle = Math.round(wallsNet + ceilNet);
 
-            let liters = Math.round((totalPaintingArea / eff) * 10) / 10;
-            let cans = Math.ceil(liters / canSize);
-            let primer = Math.ceil(singleArea / 8);
+            // Litry
+            let wallsLiters = Math.round(((wallsNet * coats) / eff) * 10) / 10;
+            let ceilLiters = ceiling ? Math.round(((ceilNet * coats) / eff) * 10) / 10 : 0;
 
-            document.getElementById('outMainVal').innerText = singleArea;
-            document.getElementById('outSubInfo').innerText = `${coats} ${coats === 1 ? 'warstwa' : (coats < 5 ? 'warstwy' : 'warstw')} (${totalPaintingArea} m²) • Wydajność: ${eff} m²/L`;
-            document.getElementById('outRow1Val').innerText = liters + " L";
-            document.getElementById('outRow2Val').innerText = cans + " " + (cans === 1 ? 'puszka' : (cans < 5 ? 'puszki' : 'puszek'));
-            document.getElementById('outChem1Val').innerText = canSize + " L (puszka)";
-            document.getElementById('outChem1Sub').innerText = `Wydajność: ${eff} m²/L (${effHint})`;
-            document.getElementById('outChem2Val').innerText = "~" + primer + " Litrów";
+            // Puszki
+            let wallsCans = Math.ceil(wallsLiters / canWalls);
+            let ceilCans = ceiling ? Math.ceil(ceilLiters / canCeil) : 0;
 
-            listText = `Farba: ${liters} L (${cans} puszek po ${canSize}L, przyjęta wydajność: ${eff} m²/L) | Grunt: ${primer} L`;
+            // Grunt
+            let primerLiters = Math.ceil(totalSingle / 8);
+            let primerPacks = Math.ceil(primerLiters / 5);
+
+            // Kosztorys
+            const pWall = val('inPriceWallPaint') || 0;
+            const pCeil = val('inPriceCeilPaint') || 0;
+            const pPrimer = val('inPricePrimer') || 0;
+            const totalCost = Math.round((wallsCans * pWall) + (ceilCans * pCeil) + (primerPacks * pPrimer));
+
+            // Render prawej karty
+            document.getElementById('outMainVal').innerText = totalSingle;
+            document.getElementById('outSubInfo').innerText = `Ściany: ${Math.round(wallsNet)} m² ${ceiling ? '• Sufit: ' + Math.round(ceilNet) + ' m²' : ''} (${coats} warstwy)`;
+            
+            document.getElementById('outRow1Val').innerText = wallsLiters + " L";
+            document.getElementById('outRow1Sub').innerText = `${wallsCans} ${wallsCans === 1 ? 'puszka' : (wallsCans < 5 ? 'puszki' : 'puszek')} (${canWalls}L)`;
+
+            document.getElementById('outRow2Val').innerText = ceiling ? ceilLiters + " L" : "—";
+            document.getElementById('outRow2Sub').innerText = ceiling ? `${ceilCans} ${ceilCans === 1 ? 'wiadro' : (ceilCans < 5 ? 'wiadra' : 'wiader')} (${canCeil}L)` : "Sufit pominięty";
+
+            document.getElementById('outChem1Val').innerText = eff + " m²/L";
+            document.getElementById('outChem1Sub').innerText = effHint;
+
+            document.getElementById('outChem2Val').innerText = "~" + primerLiters + " Litrów";
+            document.getElementById('outChem2Sub').innerText = `ok. ${primerPacks} op. 5L`;
+
+            document.getElementById('outTotalCostPnt').innerText = `~${totalCost.toLocaleString('pl-PL')}`;
+
+            // Kopiowanie do schowka
+            listText = `Ściany (kolor): ${wallsLiters} L (${wallsCans} op. po ${canWalls}L) | ` +
+                       (ceiling ? `Sufit (biała): ${ceilLiters} L (${ceilCans} op. po ${canCeil}L) | ` : '') +
+                       `Grunt: ${primerLiters} L | Szacowany koszt materiałów: ~${totalCost} zł`;
         }
 
         function copyList() {
