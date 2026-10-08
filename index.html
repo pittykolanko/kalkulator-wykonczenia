@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Płytek, Kleju i Fug | Baza Wiedzy Wykończeniowej</title>
-    <meta name="description" content="Precyzyjny kalkulator glazurniczy oraz baza wiedzy budowlanej. Oblicz liczbę płytek, zużycie kleju C2TE i fugi z uwzględnieniem zapasu na docinki.">
+    <meta name="description" content="Precyzyjny kalkulator glazurniczy. Oblicz liczbę płytek, zużycie kleju z uwzględnieniem pacy zębatej i podłoża oraz zaprawę fugową.">
     
-    <!-- TAG KANONICZNY (Ochrona przed duplikatami w Google Search Console) -->
+    <!-- TAG KANONICZNY -->
     <link rel="canonical" href="https://kalkulatorwykonczenia.pl/">
 
-    <!-- PROTOKÓŁ OPEN GRAPH (Podgląd przy udostępnianiu na FB, Messengerze, WhatsAppie) -->
+    <!-- PROTOKÓŁ OPEN GRAPH -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kalkulatorwykonczenia.pl/">
     <meta property="og:title" content="Kalkulator Płytek, Kleju i Fug | KalkulatorWykonczenia.pl">
-    <meta property="og:description" content="Oblicz precyzyjnie liczbę płytek, paczek, zużycie kleju C2TE i fugi z zapasem na docinki. Zaoszczędź czas i pieniądze na remoncie.">
+    <meta property="og:description" content="Oblicz precyzyjnie liczbę płytek, paczek, zużycie kleju wg pacy zębatej oraz fugi z zapasem na docinki.">
     <meta property="og:locale" content="pl_PL">
 
     <!-- KARTY TWITTER / X -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Kalkulator Płytek, Kleju i Fug | KalkulatorWykonczenia.pl">
-    <meta name="twitter:description" content="Oblicz precyzyjnie zużycie materiałów glazurniczych z uwzględnieniem zapasu na docinki.">
+    <meta name="twitter:description" content="Precyzyjnie oblicz zużycie materiałów glazurniczych z uwzględnieniem pacy zębatej i podłoża.">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -60,7 +60,7 @@
               "name": "Ile kleju do płytek potrzeba na 1 m2?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Średnie zużycie zaprawy klejowej wynosi ok. 4.5 kg na metr kwadratowy przy pacy 8-10 mm. Dla formatów wielkich może wynosić 5.5-6 kg/m2."
+                "text": "Średnie zużycie zaprawy klejowej zależy od pacy zębatej: paca 6 mm to ok. 3.0 kg/m2, paca 8 mm to ok. 4.5 kg/m2, paca 10 mm to ok. 5.5 kg/m2, a paca 12 mm przy podwójnym smarowaniu gresu wielkoformatowego to 6.5-7.5 kg/m2."
               }
             }
           ]
@@ -103,11 +103,11 @@
         <div class="text-center mb-6">
             <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Płytek, Kleju i Fug</h1>
             <p class="mt-2 text-xs sm:text-base text-slate-600 max-w-xl mx-auto">
-                Oblicz precyzyjną liczbę płytek, paczek oraz zapotrzebowanie na klej i zaprawę fugową z zapasem na docinki.
+                Oblicz liczbę płytek, paczek oraz zużycie kleju wg pacy zębatej i podłoża z zapasem na docinki.
             </p>
         </div>
 
-        <!-- PRZEŁĄCZNIK LINKÓW DO INNYCH KALKULATORÓW -->
+        <!-- Przełącznik podstron -->
         <div class="w-full max-w-md mx-auto mb-8 no-print">
             <div class="bg-slate-200/80 p-1 sm:p-1.5 rounded-2xl border border-slate-300 shadow-inner grid grid-cols-3 gap-1">
                 <a href="/" class="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold text-xs bg-white text-slate-900 shadow-sm flex items-center justify-center space-x-1">
@@ -124,10 +124,10 @@
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             
-            <!-- LEWA STRONA: FORMULARZ PŁYTEK -->
+            <!-- FORMULARZ PŁYTEK -->
             <div class="md:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
                 
-                <!-- Powierzchnia -->
+                <!-- 1. Powierzchnia -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500">1. Powierzchnia kafelkowania</label>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
 
-                <!-- Format Płytek z kafelkami -->
+                <!-- 2. Format Płytek -->
                 <div>
                     <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">2. Format płytki (cm) - kliknij kafel lub wpisz</label>
                     
@@ -180,7 +180,36 @@
                     </div>
                 </div>
 
-                <!-- Zapas i Paczka -->
+                <!-- 3. EDUKACYJNY SUWAK PACY I GRUBOŚCI KLEJU (KOMBO) -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500">3. Grubość kleju i ząb pacy (grzebień)</label>
+                        <span id="lblTrowelBadge" class="text-xs font-extrabold text-amber-800 bg-amber-100 px-2 py-0.5 rounded border border-amber-200">Paca 8 mm • Standard (Zalecany)</span>
+                    </div>
+                    <input type="range" id="inTileTrowel" min="6" max="12" value="8" step="2" oninput="runTiles()" class="w-full accent-amber-600 cursor-pointer">
+                    
+                    <div class="flex justify-between text-[10px] text-slate-400 font-semibold px-0.5 mt-0.5">
+                        <span>6 mm</span>
+                        <span>8 mm (Standard)</span>
+                        <span>10 mm</span>
+                        <span>12 mm+</span>
+                    </div>
+
+                    <!-- Karta wyjaśniająca dla amatora i fachowca -->
+                    <div class="mt-2 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1">
+                        <div class="flex items-center space-x-1.5 font-bold text-slate-900">
+                            <span id="lblTrowelThickness" class="text-amber-700 font-extrabold">Warstwa standardowa (~4.5 kg/m²)</span>
+                        </div>
+                        <p id="lblTrowelDesc" class="text-[11px] text-slate-600 leading-tight">
+                            Najczęstszy wybór (format 30×60, 60×60 cm), równe wylewki samopoziomujące i tynki. Bezpieczna norma dla 90% remontów.
+                        </p>
+                        <p class="text-[10px] text-slate-400 pt-1 border-t border-slate-200">
+                            💡 <em>Nie wiesz co wybrać? Zostaw domyślne 8 mm – sprawdza się w większości mieszkań.</em>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Zapas i Paczka -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Zapas na docinki</label>
@@ -197,7 +226,7 @@
                     </div>
                 </div>
 
-                <!-- Fuga -->
+                <!-- 5. Fuga -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
                         <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Szerokość spoiny (fugi)</label>
@@ -240,7 +269,7 @@
                         <div>
                             <span class="text-xs text-slate-400 block">Klej do płytek:</span>
                             <span id="outChem1Val" class="text-xl font-bold text-amber-400 block mt-0.5">~99 kg</span>
-                            <span id="outChem1Sub" class="text-xs text-slate-300 font-medium block mt-0.5">ok. 4 worki 25kg</span>
+                            <span id="outChem1Sub" class="text-xs text-slate-300 font-medium block mt-0.5">ok. 4 worki 25kg (paca 8mm)</span>
                         </div>
                         <div>
                             <span class="text-xs text-slate-400 block">Fuga (spoina):</span>
@@ -333,55 +362,69 @@
 
         <!-- MERYTORYCZNY PORADNIK DLA GOOGLE (E-E-A-T I ADSENSE) -->
         <article id="poradnik" class="mt-16 bg-white p-5 sm:p-10 rounded-2xl border border-slate-200 text-slate-700 shadow-sm leading-relaxed">
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy poradnik: Jak obliczyć ilość płytek, kleju i fugi?</h2>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 tracking-tight">Kompleksowy poradnik: Dobór pacy, zużycie kleju i podłoże</h2>
             
             <p class="text-sm mb-4">
-                Planowanie zakupu materiałów glazurniczych wymaga precyzji matematycznej. W kafelkowaniu niedoszacowanie ilości kafli skutkuje koniecznością domawiania towaru, co wiąże się z ryzykiem otrzymania płytek z innej partii produkcyjnej (różnice w odcieniu lub kalibrze). Z kolei nadmiar chemii budowlanej to zamrożony budżet remontowy.
+                Zużycie zaprawy klejowej nie jest wartością stałą. Wbrew powszechnemu przekonaniu nie zależy ono wyłącznie od formatu kafelka, ale w równej mierze od <strong>wielkości zęba pacy (grzebienia)</strong> oraz <strong>równości podłoża</strong>.
             </p>
 
-            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Jak prawidłowo obliczyć zapas na docinki?</h3>
-            <p class="text-sm mb-3">
-                W żadnym pomieszczeniu ściany i narożniki nie trzymają idealnego kąta 90 stopni. Konieczność docinania kafli przy progach, rurach instalacyjnych, odpływach liniowych czy wnękach prysznicowych generuje naturalne straty materiałowe:
-            </p>
+            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Tabela doboru pacy zębatej do formatu płytki i podłoża</h3>
             <div class="overflow-x-auto my-4">
                 <table class="w-full text-xs text-left border border-slate-200 rounded-lg">
                     <thead class="bg-slate-100 text-slate-700 font-bold">
                         <tr>
-                            <th class="p-2.5 border-b">Układ kafelkowania</th>
-                            <th class="p-2.5 border-b">Rekomendowany zapas</th>
-                            <th class="p-2.5 border-b">Zastosowanie i specyfika</th>
+                            <th class="p-2.5 border-b">Ząb pacy</th>
+                            <th class="p-2.5 border-b">Format płytki</th>
+                            <th class="p-2.5 border-b">Charakterystyka podłoża</th>
+                            <th class="p-2.5 border-b">Średnie zużycie</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-200 text-slate-600">
                         <tr>
-                            <td class="p-2.5 font-medium">Układ klasyczny (prosty)</td>
-                            <td class="p-2.5 font-bold text-amber-700">5 – 10%</td>
-                            <td class="p-2.5">Duże, równe powierzchnie, proste posadzki i korytarze</td>
+                            <td class="p-2.5 font-bold">6 mm</td>
+                            <td class="p-2.5">Do 20×20 cm, mozaika, cegiełki</td>
+                            <td class="p-2.5">Idealnie równe tynki gipsowe, płyty gipsowo-kartonowe</td>
+                            <td class="p-2.5 font-bold text-amber-700">~2.8 – 3.2 kg/m²</td>
                         </tr>
                         <tr>
-                            <td class="p-2.5 font-medium">Układ z przesunięciem (1/2 lub 1/3)</td>
-                            <td class="p-2.5 font-bold text-amber-700">10 – 12%</td>
-                            <td class="p-2.5">Kafle drewnopodobne, płytki podłużne (np. 20×120 cm)</td>
+                            <td class="p-2.5 font-bold">8 mm</td>
+                            <td class="p-2.5">Standard: 30×60 cm, 60×60 cm</td>
+                            <td class="p-2.5">Równe posadzki z mikrocementu, wylewki samopoziomujące</td>
+                            <td class="p-2.5 font-bold text-amber-700">~4.0 – 4.5 kg/m²</td>
                         </tr>
                         <tr>
-                            <td class="p-2.5 font-medium">Układ w karo lub jodełkę (chevron)</td>
-                            <td class="p-2.5 font-bold text-amber-700">15 – 20%</td>
-                            <td class="p-2.5">Wzory skośne, skosy na poddaszach, małe łazienki</td>
+                            <td class="p-2.5 font-bold">10 mm</td>
+                            <td class="p-2.5">60×60 cm, 80×80 cm, 60×120 cm</td>
+                            <td class="p-2.5">Ogrzewanie podłogowe, drobne nierówności posadzki (do 3 mm)</td>
+                            <td class="p-2.5 font-bold text-amber-700">~5.2 – 5.8 kg/m²</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2.5 font-bold">12 mm+</td>
+                            <td class="p-2.5">Wielki format 120×60 cm, 120×120 cm</td>
+                            <td class="p-2.5">Metoda kombinowana (podwójne smarowanie), tarasy, posadzki z odchyłkami</td>
+                            <td class="p-2.5 font-bold text-amber-700">~6.5 – 7.5 kg/m²</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <h3 class="text-base font-bold text-slate-900 mt-8 mb-2">2. Średnie zużycie kleju cementowego i dobór pacy</h3>
+            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">2. Dlaczego ogrzewanie podłogowe wymaga większej pacy?</h3>
             <p class="text-sm mb-3">
-                Zużycie zaprawy klejowej zależy od formatu płytki oraz nierówności podłoża. Standardowo przyjmuje się zużycie na poziomie <strong>4.5 kg na 1 m²</strong> przy zastosowaniu uniwersalnej pacy z zębami 8–10 mm. W przypadku gresu wielkoformatowego (np. 120×60 cm) zalecana jest metoda podwójnego smarowania, co podnosi zużycie do ok. 5.5–6 kg/m².
+                W przypadku instalacji podłogówki kluczowe jest uzyskanie <strong>100% wypełnienia przestrzeni pod płytką</strong>. Wolne przestrzenie powietrzne działają jak izolator termiczny, hamując oddawanie ciepła, a naprężenia termiczne mogą powodować pękanie spoin. Z tego względu na podłogówce stosuje się większą pacę (10 mm) lub metodę kombinowaną (nakładanie kleju grzebieniem na posadzkę i gładko na spód płytki).
+            </p>
+
+            <h3 class="text-base font-bold text-slate-900 mt-6 mb-2">3. Matematyczny wzór na zużycie fugi</h3>
+            <p class="text-sm mb-3">
+                Zapotrzebowanie na zaprawę fugową obliczamy ze wzoru uwzględniającego obwód płytki, jej grubość oraz szerokość spoiny:
+                <br><code class="text-xs bg-slate-100 p-1 rounded font-mono text-slate-800 block my-2">Zużycie fugi (kg/m²) = [(A + B) / (A × B)] × C × D × 1.6</code>
+                Gdzie: A i B to wymiary płytki w mm, C to grubość (przyjęto 8.5 mm), D to szerokość spoiny w mm, a 1.6 to średnia gęstość zaprawy cementowej.
             </p>
 
             <h3 id="faq" class="text-lg font-bold text-slate-900 mt-10 mb-4 pt-6 border-t border-slate-200">Najczęściej zadawane pytania (FAQ)</h3>
             <div class="space-y-4 text-xs sm:text-sm">
                 <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <h4 class="font-bold text-slate-900 mb-1">Ile kleju do płytek potrzeba na 1 m²?</h4>
-                    <p class="text-slate-600">Średnie zużycie wynosi 4.5 kg na metr kwadratowy przy pacy 8–10 mm. Dla formatów 120×60 cm zużycie może wynosić 5.5–6 kg/m².</p>
+                    <h4 class="font-bold text-slate-900 mb-1">Jaka paca do płytek 60×60 cm jest najlepsza?</h4>
+                    <p class="text-slate-600">Dla płytek 60×60 cm na równej posadzce standardem jest paca z zębem 8 mm. Przy ogrzewaniu podłogowym lub minimalnych odchyłkach wylewki zaleca się pacę 10 mm.</p>
                 </div>
             </div>
 
@@ -389,7 +432,7 @@
 
     </main>
 
-    <!-- Stopka z pewnymi linkami pod AdSense (Zero JavaScriptu) -->
+    <!-- Stopka -->
     <footer class="bg-white border-t border-slate-200 mt-16 py-8">
         <div class="max-w-5xl mx-auto px-4 text-center text-xs text-slate-400 space-y-2">
             <p>&copy; 2026 KalkulatorWykonczenia.pl • Darmowe narzędzia remontowo-budowlane.</p>
@@ -444,11 +487,44 @@
             const l_cm = val('inTileL') || 60;
             const waste = val('selTileWaste');
             const box = val('inTileBox');
+            const trowel = parseInt(document.getElementById('inTileTrowel').value) || 8;
+
+            // Wartości i opisy kombo
+            let glueRate = 4.5;
+            let trowelThickness = 'Warstwa standardowa (~4.5 kg/m²)';
+            let trowelText = 'Najczęstszy wybór (format 30×60, 60×60 cm), równe wylewki samopoziomujące i tynki. Bezpieczna norma dla 90% remontów.';
+            let badgeText = `Paca ${trowel} mm • Standard (Zalecany)`;
+
+            if (trowel === 6) {
+                glueRate = 3.0;
+                trowelThickness = 'Warstwa cienka (~3.0 kg/m²)';
+                trowelText = 'Małe płytki ścienne, mozaika, idealnie równe ściany (płyty gipsowo-kartonowe, gładź).';
+                badgeText = 'Paca 6 mm • Cienka warstwa';
+            } else if (trowel === 8) {
+                glueRate = 4.5;
+                trowelThickness = 'Warstwa standardowa (~4.5 kg/m²)';
+                trowelText = 'Najczęstszy wybór (format 30×60, 60×60 cm), równe wylewki samopoziomujące i tynki. Bezpieczna norma dla 90% remontów.';
+                badgeText = 'Paca 8 mm • Standard (Zalecany)';
+            } else if (trowel === 10) {
+                glueRate = 5.5;
+                trowelThickness = 'Warstwa gruba (~5.5 kg/m²)';
+                trowelText = 'Duży gres podłogowy, ogrzewanie podłogowe, drobne nierówności podłoża (do 3 mm).';
+                badgeText = 'Paca 10 mm • Gruba warstwa';
+            } else if (trowel >= 12) {
+                glueRate = 7.0;
+                trowelThickness = 'Maksymalna warstwa (~7.0 kg/m²)';
+                trowelText = 'Płytki wielkoformatowe (120×60+ cm), podwójne smarowanie (posadzka + płytka) lub krzywe podłoże.';
+                badgeText = 'Paca 12 mm+ • Podwójne smarowanie';
+            }
+
+            document.getElementById('lblTrowelBadge').innerText = badgeText;
+            document.getElementById('lblTrowelThickness').innerText = trowelThickness;
+            document.getElementById('lblTrowelDesc').innerText = trowelText;
 
             const totalArea = area * (1 + waste / 100);
             const tileArea = (w_cm / 100) * (l_cm / 100);
             const tiles = Math.ceil(totalArea / tileArea);
-            const glue = Math.ceil(totalArea * 4.5);
+            const glue = Math.ceil(totalArea * glueRate);
             const bags = Math.ceil(glue / 25);
 
             document.getElementById('outMainVal').innerText = totalArea.toFixed(1);
@@ -456,6 +532,23 @@
             document.getElementById('outRow1Val').innerText = tiles + " szt.";
             document.getElementById('outRow2Val').innerText = box > 0 ? Math.ceil(totalArea / box) + " paczek" : "—";
             document.getElementById('outChem1Val').innerText = "~" + glue + " kg";
-            document.getElementById('outChem1Sub').innerText = "ok. " + bags + " worków 25kg";
+            document.getElementById('outChem1Sub').innerText = `ok. ${bags} worków 25kg (paca ${trowel}mm)`;
             document.getElementById('outChem2Val').innerText = "~4.5 kg";
-            document.getEleme
+            document.getElementById('outChem2Sub').innerText = "ok. 2-3 opakowania";
+
+            listText = `Płytki (${w_cm}×${l_cm} cm): ${totalArea.toFixed(1)} m² (${tiles} szt.) | Klej: ${glue} kg (${bags} worków 25kg, paca zębata: ${trowel} mm) | Fuga: ok. 4.5 kg`;
+        };
+
+        window.copyList = function() {
+            navigator.clipboard.writeText("Lista zakupów z KalkulatorWykonczenia.pl:\n" + listText).then(() => {
+                const t = document.getElementById('toast');
+                t.classList.remove('translate-y-20', 'opacity-0');
+                setTimeout(() => t.classList.add('translate-y-20', 'opacity-0'), 2500);
+            });
+        };
+
+        // Start
+        runTiles();
+    </script>
+</body>
+</html>
