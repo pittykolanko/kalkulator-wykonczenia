@@ -90,11 +90,11 @@
             </a>
             
             <nav class="flex items-center space-x-1 text-[11px] sm:text-xs font-semibold shrink-0">
-                <a href="/" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200">Płytki</a>
-                <a href="/panele.html" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Panele</a>
-                <a href="/farby.html" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Farby</a>
-                <a href="/o-nas.html" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">O nas</a>
-                <a href="#poradnik" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hidden sm:inline-block transition">Poradnik</a>
+                <a href="/" class="px-2.5 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-bold border border-amber-200">Płytki</a>
+                <a href="/panele.html" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Panele</a>
+                <a href="/farby.html" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Farby</a>
+                <a href="/o-nas.html" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">O nas</a>
+                <a href="#poradnik" class="px-2.5 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hidden sm:inline-block transition">Poradnik</a>
             </nav>
         </div>
     </header>
@@ -126,8 +126,8 @@
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             
-            <!-- LEWA STRONA: FORMULARZ -->
-            <div class="md:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+            <!-- LEWA STRONA: FORMULARZ (OCHRONA: google-auto-ads-ignore) -->
+            <div class="md:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6 google-auto-ads-ignore">
                 
                 <!-- 1. Powierzchnia -->
                 <div>
@@ -320,8 +320,8 @@
                         </div>
                     </div>
 
-                    <!-- DWA DUŻE PRZYCISKI: SCHOWEK ORAZ ZAPIS PDF -->
-                    <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 no-print">
+                    <!-- DWA DUŻE PRZYCISKI (OCHRONA: google-auto-ads-ignore) -->
+                    <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 no-print google-auto-ads-ignore">
                         <button type="button" onclick="copyList()" class="py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
                             <span>📋</span>
                             <span>Kopiuj listę</span>
@@ -334,8 +334,8 @@
 
                 </div>
 
-                <!-- BOKS AFILIACYJNY CENEO Z 3 LINKAMI (PID=31231) -->
-                <div id="affiliate-box" class="bg-amber-50/95 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm space-y-3 no-print">
+                <!-- BOKS AFILIACYJNY CENEO (OCHRONA: google-auto-ads-ignore) -->
+                <div id="affiliate-box" class="bg-amber-50/95 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm space-y-3 no-print google-auto-ads-ignore">
                     <div class="space-y-1">
                         <div class="flex items-center space-x-1.5 text-amber-800 text-xs font-bold uppercase tracking-wider">
                             <span>🛒</span>
@@ -586,4 +586,43 @@
             const glue = Math.ceil(totalArea * glueRate);
             const bags = Math.ceil(glue / 25);
 
-            // Obliczenie fu
+            // Obliczenie fugi
+            const w_mm = w_cm * 10;
+            const l_mm = l_cm * 10;
+            const groutMm = val('inTileGrout') || 3;
+            const groutFactor = ((w_mm + l_mm) / (w_mm * l_mm)) * 8.5 * groutMm * 1.6;
+            const groutKg = Math.max(0.5, Math.round(totalArea * groutFactor * 10) / 10);
+            const groutPacks = Math.ceil(groutKg / 2);
+
+            // Obliczenie kosztorysu
+            const pTile = val('inPriceTile') || 0;
+            const pGlue = val('inPriceGlue') || 0;
+            const pGrout = val('inPriceGrout') || 0;
+            const totalCost = Math.round((totalArea * pTile) + (bags * pGlue) + (groutPacks * pGrout));
+
+            document.getElementById('outMainVal').innerText = totalArea.toFixed(1);
+            document.getElementById('outSubInfo').innerText = `W tym ${(totalArea - area).toFixed(1)} m² zapasu (${waste}%)`;
+            document.getElementById('outRow1Val').innerText = tiles + " szt.";
+            document.getElementById('outRow2Val').innerText = box > 0 ? Math.ceil(totalArea / box) + " paczek" : "—";
+            document.getElementById('outChem1Val').innerText = "~" + glue + " kg";
+            document.getElementById('outChem1Sub').innerText = `ok. ${bags} worków 25kg (paca ${trowel}mm)`;
+            document.getElementById('outChem2Val').innerText = `~${groutKg} kg`;
+            document.getElementById('outChem2Sub').innerText = `ok. ${groutPacks} op. 2kg (spoina ${groutMm}mm)`;
+            document.getElementById('outTotalCost').innerText = `~${totalCost.toLocaleString('pl-PL')}`;
+
+            listText = `Płytki (${w_cm}×${l_cm} cm): ${totalArea.toFixed(1)} m² (${tiles} szt.) | Klej: ${glue} kg (${bags} worków, paca ${trowel}mm) | Fuga: ${groutKg} kg | Szacowany koszt materiałów: ~${totalCost} zł`;
+        };
+
+        window.copyList = function() {
+            navigator.clipboard.writeText("Lista zakupów z KalkulatorWykonczenia.pl:\n" + listText).then(() => {
+                const t = document.getElementById('toast');
+                t.classList.remove('translate-y-20', 'opacity-0');
+                setTimeout(() => t.classList.add('translate-y-20', 'opacity-0'), 2500);
+            });
+        };
+
+        // Start
+        runTiles();
+    </script>
+</body>
+</html>
