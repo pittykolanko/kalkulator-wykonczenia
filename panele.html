@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Paneli Podłogowych i Podkładu | Policz paczki i listwy</title>
-    <meta name="description" content="Oblicz ile paczek paneli podłogowych, m² podkładu i metrów bieżących listew przypodłogowych potrzebujesz do swojego pokoju. Uwzględnij zapas na docinki.">
+    <title>Kalkulator Paneli Podłogowych i Podkładu | Kosztorys i Zapis PDF</title>
+    <meta name="description" content="Oblicz ile paczek paneli podłogowych, m² podkładu i listew potrzebujesz. Oszacuj budżet remontu podłogi i pobierz listę zakupów do PDF.">
     
     <!-- TAG KANONICZNY -->
     <link rel="canonical" href="https://kalkulatorwykonczenia.pl/panele.html">
@@ -12,14 +12,14 @@
     <!-- PROTOKÓŁ OPEN GRAPH -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kalkulatorwykonczenia.pl/panele.html">
-    <meta property="og:title" content="Kalkulator Paneli Podłogowych i Podkładu | KalkulatorWykonczenia.pl">
-    <meta property="og:description" content="Oblicz ile paczek paneli podłogowych, m² podkładu i metrów listew potrzebujesz. Uwzględnij zapas na docinki.">
+    <meta property="og:title" content="Kalkulator Paneli Podłogowych z Kosztorysem | KalkulatorWykonczenia.pl">
+    <meta property="og:description" content="Oblicz ile paczek paneli, m² podkładu i metrów listew potrzebujesz. Policz szacunkowy koszt materiałów.">
     <meta property="og:locale" content="pl_PL">
 
     <!-- KARTY TWITTER / X -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Kalkulator Paneli Podłogowych | KalkulatorWykonczenia.pl">
-    <meta name="twitter:description" content="Precyzyjnie policz paczki paneli, podkład i listwy z zapasem na odpady.">
+    <meta name="twitter:description" content="Precyzyjnie policz paczki paneli, podkład i listwy z zapasem na odpady oraz kosztorys.">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,8 +30,10 @@
         body { font-family: 'Inter', sans-serif; }
         .inp { width: 100%; padding: 10px 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; font-weight: 600; color: #0f172a; outline: none; }
         .inp:focus { border-color: #f59e0b; background: #fff; }
+        .inp-budget { width: 100%; padding: 6px 8px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 700; color: #0f172a; text-align: center; outline: none; }
+        .inp-budget:focus { border-color: #f59e0b; }
         @media print {
-            header, footer, .no-print, #affiliate-box, #privacyModal { display: none !important; }
+            header, footer, .no-print, #affiliate-box { display: none !important; }
             body { background: white; color: black; }
             .print-card { border: 1px solid #ccc !important; box-shadow: none !important; color: black !important; background: white !important; }
             .print-card span, .print-card div, .print-card h3 { color: black !important; }
@@ -45,7 +47,7 @@
       "@graph": [
         {
           "@type": "WebApplication",
-          "name": "Kalkulator Paneli Podłogowych",
+          "name": "Kalkulator Paneli Podłogowych i Kosztorys",
           "url": "https://kalkulatorwykonczenia.pl/panele.html",
           "applicationCategory": "UtilityApplication",
           "operatingSystem": "All",
@@ -75,7 +77,7 @@
 
     <!-- Toast powiadomień -->
     <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-semibold transform translate-y-20 opacity-0 transition-all z-50 pointer-events-none">
-        ✅ Skopiowano listę zakupów do schowka!
+        ✅ Skopiowano listę zakupów i kosztorys do schowka!
     </div>
 
     <!-- Pasek Górny -->
@@ -99,7 +101,7 @@
         <div class="text-center mb-6">
             <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kalkulator Paneli Podłogowych i Podkładu</h1>
             <p class="mt-2 text-xs sm:text-base text-slate-600 max-w-xl mx-auto">
-                Oblicz ile paczek paneli laminowanych lub winylowych kupić oraz ile podkładu i listew potrzebujesz.
+                Oblicz zapotrzebowanie na paczki paneli, metry podkładu i listwy oraz oszacuj koszt materiałów.
             </p>
         </div>
 
@@ -150,6 +152,38 @@
                     <input type="text" inputmode="decimal" id="inPanSkt" value="18" oninput="runPanels()" class="inp text-xs font-semibold">
                     <span class="text-[11px] text-slate-400 mt-1 block">Zsumuj długości ścian pokoju i odejmij szerokość drzwi (np. 0.9 m).</span>
                 </div>
+
+                <!-- MODUŁ KOSZTORYSU PANELI -->
+                <div class="border-t border-slate-200 pt-4">
+                    <button type="button" onclick="toggleBudgetPan()" id="btnToggleBudgetPan" class="flex items-center justify-between w-full text-left font-bold text-xs uppercase tracking-wider text-slate-700 hover:text-amber-600 transition">
+                        <span class="flex items-center space-x-1.5">
+                            <span>💰</span>
+                            <span>Oszacuj koszt materiałów (opcjonalnie)</span>
+                        </span>
+                        <span id="budgetArrowPan" class="text-xs text-slate-400">▼</span>
+                    </button>
+                    
+                    <div id="boxBudgetPan" class="mt-3 p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-3" style="display: block;">
+                        <div class="grid grid-cols-3 gap-2">
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-500 block mb-1">Panele (zł/m²)</label>
+                                <input type="text" inputmode="decimal" id="inPricePan" value="65" oninput="runPanels()" class="inp-budget text-xs">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-500 block mb-1">Podkład (zł/m²)</label>
+                                <input type="text" inputmode="decimal" id="inPriceUnder" value="12" oninput="runPanels()" class="inp-budget text-xs">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-500 block mb-1">Listwa (zł/szt. 2.4m)</label>
+                                <input type="text" inputmode="decimal" id="inPriceSkt" value="28" oninput="runPanels()" class="inp-budget text-xs">
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-500 leading-tight">
+                            💡 <em>Wpisane średnie ceny rynkowe 2026. Możesz wpisać własne stawki z marketu.</em>
+                        </p>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Podsumowanie -->
@@ -193,28 +227,48 @@
                         </div>
                     </div>
 
-                    <div class="pt-2 flex gap-2 no-print">
-                        <button type="button" onclick="copyList()" class="flex-1 py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
-                            <span>📋</span><span>Kopiuj listę na zakupy</span>
+                    <!-- WIERSZ KOSZTORYSU -->
+                    <div id="costRowPan" class="border-t border-slate-700/80 pt-3">
+                        <span class="text-xs text-slate-400 block font-medium">Szacowany koszt materiałów:</span>
+                        <div class="flex items-baseline space-x-1.5 mt-0.5">
+                            <span id="outTotalCostPan" class="text-3xl font-black text-emerald-400">~1 906</span>
+                            <span class="text-sm font-semibold text-slate-400">zł</span>
+                        </div>
+                    </div>
+
+                    <!-- DWA DUŻE PRZYCISKI: SCHOWEK ORAZ ZAPIS PDF -->
+                    <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 no-print">
+                        <button type="button" onclick="copyList()" class="py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
+                            <span>📋</span><span>Kopiuj listę</span>
                         </button>
-                        <button type="button" onclick="window.print()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 active:scale-[0.98] text-slate-300 font-semibold text-xs rounded-xl border border-slate-600 transition" title="Drukuj lub zapisz PDF">
-                            🖨️
+                        <button type="button" onclick="window.print()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 active:scale-[0.98] text-white font-bold text-xs rounded-xl border border-slate-600 transition flex items-center justify-center space-x-1.5 shadow-md">
+                            <span>🖨️</span><span>Zapisz PDF / Drukuj</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Boks Ceneo PID=31231 -->
-                <div id="affiliate-box" class="bg-amber-50/90 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 no-print">
+                <!-- BOKS AFILIACYJNY CENEO Z 3 LINKAMI (PID=31231) -->
+                <div id="affiliate-box" class="bg-amber-50/95 border-2 border-amber-300 p-4 sm:p-5 rounded-2xl shadow-sm space-y-3 no-print">
                     <div class="space-y-1">
-                        <div class="flex items-center space-x-1.5 text-amber-700 text-xs font-bold uppercase tracking-wider">
-                            <span>🛒</span><span>Gdzie kupić najtaniej?</span>
+                        <div class="flex items-center space-x-1.5 text-amber-800 text-xs font-bold uppercase tracking-wider">
+                            <span>🛒</span>
+                            <span>Porównaj ceny w marketach (Ceneo)</span>
                         </div>
-                        <p class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">Szukasz paneli i podkładów?</p>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-normal">Sprawdź promocje na podkłady wygłuszające i panele podłogowe.</p>
+                        <p class="text-sm font-extrabold text-slate-900 leading-snug">Gdzie kupić podłogę najtaniej?</p>
+                        <p class="text-xs text-slate-600 leading-tight">Sprawdź aktualne promocje na podkłady i panele:</p>
                     </div>
-                    <a href="https://www.ceneo.pl/;szukaj-podklad+pod+panele#pid=31231" target="_blank" rel="nofollow noopener" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition text-center shadow-md whitespace-nowrap">
-                        Podkłady i panele &rarr;
-                    </a>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 text-center">
+                        <a href="https://www.ceneo.pl/;szukaj-podklad+pod+panele#pid=31231" target="_blank" rel="nofollow noopener" class="py-2 px-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-[11px] rounded-lg transition shadow-sm block">
+                            Podkłady &rarr;
+                        </a>
+                        <a href="https://www.ceneo.pl/;szukaj-panele+podlogowe+ac5#pid=31231" target="_blank" rel="nofollow noopener" class="py-2 px-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-[11px] rounded-lg transition shadow-sm block">
+                            Panele AC5 &rarr;
+                        </a>
+                        <a href="https://www.ceneo.pl/;szukaj-listwy+przypodlogowe+mdf#pid=31231" target="_blank" rel="nofollow noopener" class="py-2 px-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-[11px] rounded-lg transition shadow-sm block">
+                            Listwy &rarr;
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Linki do pozostałych -->
@@ -282,33 +336,13 @@
     <footer class="bg-white border-t border-slate-200 mt-16 py-8 text-center text-xs text-slate-400 space-y-2">
         <p>&copy; 2026 KalkulatorWykonczenia.pl • Darmowe narzędzia remontowo-budowlane.</p>
         <div class="flex justify-center items-center space-x-3 text-[11px] text-slate-500 pt-1">
-            <button type="button" onclick="togglePrivacy(true)" class="hover:text-amber-600 underline cursor-pointer">Polityka Prywatności i Cookies</button>
+            <a href="/polityka-prywatnosci.html" class="hover:text-amber-600 underline">Polityka Prywatności i Cookies</a>
             <span>•</span>
             <a href="/o-nas.html" class="hover:text-amber-600 underline">O projekcie</a>
             <span>•</span>
             <a href="mailto:kontakt@kalkulatorwykonczenia.pl" class="hover:text-amber-600 underline">Kontakt</a>
         </div>
     </footer>
-
-    <!-- MODAL POLITYKI PRYWATNOŚCI -->
-    <div id="privacyModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" style="display: none;">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200">
-            <div class="p-4 sm:p-5 border-b border-slate-200 flex justify-between items-center">
-                <h3 class="font-bold text-slate-900 text-sm sm:text-base">Polityka Prywatności i Plików Cookies</h3>
-                <button type="button" onclick="togglePrivacy(false)" class="text-slate-400 hover:text-slate-700 text-2xl font-bold px-2 cursor-pointer">&times;</button>
-            </div>
-            <div class="p-5 sm:p-6 overflow-y-auto space-y-3 text-xs text-slate-600 leading-relaxed">
-                <p><strong>1. Informacje ogólne:</strong> Serwis KalkulatorWykonczenia.pl szanuje prywatność swoich użytkowników. Niniejszy dokument określa zasady przetwarzania danych oraz wykorzystywania plików cookies.</p>
-                <p><strong>2. Pliki Cookies (Ciasteczka):</strong> Serwis wykorzystuje pliki cookies w celach statystycznych, analitycznych oraz do prawidłowego działania narzędzi kalkulatora.</p>
-                <p><strong>3. Reklamy Google AdSense:</strong> W serwisie mogą być wyświetlane reklamy dostarczane przez firmę Google oraz jej partnerów. Użytkownicy mogą zrezygnować ze spersonalizowanych reklam w <a href="https://adssettings.google.com" target="_blank" rel="nofollow noopener" class="text-amber-600 underline">Ustawieniach reklam Google</a>.</p>
-                <p><strong>4. Linki partnerskie:</strong> Serwis zawiera linki partnerskie (m.in. Ceneo.pl). Kliknięcie może skutkować naliczeniem prowizji partnerskiej bez dodatkowych kosztów dla użytkownika.</p>
-                <p><strong>5. Kontakt:</strong> <em>kontakt@kalkulatorwykonczenia.pl</em>.</p>
-            </div>
-            <div class="p-4 border-t border-slate-100 flex justify-end">
-                <button type="button" onclick="togglePrivacy(false)" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition cursor-pointer">Rozumiem i zamykam</button>
-            </div>
-        </div>
-    </div>
 
     <script>
         function val(id) {
@@ -319,9 +353,12 @@
         }
 
         let listText = '';
+        let budgetPanOpen = true;
 
-        window.togglePrivacy = function(show) {
-            document.getElementById('privacyModal').style.display = show ? 'flex' : 'none';
+        window.toggleBudgetPan = function() {
+            budgetPanOpen = !budgetPanOpen;
+            document.getElementById('boxBudgetPan').style.display = budgetPanOpen ? 'block' : 'none';
+            document.getElementById('budgetArrowPan').innerText = budgetPanOpen ? '▼' : '▶';
         };
 
         function runPanels() {
@@ -333,15 +370,23 @@
             const totalArea = area * (1 + waste / 100);
             const boxes = Math.ceil(totalArea / box);
             const sktPcs = Math.ceil((skt * 1.07) / 2.4);
+            const underArea = Math.ceil(area * 1.05);
+
+            // Ceny do kosztorysu
+            const pPan = val('inPricePan') || 0;
+            const pUnder = val('inPriceUnder') || 0;
+            const pSkt = val('inPriceSkt') || 0;
+            const totalCost = Math.round((totalArea * pPan) + (underArea * pUnder) + (sktPcs * pSkt));
 
             document.getElementById('outMainVal').innerText = totalArea.toFixed(1);
             document.getElementById('outSubInfo').innerText = `W tym ${(totalArea - area).toFixed(1)} m² zapasu (${waste}%)`;
             document.getElementById('outRow1Val').innerText = boxes + " paczek";
             document.getElementById('outRow2Val').innerText = box + " m²";
-            document.getElementById('outChem1Val').innerText = Math.ceil(area * 1.05) + " m²";
+            document.getElementById('outChem1Val').innerText = underArea + " m²";
             document.getElementById('outChem2Val').innerText = sktPcs + " szt.";
+            document.getElementById('outTotalCostPan').innerText = `~${totalCost.toLocaleString('pl-PL')}`;
 
-            listText = `Panele: ${totalArea.toFixed(1)} m² (${boxes} paczek po ${box} m²) | Podkład: ${Math.ceil(area * 1.05)} m² | Listwy: ${sktPcs} szt.`;
+            listText = `Panele: ${totalArea.toFixed(1)} m² (${boxes} paczek po ${box} m²) | Podkład: ${underArea} m² | Listwy: ${sktPcs} szt. | Szacowany koszt materiałów: ~${totalCost} zł`;
         }
 
         function copyList() {
